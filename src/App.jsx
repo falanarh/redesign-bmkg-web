@@ -1,14 +1,11 @@
-import Button from "./components/Elements/Button";
+import EarlyWarning from "./components/Elements/EarlyWarning";
+import NavbarSection from "./components/Layouts/NavbarSection";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <div className="flex flex-col justify-center items-center h-screen bg-red-700">
-        <div>Hello World BMKG</div>
-        <Button>Tombol</Button>
-      </div>
-    </>
+    <div className="flex flex-col">
+      <NavbarSection />
+      <EarlyWarning />
+    </div>
   );
 }
-
-export default App;
