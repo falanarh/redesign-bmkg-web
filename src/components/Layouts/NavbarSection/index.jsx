@@ -27,7 +27,7 @@ const NavbarSection = () => {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
-      className="my-4"
+      className="py-4"
       classNames={{
         item: [
           "flex",
@@ -43,27 +43,32 @@ const NavbarSection = () => {
           "data-[active=true]:after:rounded-[2px]",
           "data-[active=true]:after:bg-active",
         ],
+        
       }}
     >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="lg:hidden"
         />
         <NavbarBrand>
-          <img className="w-12 h-14 m-4" src={BMKGLogo} alt="BMKG Logo" />
+        <img
+            className="m-4 w-8 h-10 xs:w-12 xs:h-14"
+            src={BMKGLogo}
+            alt="BMKG Logo"
+          />
           <div className="flex flex-col">
-            <p className="font-bold text-inherit">
+            <p className="text-[10px]/[8px] xs:text-sm/[16px] lg:text-base/[24px] font-bold">
               Badan Meteorologi, Klimatologi, dan Geofisika
             </p>
-            <p className="text-sm font-ptSans text-inherit">
+            <p className="text-[10px] xs:text-[11px] lg:text-sm font-pt-sans text-inherit">
               Cepat, Tepat, Akurat, Luas, dan Mudah Dipahami
             </p>
           </div>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden lg:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={index}
@@ -83,22 +88,19 @@ const NavbarSection = () => {
         ))}
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="mt-8">
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item.label}-${index}`}>
+          <NavbarMenuItem key={`${item.label}-${index}`} className="my-3">
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full"
+              className={`w-full ${
+                window.location.pathname === item.href
+                  ? "text-active font-pt-sans-caption"
+                  : "text-nonActive font-pt-sans-caption"
+              }`}
               href={item.href}
               size="lg"
             >
-              {item.label}
+              {item.label.toUpperCase()}
             </Link>
           </NavbarMenuItem>
         ))}
