@@ -3,13 +3,14 @@ import ReactDOM from "react-dom/client";
 import { NextUIProvider } from "@nextui-org/react";
 import App from "./App.jsx";
 import "./index.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <NextUIProvider>
-    <div style={{ height: "1000px", overflow: "auto" }}>
-        <App />
-      </div>
-    </NextUIProvider>
+    <ChakraProvider>
+      <NextUIProvider>
+        <App classname="h-[2000px]" />
+      </NextUIProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );

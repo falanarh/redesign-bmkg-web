@@ -1,9 +1,12 @@
-import BerandaBawah from "../components/Fragments/BerandaBawah/BerandaBawah";
+import BerandaAtas from "../components/Fragments/BerandaAtas";
+import BerandaBawah from "../components/Fragments/BerandaBawah";
 
 export default function Beranda() {
-  return (
-    <div>
-      <BerandaBawah />
-    </div>
-  );
+
+    return (
+        <div>
+            {/* <BerandaAtas /> */}
+            <BerandaBawah />
+        </div>
+    );
 }

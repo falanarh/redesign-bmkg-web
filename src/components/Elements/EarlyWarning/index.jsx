@@ -36,7 +36,7 @@ const EarlyWarning = () => {
   return (
     <Carousel autoplay>
       {warningData.map((data, index) => (
-        <div>
+        <div key={index}>
           <div
             key={index}
             style={contentStyle}

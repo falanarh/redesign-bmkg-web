@@ -1,4 +1,3 @@
-import React from "react";
 import BMKGLogo from "../../../assets/images/bmkg_logo.png";
 import AppStore from "../../../assets/images/app_store.png";
 import GooglePlay from "../../../assets/images/google_play.png";
@@ -22,7 +21,7 @@ import LiveChat from "../../../assets/images/button-image 1.png";
 
 const SideFooter = () => {
   return (
-    <footer>
+    <footer className="flex flex-col justify-center items-center">
       <div
         className="max-w-[1280px] px-10 py-7 bg-white text-black container grid grid-cols-5 gap-8"
         style={{ fontSize: "14px" }}
@@ -254,17 +253,17 @@ const SideFooter = () => {
       </div>
 
       {/* Hak Cipta dan Desain */}
+
       <div
-        className="bg-blue-800 text-white text-center py-4 border-t border-gray-700 mt-8"
+        className="flex justify-center bg-blue-800 text-white text-center py-4 border-t border-gray-700 mt-8 w-full"
         style={{
-          padding: "0 100px",
           height: "48px",
           display: "flex",
           alignItems: "center",
         }}
       >
         <div
-          className="flex justify-between"
+          className="flex justify-between max-w-[1280px] px-10 w-full"
           style={{ fontSize: "13px", width: "100%" }}
         >
           <p>Profil / Informasi / Publik / Sarana Teknis</p>

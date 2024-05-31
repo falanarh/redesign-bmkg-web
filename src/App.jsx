@@ -5,11 +5,15 @@ import Beranda from "./pages/beranda";
 
 export default function App() {
   return (
-    <div className="fixed top-0 left-0 right-0">
-      <NavbarSection />
-      <EarlyWarning />
-      {/* <Beranda /> */}
-      <SideFooter />
-    </div>
+    <>
+      <div className="fixed top-0 left-0 right-0">
+        <NavbarSection />
+        <EarlyWarning />
+      </div>
+      <div className="mt-[250px]">
+        <Beranda />
+        <SideFooter />
+      </div>
+    </>
   );
 }
