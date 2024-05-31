@@ -78,14 +78,14 @@ const Map = () => {
           scrollWheelZoom={false}
         >
           <TileLayer
-            // url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
-            // attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            // maxZoom={22}
-            // accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
-            url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
-            attribution='Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+            url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+            attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            maxZoom={22}
+            accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
             minZoom={0}
-            maxZoom={20}
+            // url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
+            // attribution='Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+            // maxZoom={20}
           />
           {markers.map((marker, index) => (
             <Marker
