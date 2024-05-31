@@ -7,9 +7,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <NextUIProvider>
-    <div style={{ overflow: "auto" }}>
-        <App />
-      </div>
+      <App />
     </NextUIProvider>
   </React.StrictMode>
 );

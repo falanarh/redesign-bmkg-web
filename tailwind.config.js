@@ -47,6 +47,7 @@ export default {
       colors: {
         nonActive: '#666666',
         active: '#1C2B78',
+        tertiary: '#0032CB',
       },
     },
   },
