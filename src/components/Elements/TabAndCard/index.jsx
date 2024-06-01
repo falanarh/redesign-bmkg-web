@@ -25,6 +25,18 @@ import {
 } from "@chakra-ui/react";
 
 import { Carousel } from "antd";
+
+// import Swiper core and required modules
+import { Navigation, Autoplay, Pagination, A11y } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 const contentStyle = {
   margin: 0,
   height: "160px",
@@ -91,57 +103,78 @@ export default function TabAndCard() {
             <span>Informasi Terbaru</span>
           </div>
         }
-      > 
-        
-
-        {data.map((item, index) => (
-          <div key={index}>
-            <Card
-              maxW="328px"
-              style={{ borderRadius: "18px", margin: "0 15px" }}
-            >
-              <CardBody>
-                <img src={item.image} alt="" className="w-[284px] h-[162]" />
-                <Stack mt="6" spacing="3">
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <p style={{ fontSize: "16px" }} className="font-bold">
-                      {item.title}
-                    </p>
-                    <p style={{ fontSize: "14px" }} className="text-graytext">
-                      {item.date}
-                    </p>
+      >
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Autoplay, Pagination, A11y]}
+          spaceBetween={30}
+          slidesPerView={3}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+          className="p-16"
+        >
+          {data.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Card
+                maxW="328px"
+                style={{ borderRadius: "18px", margin: "0 15px" }}
+              >
+                <CardBody>
+                  <img src={item.image} alt="" className="w-[284px] h-[162]" />
+                  <Stack mt="6" spacing="3">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ fontSize: "16px" }} className="font-bold">
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "14px" }} className="text-graytext">
+                        {item.date}
+                      </p>
+                    </div>
+                    <Text
+                      style={{ fontSize: "14px" }}
+                      className="text-tertiary"
+                    >
+                      {item.content}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <CardFooter>
+                  <div className="flex justify-between">
+                    <div className="flex items-center mr-14">
+                      <p className="text-xm font-semibold mr-1 text-fouthtiary">
+                        Read More
+                      </p>
+                      <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+                    </div>
+                    <div className="flex items-center ">
+                      <img
+                        className="w-[31px] h-[31px] mr-2"
+                        src={WhatsApp}
+                        alt=""
+                      />
+                      <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+                    </div>
                   </div>
-                  <Text style={{ fontSize: "14px" }} className="text-tertiary">
-                    {item.content}
-                  </Text>
-                </Stack>
-              </CardBody>
-              <CardFooter>
-                <div className="flex justify-between">
-                  <div className="flex items-center mr-14">
-                    <p className="text-xm font-semibold mr-1 text-fouthtiary">
-                      Read More
-                    </p>
-                    <img className="w-[12px] h-[10px]" src={Panah} alt="" />
-                  </div>
-                  <div className="flex items-center ">
-                    <img
-                      className="w-[31px] h-[31px] mr-2"
-                      src={WhatsApp}
-                      alt=""
-                    />
-                    <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
-                  </div>
-                </div>
-              </CardFooter>
-            </Card>
-          </div>
-        ))}
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+          {/* <SwiperSlide className="border">Slide 1</SwiperSlide>
+          <SwiperSlide className="border">Slide 2</SwiperSlide>
+          <SwiperSlide className="border">Slide 3</SwiperSlide>
+          <SwiperSlide className="border">Slide 4</SwiperSlide> */}
+        </Swiper>
       </Tab>
 
       <Tab
