@@ -46,8 +46,10 @@ export default {
     extend: {
       colors: {
         nonActive: '#666666',
+        graytext:'#BDC3C7',
         active: '#1C2B78',
-        tertiary: '#0032CB',
+        tertiary :'#0032CB',
+        fouthtiary :'#008BF9',
       },
     },
   },
