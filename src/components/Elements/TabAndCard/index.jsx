@@ -97,7 +97,7 @@ export default function TabAndCard() {
         {data.map((item, index) => (
           <div key={index}>
             <Card
-              maxW="328px"
+              maxW="272px"
               style={{ borderRadius: "18px", margin: "0 15px" }}
             >
               <CardBody>
@@ -161,9 +161,9 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="328px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
           <CardBody>
-            <img src={Berita} alt="" className="w-[284px] h-[162]" />
+            <img src={Berita} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p style={{ fontSize: "16px" }} className="font-bold">
@@ -195,9 +195,9 @@ export default function TabAndCard() {
           </CardFooter>
         </Card>
 
-        <Card maxW="328px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
           <CardBody>
-            <img src={Berita1} alt="" className="w-[284px] h-[162]" />
+            <img src={Berita1} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p style={{ fontSize: "16px" }} className="font-bold">
@@ -247,9 +247,9 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="328px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
           <CardBody>
-            <img src={Artikel} alt="" className="w-[284px] h-[162]" />
+            <img src={Artikel} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p style={{ fontSize: "16px" }} className="font-bold">
@@ -299,9 +299,9 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="328px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
           <CardBody>
-            <img src={Pengumuman} alt="" className="w-[284px] h-[162]" />
+            <img src={Pengumuman} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <p style={{ fontSize: "16px" }} className="font-bold">
