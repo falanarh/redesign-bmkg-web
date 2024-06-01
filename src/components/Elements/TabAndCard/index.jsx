@@ -13,18 +13,11 @@ import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
 import {
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
   Stack,
-  Heading,
-  Text,
-  ButtonGroup,
-  Button,
-  Divider,
+  Text
 } from "@chakra-ui/react";
-
-import { Carousel } from "antd";
 
 // import Swiper core and required modules
 import { Navigation, Autoplay, Pagination, A11y } from "swiper/modules";
@@ -36,15 +29,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
-const contentStyle = {
-  margin: 0,
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
 
 const data = [
   {
@@ -74,9 +58,6 @@ const data = [
 ];
 
 export default function TabAndCard() {
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
   const [selected, setSelected] = React.useState("informasi");
 
   return (
@@ -170,10 +151,6 @@ export default function TabAndCard() {
               </Card>
             </SwiperSlide>
           ))}
-          {/* <SwiperSlide className="border">Slide 1</SwiperSlide>
-          <SwiperSlide className="border">Slide 2</SwiperSlide>
-          <SwiperSlide className="border">Slide 3</SwiperSlide>
-          <SwiperSlide className="border">Slide 4</SwiperSlide> */}
         </Swiper>
       </Tab>
 
