@@ -1,10 +1,75 @@
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import L from "leaflet";
+/* eslint-disable react/prop-types */
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@nextui-org/button";
+import { Card } from "antd";
+import { motion } from "framer-motion";
 import ActiveMarker from "../../../assets/icons/green_marker.png";
 import NonActiveMarker from "../../../assets/icons/black_marker.png";
+import Cloud from "../../../assets/icons/Cloud.png";
+import Water from "../../../assets/icons/Water.png";
+import Thermometer from "../../../assets/icons/Thermometer.png";
+import Air from "../../../assets/icons/Air.png";
+import Pulse from "../../../assets/icons/Pulse.png";
+import Location from "../../../assets/icons/Location.png";
+import CentrePoint from "../../../assets/icons/Centre_Point.png";
+import CenterOfGravity from "../../../assets/icons/Center_of_Gravity.png";
+import CentralHeating from "../../../assets/icons/Central_Heating.png";
+import Tsunami from "../../../assets/icons/Tsunami.png";
+import PinMap from "../../../assets/icons/pin_map.png";
+import CenterIcon from "../../../assets/icons/center.png";
+import L from "leaflet";
+import markers from "./markers.js";
+import "./index.css";
 import "leaflet/dist/leaflet.css";
-import { useState } from "react";
-import { Card } from "antd";
+
+const infoContainerVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.2, duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const infoImageVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { delay: 0.4, duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const infoTextVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { delay: 0.6, duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
 
 // Default marker icon
 const nonActiveIcon = new L.icon({
@@ -23,91 +88,338 @@ const activeIcon = new L.icon({
   shadowSize: [41, 41],
 });
 
-const markers = [
-  { lat: 4.695135, lng: 96.7493993, name: "ACEH" },
-  { lat: 2.1153547, lng: 99.5450974, name: "SUMATERA UTARA" },
-  { lat: -0.7399397, lng: 100.8000051, name: "SUMATERA BARAT" },
-  { lat: 0.2933469, lng: 101.7068294, name: "RIAU" },
-  { lat: -1.4851831, lng: 102.4380581, name: "JAMBI" },
-  { lat: -3.3194374, lng: 103.914399, name: "SUMATERA SELATAN" },
-  { lat: -3.5778471, lng: 102.3463875, name: "BENGKULU" },
-  { lat: -4.5585849, lng: 105.4068079, name: "LAMPUNG" },
-  { lat: -2.7410513, lng: 106.4405872, name: "KEPULAUAN BANGKA BELITUNG" },
-  { lat: 3.9456514, lng: 108.1428669, name: "KEPULAUAN RIAU" },
-  { lat: -6.211544, lng: 106.845172, name: "DKI JAKARTA" },
-  { lat: -7.090911, lng: 107.668887, name: "JAWA BARAT" },
-  { lat: -7.150975, lng: 110.1402594, name: "JAWA TENGAH" },
-  { lat: -7.8753849, lng: 110.4262088, name: "DI YOGYAKARTA" },
-  { lat: -7.5360639, lng: 112.2384017, name: "JAWA TIMUR" },
-  { lat: -6.4058172, lng: 106.0640179, name: "BANTEN" },
-  { lat: -8.4095178, lng: 115.188916, name: "BALI" },
-  { lat: -8.6529334, lng: 117.3616476, name: "NUSA TENGGARA BARAT" },
-  { lat: -8.6573819, lng: 121.0793705, name: "NUSA TENGGARA TIMUR" },
-  { lat: -0.2787808, lng: 111.4752851, name: "KALIMANTAN BARAT" },
-  { lat: -1.6814878, lng: 113.3823545, name: "KALIMANTAN TENGAH" },
-  { lat: -3.0926415, lng: 115.2837585, name: "KALIMANTAN SELATAN" },
-  { lat: 1.6406296, lng: 116.419389, name: "KALIMANTAN TIMUR" },
-  { lat: 3.3599, lng: 116.532, name: "KALIMANTAN UTARA" },
-  { lat: 0.6246932, lng: 123.9750018, name: "SULAWESI UTARA" },
-  { lat: -1.4300254, lng: 121.4456179, name: "SULAWESI TENGAH" },
-  { lat: -3.6687994, lng: 119.9740534, name: "SULAWESI SELATAN" },
-  { lat: -4.14491, lng: 122.174605, name: "SULAWESI TENGGARA" },
-  { lat: 0.6999372, lng: 122.4467238, name: "GORONTALO" },
-  { lat: -2.8441371, lng: 119.2320784, name: "SULAWESI BARAT" },
-  { lat: -3.2384616, lng: 130.1452734, name: "MALUKU" },
-  { lat: 1.5709993, lng: 127.8087693, name: "MALUKU UTARA" },
-  { lat: -1.3361154, lng: 133.1747162, name: "PAPUA BARAT" },
-  { lat: -4.269928, lng: 138.0803529, name: "PAPUA" },
-];
+const getDistance = (lat1, lon1, lat2, lon2) => {
+  const R = 6371e3; // metres
+  const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
+  const φ2 = (lat2 * Math.PI) / 180;
+  const Δφ = ((lat2 - lat1) * Math.PI) / 180;
+  const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const d = R * c; // in metres
+  return d;
+};
+
+const CenterMap = ({ center, zoom }) => {
+  const map = useMap();
+  useEffect(() => {
+    map.setView(center, zoom);
+  }, [center, zoom, map]);
+  return null;
+};
 
 const Map = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const mapCenter = [-0.9296489515222446, 118.43939955595538];
-  const handleMarkerClick = (marker) => {
+  const [mapCenter, setMapCenter] = useState({
+    center: [-0.9296489515222446, 118.43939955595538],
+    zoom: 5,
+  });
+  const markerRefs = useRef([]);
+  const handleMarkerClick = (marker, index) => {
     setSelectedMarker(marker);
-    // setIsMarkerClicked(true);
+    markerRefs.current[index].openPopup();
+  };
+  const findNearestMarker = (userLocation) => {
+    let nearestMarker = null;
+    let minDistance = Infinity;
+    markers.forEach((marker) => {
+      const distance = getDistance(
+        userLocation.lat,
+        userLocation.lng,
+        marker.lat,
+        marker.lng
+      );
+      if (distance < minDistance) {
+        minDistance = distance;
+        nearestMarker = marker;
+      }
+    });
+    return nearestMarker;
+  };
+  const handleCenterButtonClick = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const userLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        const nearestMarker = findNearestMarker(userLocation);
+        if (nearestMarker) {
+          const markerIndex = markers.findIndex(
+            (marker) => marker === nearestMarker
+          );
+          setMapCenter({
+            center: [nearestMarker.lat, nearestMarker.lng],
+            zoom: 5,
+          });
+          handleMarkerClick(nearestMarker, markerIndex);
+          setTimeout(() => {
+            setMapCenter({
+              center: [nearestMarker.lat, nearestMarker.lng],
+              zoom: 8,
+            });
+          }, 300);
+        }
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
   };
 
   return (
     <div className="">
-      <div className="flex">
+      <div className="flex relative">
+        <Button
+          isIconOnly
+          size="lg"
+          color="warning"
+          variant="faded"
+          aria-label="Center my location"
+          className="m-3 absolute bottom-0 left-0 z-[9999]"
+          onClick={handleCenterButtonClick}
+        >
+          <img src={CenterIcon} className="size-6" alt="Center Icon" />
+        </Button>
         <MapContainer
-          center={mapCenter}
-          zoom={5}
-          className="h-[500px] w-[70%] rounded-l-2xl"
+          center={mapCenter.center}
+          zoom={mapCenter.zoom}
+          className="h-[550px] w-[65%] rounded-l-2xl shadow-md"
           scrollWheelZoom={false}
         >
+          <CenterMap center={mapCenter.center} zoom={mapCenter.zoom} />
           <TileLayer
-            url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
-            attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            maxZoom={22}
-            accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
+            // url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+            // attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            // maxZoom={22}
+            // accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
             minZoom={0}
-            // url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
+            url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
             // attribution='Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
-            // maxZoom={20}
+            maxZoom={8}
           />
           {markers.map((marker, index) => (
             <Marker
               key={index}
               position={[marker.lat, marker.lng]}
               icon={selectedMarker === marker ? activeIcon : nonActiveIcon}
-              eventHandlers={{ click: () => handleMarkerClick(marker) }}
-            />
+              eventHandlers={{ click: () => handleMarkerClick(marker, index) }}
+              ref={(el) => (markerRefs.current[index] = el)}
+            >
+              <Popup
+                offset={[10, 0]}
+                closeOnClick={false}
+                className="font-pt-sans-caption font-semibold"
+              >
+                {marker.name}
+              </Popup>
+            </Marker>
           ))}
         </MapContainer>
-        <Card className="w-[30%] ml-4 p-4 rounded-l-none rounded-r-2xl border-slate-300/60 shadow ring-offset-[-10px] ring-offset-y-[10px]">
+        <Card className="flex flex-col h-[550px] w-[35%] justify-center items-center ml-4 p-0 rounded-l-none rounded-r-2xl border-slate-300/60 shadow bg-slate-100 ring-offset-[-10px] ring-offset-y-[10px]">
           {selectedMarker ? (
-            <div>
-              <h3 className="text-lg font-semibold">Informasi Marker</h3>
-              <p>Latitude: {selectedMarker.lat}</p>
-              <p>Longitude: {selectedMarker.lng}</p>
-              <p>{selectedMarker.name}</p>
-            </div>
+            <>
+              <motion.div
+                className="flex flex-col"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+              >
+                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  Prakiraan Cuaca
+                </h1>
+                <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                  {[
+                    {
+                      icon: Cloud,
+                      title: "Cuaca",
+                      value: selectedMarker.weather.condition,
+                    },
+                    {
+                      icon: Water,
+                      title: "Kandungan Air",
+                      value: selectedMarker.weather.humidity,
+                    },
+                    {
+                      icon: Thermometer,
+                      title: "Suhu",
+                      value: selectedMarker.weather.temperature,
+                    },
+                    {
+                      icon: Air,
+                      title: "Kecepatan Angin",
+                      value: selectedMarker.weather.windSpeed,
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className={`flex justify-between items-center m-1 p-1 ${
+                        index % 2 === 0 ? "w-[35%]" : "w-[52%]"
+                      }`}
+                      variants={itemVariants}
+                    >
+                      <img src={item.icon} className="size-12"></img>
+                      <span className="flex flex-col justify-center items-start w-full ml-1">
+                        <h3 className="text-[14px] leading-tight font-bold">
+                          {item.title}
+                        </h3>
+                        <p className="text-[14px] leading-tight">
+                          {item.value}
+                        </p>
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+              <motion.div
+                className="flex flex-col my-2"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+              >
+                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  Kualitas Udara
+                </h1>
+                <div className="flex flex-wrap justify-between items-stretch h-17 px-1">
+                  <motion.div
+                    className="flex justify-between items-center m-1 p-1 w-[50%]"
+                    variants={itemVariants}
+                  >
+                    <img src={CentralHeating} className="size-12"></img>
+                    <span className="flex flex-col justify-center items-start w-full ml-1">
+                      <h3 className="text-[14px] leading-tight font-bold">
+                        {selectedMarker.airQuality.status}
+                      </h3>
+                      <p className="text-[14px] leading-tight">
+                        {selectedMarker.airQuality.value} µg/m<sup>3</sup>
+                      </p>
+                    </span>
+                  </motion.div>
+                </div>
+              </motion.div>
+              <motion.div
+                className="flex flex-col"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+              >
+                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  Gempa Bumi
+                </h1>
+                <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                  {[
+                    {
+                      icon: Pulse,
+                      title: "Magnitudo",
+                      value: selectedMarker.earthquake
+                        ? selectedMarker.earthquake.magnitude
+                        : "-",
+                    },
+                    {
+                      icon: Location,
+                      title: "Lokasi",
+                      value: selectedMarker.earthquake
+                        ? selectedMarker.earthquake.location
+                        : "-",
+                    },
+                    {
+                      icon: CentrePoint,
+                      title: "Kedalaman",
+                      value: selectedMarker.earthquake
+                        ? selectedMarker.earthquake.depth
+                        : "-",
+                    },
+                    {
+                      icon: CenterOfGravity,
+                      title: "Jarak",
+                      value: selectedMarker.earthquake
+                        ? selectedMarker.earthquake.distance
+                        : "-",
+                    },
+                    {
+                      icon: Tsunami,
+                      title: "Potensi Tsunami",
+                      value: selectedMarker.earthquake
+                        ? selectedMarker.earthquake.tsunami
+                        : "-",
+                      width: "w-[70%]",
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className={`flex justify-between items-center m-1 p-1 ${
+                        item.width || (index % 2 === 0 ? "w-[35%]" : "w-[52%]")
+                      }`}
+                      variants={itemVariants}
+                    >
+                      <img src={item.icon} className="size-12"></img>
+                      <span className="flex flex-col justify-center items-start w-full ml-1">
+                        <h3 className="text-[14px] leading-tight font-bold">
+                          {item.title}
+                        </h3>
+                        <p className="text-[14px] leading-tight">
+                          {item.value}
+                        </p>
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </>
           ) : (
-            <div>
-              <h3 className="text-lg font-semibold">Informasi Marker</h3>
-              <p>Klik pada marker untuk melihat informasinya.</p>
+            <div className="flex flex-col justify-between items-center h-[300px]">
+              <motion.h3
+                className="text-2xl font-pt-sans-caption font-semibold"
+                initial="hidden"
+                animate="visible"
+                variants={infoContainerVariants}
+              >
+                Informasi Marker
+              </motion.h3>
+              <motion.img
+                src={PinMap}
+                className="size-28"
+                initial="hidden"
+                animate="visible"
+                variants={infoImageVariants}
+              />
+              <motion.p
+                className="text-base font-pt-sans font-bold"
+                initial="hidden"
+                animate="visible"
+                variants={infoTextVariants}
+              >
+                Klik pada marker untuk melihat informasinya.
+              </motion.p>
+              <motion.p
+                className="text-base font-pt-sans"
+                initial="hidden"
+                animate="visible"
+                variants={infoTextVariants}
+              >
+                Atau
+              </motion.p>
+              <motion.span
+                className="text-base font-pt-sans font-bold text-center"
+                initial="hidden"
+                animate="visible"
+                variants={infoTextVariants}
+              >
+                Klik tombol
+                <Button
+                  isIconOnly
+                  color="warning"
+                  variant="faded"
+                  aria-label="Center my location"
+                  className="mx-2 pointer-events-none"
+                >
+                  <img src={CenterIcon} className="size-5" alt="Center Icon" />
+                </Button>
+                pada peta untuk memperoleh informasi di sekitar lokasi Anda
+              </motion.span>
             </div>
           )}
         </Card>
