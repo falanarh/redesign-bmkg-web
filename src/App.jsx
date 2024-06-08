@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import EarlyWarning from "./components/Elements/EarlyWarning";
 import NavbarSection from "./components/Layouts/NavbarSection";
 import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
+import GempaBumi from "./pages/gempabumi";
 
 export default function App() {
   return (
@@ -13,6 +15,9 @@ export default function App() {
       <div className="mt-[120px]">
         <Beranda />
       </div>
+      {/* <div className="mt-[150px]">
+        <GempaBumi></GempaBumi>
+      </div> */}
       <SideFooter />
     </div>
   );
