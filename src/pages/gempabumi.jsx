@@ -8,74 +8,75 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
+import KontenGbTerkini from '../components/Fragments/KontenGbTerkini';
 
 const { Header, Sider, Content } = Layout;
 
 const sidebarItems = [
     {
-        key: '1',
-        icon: <MailOutlined />,
-        label: 'Navigation One',
-        children: [
-            {
-                key: '11',
-                label: 'Option 1',
-            },
-            {
-                key: '12',
-                label: 'Option 2',
-            },
-            {
-                key: '13',
-                label: 'Option 3',
-            },
-            {
-                key: '14',
-                label: 'Option 4',
-            },
-        ],
+      key: '1',
+      icon: <MailOutlined />,
+      label: 'Navigation One',
+      children: [
+        {
+          key: '11',
+          label: 'Option 1',
+        },
+        {
+          key: '12',
+          label: 'Option 2',
+        },
+        {
+          key: '13',
+          label: 'Option 3',
+        },
+        {
+          key: '14',
+          label: 'Option 4',
+        },
+      ],
     },
     {
-        key: '2',
-        icon: <AppstoreOutlined />,
-        label: 'Navigation Two',
-        children: [
-            {
-                key: '21',
-                label: 'Option 1',
-            },
-            {
-                key: '22',
-                label: 'Option 2',
-            },
-        ],
+      key: '2',
+      icon: <AppstoreOutlined />,
+      label: 'Navigation Two',
+      children: [
+        {
+          key: '21',
+          label: 'Option 1',
+        },
+        {
+          key: '22',
+          label: 'Option 2',
+        },
+      ],
     },
     {
-        key: '3',
-        icon: <SettingOutlined />,
-        label: 'Navigation Three',
-        children: [
-            {
-                key: '31',
-                label: 'Option 1',
-            },
-            {
-                key: '32',
-                label: 'Option 2',
-            },
-            {
-                key: '33',
-                label: 'Option 3',
-            },
-            {
-                key: '34',
-                label: 'Option 4',
-            },
-        ],
+      key: '3',
+      icon: <SettingOutlined />,
+      label: 'Navigation Three',
+      children: [
+        {
+          key: '31',
+          label: 'Option 1',
+        },
+        {
+          key: '32',
+          label: 'Option 2',
+        },
+        {
+          key: '33',
+          label: 'Option 3',
+        },
+        {
+          key: '34',
+          label: 'Option 4',
+        },
+      ],
     },
-];
+  ];
 
-const breadcrumbItem = [
+  const breadcrumbItem = [
     {
         title: 'Home',
     },
@@ -117,7 +118,7 @@ export default function GempaBumi() {
                             background: colorBgContainer,
                         }}
                         className='relative'
-                    >
+                    >   
                         <Button
                             type="text"
                             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -129,20 +130,20 @@ export default function GempaBumi() {
                             }}
                         />
                         <Breadcrumb
-                            items={breadcrumbItem}
+                            items={ breadcrumbItem }
                             className="px-6 mb-4 absolute top-5 left-10 font-pt-sans font-semibold"
                         />
                     </Header>
                     <Content
                         style={{
-                            margin: '24px 16px',
-                            padding: 24,
+                            margin: '8px 64px',
                             minHeight: 280,
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG,
                         }}
+                        className=''
                     >
-                        Content
+                        <KontenGbTerkini />
                     </Content>
                 </Layout>
             </Layout>
