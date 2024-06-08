@@ -7,6 +7,9 @@ export default function BerandaBawah() {
     <Section
       title="Seputar BMKG"
       subtitle="Rangkuman Berita, Artikel, dan Pengumuman Terbaru Terkait BMKG"
+      titleAnimateOnView={true}
+      subtitleAnimateOnView={true}
+      childrenAnimateOnView={true}
     >
       <TabAndCard />
     </Section>

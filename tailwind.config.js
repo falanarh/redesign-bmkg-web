@@ -50,6 +50,7 @@ export default {
         active: '#1C2B78',
         tertiary :'#0032CB',
         fouthtiary :'#008BF9',
+        warning : '#FEEBCB',
       },
     },
   },

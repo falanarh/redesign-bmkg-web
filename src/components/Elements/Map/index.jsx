@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@nextui-org/button";
 import { Card } from "antd";
-import { motion } from "framer-motion";
+import { delay, easeIn, motion, useInView } from "framer-motion";
 import ActiveMarker from "../../../assets/icons/green_marker.png";
 import NonActiveMarker from "../../../assets/icons/black_marker.png";
 import Cloud from "../../../assets/icons/Cloud.png";
@@ -112,6 +113,30 @@ const CenterMap = ({ center, zoom }) => {
   return null;
 };
 
+// const mapContainerVariants = {
+//   hidden: { x: "-100%", opacity: 0 },
+//   visible: {
+//     x: 0,
+//     opacity: 1,
+//     transition: {
+//       delay: 0.2, 
+//       type: "spring", 
+//       stiffness: 60, 
+//       duration: 1,
+//       ease: "easeIn",
+//     },
+//   },
+// };
+
+const cardVariants = {
+  hidden: { x: "100%", opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 50, duration: 1 },
+  },
+};
+
 const Map = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [mapCenter, setMapCenter] = useState({
@@ -179,250 +204,273 @@ const Map = () => {
           color="warning"
           variant="faded"
           aria-label="Center my location"
-          className="m-3 absolute bottom-0 left-0 z-[9999]"
+          className="m-3 absolute bottom-0 left-0 z-10"
           onClick={handleCenterButtonClick}
         >
           <img src={CenterIcon} className="size-6" alt="Center Icon" />
         </Button>
-        <MapContainer
-          center={mapCenter.center}
-          zoom={mapCenter.zoom}
-          className="h-[550px] w-[65%] rounded-l-2xl shadow-md"
-          scrollWheelZoom={false}
+        <motion.div
+          initial={{ x: "-100%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
+          ease="easeIn"
+          className="h-[550px] w-[65%] rounded-l-2xl shadow-md z-0"
         >
-          <CenterMap center={mapCenter.center} zoom={mapCenter.zoom} />
-          <TileLayer
-            // url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
-            // attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            // maxZoom={22}
-            // accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
-            minZoom={0}
-            url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
-            // attribution='Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
-            maxZoom={8}
-          />
-          {markers.map((marker, index) => (
-            <Marker
-              key={index}
-              position={[marker.lat, marker.lng]}
-              icon={selectedMarker === marker ? activeIcon : nonActiveIcon}
-              eventHandlers={{ click: () => handleMarkerClick(marker, index) }}
-              ref={(el) => (markerRefs.current[index] = el)}
-            >
-              <Popup
-                offset={[10, 0]}
-                closeOnClick={false}
-                className="font-pt-sans-caption font-semibold"
+          <MapContainer
+            center={mapCenter.center}
+            zoom={mapCenter.zoom}
+            className="h-full w-full rounded-l-2xl"
+            scrollWheelZoom={false}
+          >
+            <CenterMap center={mapCenter.center} zoom={mapCenter.zoom} />
+            <TileLayer
+              // url="https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+              // attribution='<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              // maxZoom={22}
+              // accessToken="HMvP5SL230PCh3QTEQAGF0TFSmoZ6X7QgHPNjG3gBwsuTzpvAQYG9bwTq1NOzbtt"
+              minZoom={0}
+              url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
+              // attribution='Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+              maxZoom={8}
+            />
+            {markers.map((marker, index) => (
+              <Marker
+                key={index}
+                position={[marker.lat, marker.lng]}
+                icon={selectedMarker === marker ? activeIcon : nonActiveIcon}
+                eventHandlers={{
+                  click: () => handleMarkerClick(marker, index),
+                }}
+                ref={(el) => (markerRefs.current[index] = el)}
               >
-                {marker.name}
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-        <Card className="flex flex-col h-[550px] w-[35%] justify-center items-center ml-4 p-0 rounded-l-none rounded-r-2xl border-slate-300/60 shadow bg-slate-100 ring-offset-[-10px] ring-offset-y-[10px]">
-          {selectedMarker ? (
-            <>
-              <motion.div
-                className="flex flex-col"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-              >
-                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
-                  Prakiraan Cuaca
-                </h1>
-                <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
-                  {[
-                    {
-                      icon: Cloud,
-                      title: "Cuaca",
-                      value: selectedMarker.weather.condition,
-                    },
-                    {
-                      icon: Water,
-                      title: "Kandungan Air",
-                      value: selectedMarker.weather.humidity,
-                    },
-                    {
-                      icon: Thermometer,
-                      title: "Suhu",
-                      value: selectedMarker.weather.temperature,
-                    },
-                    {
-                      icon: Air,
-                      title: "Kecepatan Angin",
-                      value: selectedMarker.weather.windSpeed,
-                    },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className={`flex justify-between items-center m-1 p-1 ${
-                        index % 2 === 0 ? "w-[35%]" : "w-[52%]"
-                      }`}
-                      variants={itemVariants}
-                    >
-                      <img src={item.icon} className="size-12"></img>
-                      <span className="flex flex-col justify-center items-start w-full ml-1">
-                        <h3 className="text-[14px] leading-tight font-bold">
-                          {item.title}
-                        </h3>
-                        <p className="text-[14px] leading-tight">
-                          {item.value}
-                        </p>
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex flex-col my-2"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-              >
-                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
-                  Kualitas Udara
-                </h1>
-                <div className="flex flex-wrap justify-between items-stretch h-17 px-1">
-                  <motion.div
-                    className="flex justify-between items-center m-1 p-1 w-[50%]"
-                    variants={itemVariants}
-                  >
-                    <img src={CentralHeating} className="size-12"></img>
-                    <span className="flex flex-col justify-center items-start w-full ml-1">
-                      <h3 className="text-[14px] leading-tight font-bold">
-                        {selectedMarker.airQuality.status}
-                      </h3>
-                      <p className="text-[14px] leading-tight">
-                        {selectedMarker.airQuality.value} µg/m<sup>3</sup>
-                      </p>
-                    </span>
-                  </motion.div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="flex flex-col"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-              >
-                <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
-                  Gempa Bumi
-                </h1>
-                <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
-                  {[
-                    {
-                      icon: Pulse,
-                      title: "Magnitudo",
-                      value: selectedMarker.earthquake
-                        ? selectedMarker.earthquake.magnitude
-                        : "-",
-                    },
-                    {
-                      icon: Location,
-                      title: "Lokasi",
-                      value: selectedMarker.earthquake
-                        ? selectedMarker.earthquake.location
-                        : "-",
-                    },
-                    {
-                      icon: CentrePoint,
-                      title: "Kedalaman",
-                      value: selectedMarker.earthquake
-                        ? selectedMarker.earthquake.depth
-                        : "-",
-                    },
-                    {
-                      icon: CenterOfGravity,
-                      title: "Jarak",
-                      value: selectedMarker.earthquake
-                        ? selectedMarker.earthquake.distance
-                        : "-",
-                    },
-                    {
-                      icon: Tsunami,
-                      title: "Potensi Tsunami",
-                      value: selectedMarker.earthquake
-                        ? selectedMarker.earthquake.tsunami
-                        : "-",
-                      width: "w-[70%]",
-                    },
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className={`flex justify-between items-center m-1 p-1 ${
-                        item.width || (index % 2 === 0 ? "w-[35%]" : "w-[52%]")
-                      }`}
-                      variants={itemVariants}
-                    >
-                      <img src={item.icon} className="size-12"></img>
-                      <span className="flex flex-col justify-center items-start w-full ml-1">
-                        <h3 className="text-[14px] leading-tight font-bold">
-                          {item.title}
-                        </h3>
-                        <p className="text-[14px] leading-tight">
-                          {item.value}
-                        </p>
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </>
-          ) : (
-            <div className="flex flex-col justify-between items-center h-[300px]">
-              <motion.h3
-                className="text-2xl font-pt-sans-caption font-semibold"
-                initial="hidden"
-                animate="visible"
-                variants={infoContainerVariants}
-              >
-                Informasi Marker
-              </motion.h3>
-              <motion.img
-                src={PinMap}
-                className="size-28"
-                initial="hidden"
-                animate="visible"
-                variants={infoImageVariants}
-              />
-              <motion.p
-                className="text-base font-pt-sans font-bold"
-                initial="hidden"
-                animate="visible"
-                variants={infoTextVariants}
-              >
-                Klik pada marker untuk melihat informasinya.
-              </motion.p>
-              <motion.p
-                className="text-base font-pt-sans"
-                initial="hidden"
-                animate="visible"
-                variants={infoTextVariants}
-              >
-                Atau
-              </motion.p>
-              <motion.span
-                className="text-base font-pt-sans font-bold text-center"
-                initial="hidden"
-                animate="visible"
-                variants={infoTextVariants}
-              >
-                Klik tombol
-                <Button
-                  isIconOnly
-                  color="warning"
-                  variant="faded"
-                  aria-label="Center my location"
-                  className="mx-2 pointer-events-none"
+                <Popup
+                  offset={[10, 0]}
+                  closeOnClick={false}
+                  className="font-pt-sans-caption font-semibold"
                 >
-                  <img src={CenterIcon} className="size-5" alt="Center Icon" />
-                </Button>
-                pada peta untuk memperoleh informasi di sekitar lokasi Anda
-              </motion.span>
-            </div>
-          )}
-        </Card>
+                  {marker.name}
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </motion.div>
+        <motion.div
+          initial={{ x: "100%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
+          ease="easeIn"
+          className="h-[550px] w-[35%]"
+        >
+          <Card className="flex flex-col justify-center items-center w-full h-full ml-4 p-0 rounded-l-none rounded-r-2xl border-slate-300/60 shadow bg-slate-100 ring-offset-[-10px] ring-offset-y-[10px]">
+            {selectedMarker ? (
+              <>
+                <motion.div
+                  className="flex flex-col"
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                    Prakiraan Cuaca
+                  </h1>
+                  <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                    {[
+                      {
+                        icon: Cloud,
+                        title: "Cuaca",
+                        value: selectedMarker.weather.condition,
+                      },
+                      {
+                        icon: Water,
+                        title: "Kandungan Air",
+                        value: selectedMarker.weather.humidity,
+                      },
+                      {
+                        icon: Thermometer,
+                        title: "Suhu",
+                        value: selectedMarker.weather.temperature,
+                      },
+                      {
+                        icon: Air,
+                        title: "Kecepatan Angin",
+                        value: selectedMarker.weather.windSpeed,
+                      },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className={`flex justify-between items-center m-1 p-1 ${
+                          index % 2 === 0 ? "w-[35%]" : "w-[52%]"
+                        }`}
+                        variants={itemVariants}
+                      >
+                        <img src={item.icon} className="size-12"></img>
+                        <span className="flex flex-col justify-center items-start w-full ml-1">
+                          <h3 className="text-[14px] leading-tight font-bold">
+                            {item.title}
+                          </h3>
+                          <p className="text-[14px] leading-tight">
+                            {item.value}
+                          </p>
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="flex flex-col my-2"
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                    Kualitas Udara
+                  </h1>
+                  <div className="flex flex-wrap justify-between items-stretch h-17 px-1">
+                    <motion.div
+                      className="flex justify-between items-center m-1 p-1 w-[50%]"
+                      variants={itemVariants}
+                    >
+                      <img src={CentralHeating} className="size-12"></img>
+                      <span className="flex flex-col justify-center items-start w-full ml-1">
+                        <h3 className="text-[14px] leading-tight font-bold">
+                          {selectedMarker.airQuality.status}
+                        </h3>
+                        <p className="text-[14px] leading-tight">
+                          {selectedMarker.airQuality.value} µg/m<sup>3</sup>
+                        </p>
+                      </span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="flex flex-col"
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                    Gempa Bumi
+                  </h1>
+                  <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                    {[
+                      {
+                        icon: Pulse,
+                        title: "Magnitudo",
+                        value: selectedMarker.earthquake
+                          ? selectedMarker.earthquake.magnitude
+                          : "-",
+                      },
+                      {
+                        icon: Location,
+                        title: "Lokasi",
+                        value: selectedMarker.earthquake
+                          ? selectedMarker.earthquake.location
+                          : "-",
+                      },
+                      {
+                        icon: CentrePoint,
+                        title: "Kedalaman",
+                        value: selectedMarker.earthquake
+                          ? selectedMarker.earthquake.depth
+                          : "-",
+                      },
+                      {
+                        icon: CenterOfGravity,
+                        title: "Jarak",
+                        value: selectedMarker.earthquake
+                          ? selectedMarker.earthquake.distance
+                          : "-",
+                      },
+                      {
+                        icon: Tsunami,
+                        title: "Potensi Tsunami",
+                        value: selectedMarker.earthquake
+                          ? selectedMarker.earthquake.tsunami
+                          : "-",
+                        width: "w-[70%]",
+                      },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={index}
+                        className={`flex justify-between items-center m-1 p-1 ${
+                          item.width ||
+                          (index % 2 === 0 ? "w-[35%]" : "w-[52%]")
+                        }`}
+                        variants={itemVariants}
+                      >
+                        <img src={item.icon} className="size-12"></img>
+                        <span className="flex flex-col justify-center items-start w-full ml-1">
+                          <h3 className="text-[14px] leading-tight font-bold">
+                            {item.title}
+                          </h3>
+                          <p className="text-[14px] leading-tight">
+                            {item.value}
+                          </p>
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </>
+            ) : (
+              <div className="flex flex-col justify-between items-center h-[300px]">
+                <motion.h3
+                  className="text-2xl font-pt-sans-caption font-semibold"
+                  initial="hidden"
+                  animate="visible"
+                  variants={infoContainerVariants}
+                >
+                  Informasi Marker
+                </motion.h3>
+                <motion.img
+                  src={PinMap}
+                  className="size-28"
+                  initial="hidden"
+                  animate="visible"
+                  variants={infoImageVariants}
+                />
+                <motion.p
+                  className="text-base font-pt-sans font-bold"
+                  initial="hidden"
+                  animate="visible"
+                  variants={infoTextVariants}
+                >
+                  Klik pada marker untuk melihat informasinya.
+                </motion.p>
+                <motion.p
+                  className="text-base font-pt-sans"
+                  initial="hidden"
+                  animate="visible"
+                  variants={infoTextVariants}
+                >
+                  Atau
+                </motion.p>
+                <motion.span
+                  className="text-base font-pt-sans font-bold text-center"
+                  initial="hidden"
+                  animate="visible"
+                  variants={infoTextVariants}
+                >
+                  Klik tombol
+                  <Button
+                    isIconOnly
+                    color="warning"
+                    variant="faded"
+                    aria-label="Center my location"
+                    className="mx-2 pointer-events-none"
+                  >
+                    <img
+                      src={CenterIcon}
+                      className="size-5"
+                      alt="Center Icon"
+                    />
+                  </Button>
+                  pada peta untuk memperoleh informasi di sekitar lokasi Anda
+                </motion.span>
+              </div>
+            )}
+          </Card>
+        </motion.div>
       </div>
     </div>
   );

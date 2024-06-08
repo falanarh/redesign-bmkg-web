@@ -1,0 +1,40 @@
+/* .swiper-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .slide-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .slide-title {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 0;
+    z-index: 10;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 1s ease-out;
+  }
+   */

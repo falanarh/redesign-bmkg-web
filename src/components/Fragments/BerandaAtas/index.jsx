@@ -6,6 +6,8 @@ export default function BerandaAtas() {
     <Section
       title="Peta Prakiraan Cuaca dan Bencana Alam BMKG"
       subtitle="Informasi terbaru mengenai prakiraan cuaca, iklim, kualitas udara, gempabumi, dan tsunami di Indonesia"
+      titleAnimateOnView={true}
+      subtitleAnimateOnView={true}
     >
       <Map />
     </Section>

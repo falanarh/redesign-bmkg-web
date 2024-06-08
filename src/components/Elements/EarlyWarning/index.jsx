@@ -1,15 +1,14 @@
-/* eslint-disable react/jsx-key */
-import { Carousel } from "antd";
-import { Button } from "@nextui-org/react";
-import WarningIcon from "../../../assets/icons/warning.png";
-import ArrowIcon from "../../../assets/icons/arrow.png";
+import { Carousel, Button } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
+import AlertIcon from "../../../assets/icons/AlertIcon.png";
+import { useState } from "react";
 
 const contentStyle = {
-  height: "100px",
-  color: "#fff",
+  height: "70px",
+  color: "#000000",
   lineHeight: "25px",
   textAlign: "center",
-  background: "#fb923c",
+  background: "#FEEBCB",
 };
 
 const warningData = [
@@ -33,51 +32,49 @@ const warningData = [
 ];
 
 const EarlyWarning = () => {
-  return (
+  const [showEarlyWarning, setShowEarlyWarning] = useState(true);
+
+  const handleClose = () => {
+    setShowEarlyWarning(false);
+  };
+
+  return showEarlyWarning ? (
     <Carousel autoplay>
       {warningData.map((data, index) => (
         <div key={index}>
           <div
             key={index}
             style={contentStyle}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center relative"
           >
-            <div className="flex justify-between items-end w-full max-w-[1280px] h-full pl-10 pr-6 pt-2 pb-2">
-              <div className="flex flex-col justify-start items-start w-5/6 h-full">
-                <div className="flex justify-center items-center">
-                  <img
-                    src={WarningIcon}
-                    alt="Warning Icon"
-                    className="w-[20px] h-[20px] mr-2"
-                  />
-                  <p className="font-bold text-sm/4 text-black my-1">
-                    PERINGATAN DINI
-                  </p>
-                </div>
-                <div className="flex flex-col items-start mt-2">
-                  <p className="text-sm/3 font-bold">
-                    {data.date} | {data.city}
-                  </p>
-                  <p className="text-sm text-left">{data.warning}</p>
-                </div>
-              </div>
-              <Button
-                  color="white"
-                  variant="bordered"
-                  size="sm"
-                  startContent={
-                    <img src={ArrowIcon} alt="Arrow Icon" className="size-6" />
-                  }
-                  className="w-[120px]"
-                >
+            <Button
+              type="text"
+              shape="circle"
+              icon={<CloseOutlined />}
+              className="absolute top-1 right-0 m-4"
+              onClick={handleClose}
+            />
+            <div className="flex flex-col justify-center items-start w-full max-w-[1280px] h-full pl-10 pr-6 pt-2 pb-2">
+              <img
+                src={AlertIcon}
+                alt="Warning Icon"
+                className="size-[20px] absolute top-6 left-[100px]"
+              />
+              <p className="text-sm/3 font-bold">
+                {data.date} | {data.city}
+              </p>
+              <p className="text-sm text-left">
+                {data.warning}
+                <span className="font-bold underline text-active cursor-pointer ml-1">
                   Selengkapnya
-                </Button>
+                </span>
+              </p>
             </div>
           </div>
         </div>
       ))}
     </Carousel>
-  );
+  ) : null;
 };
 
 export default EarlyWarning;

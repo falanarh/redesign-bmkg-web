@@ -27,7 +27,7 @@ const NavbarSection = () => {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="xl"
-      className="py-4"
+      className=""
       classNames={{
         item: [
           "flex",
@@ -53,22 +53,22 @@ const NavbarSection = () => {
         />
         <NavbarBrand>
         <img
-            className="m-4 w-8 h-10 xs:w-12 xs:h-14"
+            className="p-[6px] mr-2 w-8 h-10 xs:w-12 xs:h-14"
             src={BMKGLogo}
             alt="BMKG Logo"
           />
           <div className="flex flex-col">
-            <p className="text-[10px]/[8px] xs:text-sm/[16px] lg:text-base/[24px] font-bold">
+            <p className="text-[10px] xs:text-sm lg:text-[14px] font-bold leading-normal">
               Badan Meteorologi, Klimatologi, dan Geofisika
             </p>
-            <p className="text-[10px] xs:text-[11px] lg:text-sm font-pt-sans text-inherit">
+            <p className="text-[10px] xs:text-[11px] lg:text-[12px] font-pt-sans text-inherit leading-snug">
               Cepat, Tepat, Akurat, Luas, dan Mudah Dipahami
             </p>
           </div>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden lg:flex gap-4" justify="center">
+      <NavbarContent className="hidden lg:flex gap-8" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={index}
@@ -78,8 +78,8 @@ const NavbarSection = () => {
               href={item.href}
               className={
                 window.location.pathname === item.href
-                  ? "text-active font-pt-sans-caption"
-                  : "text-nonActive font-pt-sans-caption"
+                  ? "text-active font-pt-sans-caption text-[14px] font-semibold"
+                  : "text-nonActive font-pt-sans-caption text-[14px] font-semibold"
               }
             >
               {item.label.toUpperCase()}
