@@ -1,0 +1,15 @@
+.ant-menu-item-selected {
+    background-color: rgba(189, 195, 199, 0.5) !important;
+    color: #1C2B78 !important;
+    font-weight: 500 !important;
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title {
+    color: #1C2B78 !important;
+    font-weight: 500 !important;
+}
+
+.ant-menu-sub .ant-menu-item-selected {
+    color: #1C2B78 !important;
+    font-weight: 500 !important;
+}

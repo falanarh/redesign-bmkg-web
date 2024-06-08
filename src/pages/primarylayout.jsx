@@ -11,84 +11,69 @@ import "./index.css";
 
 const { Header, Sider, Content } = Layout;
 
-const sidebarItems = [
+const items = [
     {
-        key: '1',
-        icon: <MailOutlined />,
-        label: 'Navigation One',
-        children: [
-            {
-                key: '11',
-                label: 'Option 1',
-            },
-            {
-                key: '12',
-                label: 'Option 2',
-            },
-            {
-                key: '13',
-                label: 'Option 3',
-            },
-            {
-                key: '14',
-                label: 'Option 4',
-            },
-        ],
+      key: '1',
+      icon: <MailOutlined />,
+      label: 'Navigation One',
+      children: [
+        {
+          key: '11',
+          label: 'Option 1',
+        },
+        {
+          key: '12',
+          label: 'Option 2',
+        },
+        {
+          key: '13',
+          label: 'Option 3',
+        },
+        {
+          key: '14',
+          label: 'Option 4',
+        },
+      ],
     },
     {
-        key: '2',
-        icon: <AppstoreOutlined />,
-        label: 'Navigation Two',
-        children: [
-            {
-                key: '21',
-                label: 'Option 1',
-            },
-            {
-                key: '22',
-                label: 'Option 2',
-            },
-        ],
+      key: '2',
+      icon: <AppstoreOutlined />,
+      label: 'Navigation Two',
+      children: [
+        {
+          key: '21',
+          label: 'Option 1',
+        },
+        {
+          key: '22',
+          label: 'Option 2',
+        },
+      ],
     },
     {
-        key: '3',
-        icon: <SettingOutlined />,
-        label: 'Navigation Three',
-        children: [
-            {
-                key: '31',
-                label: 'Option 1',
-            },
-            {
-                key: '32',
-                label: 'Option 2',
-            },
-            {
-                key: '33',
-                label: 'Option 3',
-            },
-            {
-                key: '34',
-                label: 'Option 4',
-            },
-        ],
+      key: '3',
+      icon: <SettingOutlined />,
+      label: 'Navigation Three',
+      children: [
+        {
+          key: '31',
+          label: 'Option 1',
+        },
+        {
+          key: '32',
+          label: 'Option 2',
+        },
+        {
+          key: '33',
+          label: 'Option 3',
+        },
+        {
+          key: '34',
+          label: 'Option 4',
+        },
+      ],
     },
-];
-
-const breadcrumbItem = [
-    {
-        title: 'Home',
-    },
-    {
-        title: <a href="">Application Center</a>,
-    },
-    {
-        title: <a href="">Application List</a>,
-    },
-    {
-        title: 'An Application',
-    },
-];
+  ];
 
 export default function GempaBumi() {
 
@@ -106,7 +91,7 @@ export default function GempaBumi() {
                         theme="light"
                         mode="inline"
                         defaultSelectedKeys={['1']}
-                        items={sidebarItems}
+                        items={items}
                         className='h-full pt-2'
                     />
                 </Sider>
@@ -117,7 +102,7 @@ export default function GempaBumi() {
                             background: colorBgContainer,
                         }}
                         className='relative'
-                    >
+                    >   
                         <Button
                             type="text"
                             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -129,7 +114,20 @@ export default function GempaBumi() {
                             }}
                         />
                         <Breadcrumb
-                            items={breadcrumbItem}
+                            items={[
+                                {
+                                    title: 'Home',
+                                },
+                                {
+                                    title: <a href="">Application Center</a>,
+                                },
+                                {
+                                    title: <a href="">Application List</a>,
+                                },
+                                {
+                                    title: 'An Application',
+                                },
+                            ]}
                             className="px-6 mb-4 absolute top-5 left-10 font-pt-sans font-semibold"
                         />
                     </Header>
