@@ -12,12 +12,12 @@ export default function App() {
         <NavbarSection />
         <EarlyWarning />
       </div>
-      <div className="mt-[120px]">
+      {/* <div className="mt-[120px]">
         <Beranda />
-      </div>
-      {/* <div className="mt-[150px]">
-        <GempaBumi></GempaBumi>
       </div> */}
+      <div className="mt-[135px]">
+        <GempaBumi></GempaBumi>
+      </div>
       <SideFooter />
     </div>
   );
