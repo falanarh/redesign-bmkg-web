@@ -4,6 +4,7 @@ import NavbarSection from "./components/Layouts/NavbarSection";
 import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
 import GempaBumi from "./pages/gempabumi";
+import PrimaryLayout from "./pages/primarylayout";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
       </div> */}
       <div className="mt-[135px]">
         <GempaBumi></GempaBumi>
+        {/* <PrimaryLayout /> */}
       </div>
       <SideFooter />
     </div>
