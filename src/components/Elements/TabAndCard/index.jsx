@@ -4,37 +4,38 @@ import InfoTerbaru from "../../../assets/icons/Sent.png";
 import BeritaTerbaru from "../../../assets/icons/News.png";
 import ArtikelTerbaru from "../../../assets/icons/Document.png";
 import PengumumanTerbaru from "../../../assets/icons/Microphone.png";
-import Berita from "../../../assets/images/Berita BMKG.png";
-import Berita1 from "../../../assets/images/Berita BMKG 1.png";
-import Pengumuman from "../../../assets/images/Pengumuman.png";
-import Artikel from "../../../assets/images/Artikel.png";
+import Berita from "../../../assets/images/berita.png";
+import Berita1 from "../../../assets/images/berita1.png";
+import Berita2 from "../../../assets/images/berita2.jpeg";
+import Berita3 from "../../../assets/images/berita3.jpeg";
+import Berita4 from "../../../assets/images/berita4.jpeg";
+import Pengumuman from "../../../assets/images/pengumuman.png";
+import Pengumuman1 from "../../../assets/images/pengumuman1.jpeg";
+import Pengumuman2 from "../../../assets/images/pengumuman2.jpeg";
+import Pengumuman3 from "../../../assets/images/pengumuman3.jpeg";
+import Pengumuman4 from "../../../assets/images/pengumuman4.jpeg";
+import Artikel from "../../../assets/images/artikel.png";
+import Artikel1 from "../../../assets/images/artikel1.jpeg";
+import Artikel2 from "../../../assets/images/artikel2.jpeg";
+import Artikel3 from "../../../assets/images/artikel3.jpeg";
+import Artikel4 from "../../../assets/images/artikel4.jpeg";
 import Panah from "../../../assets/icons/panah.png";
 import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Stack,
-  Heading,
-  Text,
-  ButtonGroup,
-  Button,
-  Divider,
-} from "@chakra-ui/react";
+import { Card, CardBody, CardFooter, Stack, Text } from "@chakra-ui/react";
 
-import { Carousel } from "antd";
-const contentStyle = {
-  margin: 0,
-  height: "160px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
+// import Swiper core and required modules
+import { Navigation, Autoplay, Pagination, A11y } from "swiper/modules";
 
-const data = [
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
+const informasi = [
   {
     image: Berita,
     title: "Berita BMKG",
@@ -59,12 +60,174 @@ const data = [
     date: "23-04-2024",
     content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
   },
+  {
+    image: Artikel1,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita2,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman1,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman2,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel2,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel3,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman3,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel4,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita3,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita4,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman4,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+];
+
+const berita = [
+  {
+    image: Berita,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita1,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita2,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita3,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Berita4,
+    title: "Berita BMKG",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+];
+
+const artikel = [
+  {
+    image: Artikel,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel1,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel2,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel3,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Artikel4,
+    title: "Artikel",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+];
+
+const pengumuman = [
+  {
+    image: Pengumuman,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman1,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman2,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman3,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
+  {
+    image: Pengumuman4,
+    title: "Pengumuman",
+    date: "23-04-2024",
+    content: "Siswa North Jakarta International School Menjelajah Dunia BMKG",
+  },
 ];
 
 export default function TabAndCard() {
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
   const [selected, setSelected] = React.useState("informasi");
 
   return (
@@ -91,57 +254,74 @@ export default function TabAndCard() {
             <span>Informasi Terbaru</span>
           </div>
         }
-      > 
-        
-
-        {data.map((item, index) => (
-          <div key={index}>
-            <Card
-              maxW="272px"
-              style={{ borderRadius: "18px", margin: "0 15px" }}
-            >
-              <CardBody>
-                <img src={item.image} alt="" className="w-[284px] h-[162]" />
-                <Stack mt="6" spacing="3">
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <p style={{ fontSize: "16px" }} className="font-bold">
-                      {item.title}
-                    </p>
-                    <p style={{ fontSize: "14px" }} className="text-graytext">
-                      {item.date}
-                    </p>
+      >
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Autoplay, Pagination, A11y]}
+          spaceBetween={15}
+          slidesPerView={4}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+          className="p-8"
+        >
+          {informasi.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Card maxW="250px" style={{ borderRadius: "18px" }}>
+                <CardBody>
+                  <img src={item.image} alt="" className="w-[284px] h-[140px] rounded-xl" />
+                  <Stack mt="6" spacing="3">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ fontSize: "14px" }} className="font-bold">
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "12px" }} className="text-graytext">
+                        {item.date}
+                      </p>
+                    </div>
+                    <Text
+                      style={{ fontSize: "12px" }}
+                      className="text-tertiary"
+                    >
+                      {item.content}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <CardFooter>
+                  <div className="flex justify-between">
+                    <div className="flex items-center mr-14">
+                      <p
+                        style={{ fontSize: "12px" }}
+                        className="text-xm mr-1 text-fouthtiary"
+                      >
+                        Selengkapnya
+                      </p>
+                      <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+                    </div>
+                    <div className="flex items-center ">
+                      <img
+                        className="w-[31px] h-[31px] mr-2"
+                        src={WhatsApp}
+                        alt=""
+                      />
+                      <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+                    </div>
                   </div>
-                  <Text style={{ fontSize: "14px" }} className="text-tertiary">
-                    {item.content}
-                  </Text>
-                </Stack>
-              </CardBody>
-              <CardFooter>
-                <div className="flex justify-between">
-                  <div className="flex items-center mr-14">
-                    <p className="text-xm font-semibold mr-1 text-fouthtiary">
-                      Read More
-                    </p>
-                    <img className="w-[12px] h-[10px]" src={Panah} alt="" />
-                  </div>
-                  <div className="flex items-center ">
-                    <img
-                      className="w-[31px] h-[31px] mr-2"
-                      src={WhatsApp}
-                      alt=""
-                    />
-                    <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
-                  </div>
-                </div>
-              </CardFooter>
-            </Card>
-          </div>
-        ))}
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Tab>
 
       <Tab
@@ -161,7 +341,74 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Autoplay, Pagination, A11y]}
+          spaceBetween={15}
+          slidesPerView={4}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+          className="p-8"
+        >
+          {berita.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Card maxW="250px" style={{ borderRadius: "18px" }}>
+                <CardBody>
+                  <img src={item.image} alt="" className="w-[284px] h-[162]" />
+                  <Stack mt="6" spacing="3">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ fontSize: "14px" }} className="font-bold">
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "12px" }} className="text-graytext">
+                        {item.date}
+                      </p>
+                    </div>
+                    <Text
+                      style={{ fontSize: "12px" }}
+                      className="text-tertiary"
+                    >
+                      {item.content}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <CardFooter>
+                  <div className="flex justify-between">
+                    <div className="flex items-center mr-14">
+                      <p
+                        style={{ fontSize: "12px" }}
+                        className="text-xm mr-1 text-fouthtiary"
+                      >
+                        Selengkapnya
+                      </p>
+                      <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+                    </div>
+                    <div className="flex items-center ">
+                      <img
+                        className="w-[31px] h-[31px] mr-2"
+                        src={WhatsApp}
+                        alt=""
+                      />
+                      <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+                    </div>
+                  </div>
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* <Card maxW="250px" style={{ borderRadius: "18px"}}>
           <CardBody>
             <img src={Berita} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
@@ -182,8 +429,8 @@ export default function TabAndCard() {
           <CardFooter>
             <div className="flex justify-between">
               <div className="flex items-center mr-14">
-                <p className="text-xm font-semibold mr-1 text-fouthtiary">
-                  Read More
+                <p style={{ fontSize: "14px" }} className="text-xm mr-1 text-fouthtiary">
+                  Selengkapnya
                 </p>
                 <img className="w-[12px] h-[10px]" src={Panah} alt="" />
               </div>
@@ -195,7 +442,41 @@ export default function TabAndCard() {
           </CardFooter>
         </Card>
 
-        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Card maxW="250px" style={{ borderRadius: "18px"}}>
+          <CardBody>
+            <img src={Berita} alt="" className="w-[232px] h-[133]" />
+            <Stack mt="6" spacing="3">
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p style={{ fontSize: "16px" }} className="font-bold">
+                  Berita BMKG
+                </p>
+                <p style={{ fontSize: "14px" }} className="text-graytext">
+                  23-04-2024
+                </p>
+              </div>
+
+              <Text style={{ fontSize: "14px" }} className="text-tertiary">
+                Siswa North Jakarta International School Menjelajah Dunia BMKG
+              </Text>
+            </Stack>
+          </CardBody>
+          <CardFooter>
+            <div className="flex justify-between">
+              <div className="flex items-center mr-14">
+                <p style={{ fontSize: "14px" }} className="text-xm mr-1 text-fouthtiary">
+                  Selengkapnya
+                </p>
+                <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+              </div>
+              <div className="flex items-center ">
+                <img className="w-[31px] h-[31px] mr-2" src={WhatsApp} alt="" />
+                <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+              </div>
+            </div>
+          </CardFooter>
+        </Card>
+
+        <Card maxW="250px" style={{ borderRadius: "18px"}}>
           <CardBody>
             <img src={Berita1} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
@@ -216,8 +497,8 @@ export default function TabAndCard() {
           <CardFooter>
             <div className="flex justify-between">
               <div className="flex items-center mr-14">
-                <p className="text-xm font-semibold mr-1 text-fouthtiary">
-                  Read More
+                <p style={{ fontSize: "14px" }} className="text-xm mr-1 text-fouthtiary">
+                  Selengkapnya
                 </p>
                 <img className="w-[12px] h-[10px]" src={Panah} alt="" />
               </div>
@@ -227,7 +508,7 @@ export default function TabAndCard() {
               </div>
             </div>
           </CardFooter>
-        </Card>
+        </Card> */}
       </Tab>
 
       <Tab
@@ -247,7 +528,74 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Autoplay, Pagination, A11y]}
+          spaceBetween={15}
+          slidesPerView={4}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+          className="p-8"
+        >
+          {artikel.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Card maxW="250px" style={{ borderRadius: "18px" }}>
+                <CardBody>
+                  <img src={item.image} alt="" className="w-[284px] h-[162]" />
+                  <Stack mt="6" spacing="3">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ fontSize: "14px" }} className="font-bold">
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "12px" }} className="text-graytext">
+                        {item.date}
+                      </p>
+                    </div>
+                    <Text
+                      style={{ fontSize: "12px" }}
+                      className="text-tertiary"
+                    >
+                      {item.content}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <CardFooter>
+                  <div className="flex justify-between">
+                    <div className="flex items-center mr-14">
+                      <p
+                        style={{ fontSize: "12px" }}
+                        className="text-xm mr-1 text-fouthtiary"
+                      >
+                        Selengkapnya
+                      </p>
+                      <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+                    </div>
+                    <div className="flex items-center ">
+                      <img
+                        className="w-[31px] h-[31px] mr-2"
+                        src={WhatsApp}
+                        alt=""
+                      />
+                      <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+                    </div>
+                  </div>
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* <Card maxW="250px" style={{ borderRadius: "18px" }}>
           <CardBody>
             <img src={Artikel} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
@@ -268,8 +616,8 @@ export default function TabAndCard() {
           <CardFooter>
             <div className="flex justify-between">
               <div className="flex items-center mr-14">
-                <p className="text-xm font-semibold mr-1 text-fouthtiary">
-                  Read More
+                <p style={{ fontSize: "14px" }} className="text-xm mr-1 text-fouthtiary">
+                  Selengkapnya
                 </p>
                 <img className="w-[12px] h-[10px]" src={Panah} alt="" />
               </div>
@@ -279,7 +627,7 @@ export default function TabAndCard() {
               </div>
             </div>
           </CardFooter>
-        </Card>
+        </Card> */}
       </Tab>
 
       <Tab
@@ -299,7 +647,74 @@ export default function TabAndCard() {
           </div>
         }
       >
-        <Card maxW="272px" style={{ borderRadius: "18px", margin: "0 15px" }}>
+        <Swiper
+          // install Swiper modules
+          modules={[Navigation, Autoplay, Pagination, A11y]}
+          spaceBetween={15}
+          slidesPerView={4}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+          className="p-8"
+        >
+          {pengumuman.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Card maxW="250px" style={{ borderRadius: "18px" }}>
+                <CardBody>
+                  <img src={item.image} alt="" className="w-[284px] h-[162]" />
+                  <Stack mt="6" spacing="3">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p style={{ fontSize: "14px" }} className="font-bold">
+                        {item.title}
+                      </p>
+                      <p style={{ fontSize: "12px" }} className="text-graytext">
+                        {item.date}
+                      </p>
+                    </div>
+                    <Text
+                      style={{ fontSize: "12px" }}
+                      className="text-tertiary"
+                    >
+                      {item.content}
+                    </Text>
+                  </Stack>
+                </CardBody>
+                <CardFooter>
+                  <div className="flex justify-between">
+                    <div className="flex items-center mr-14">
+                      <p
+                        style={{ fontSize: "12px" }}
+                        className="text-xm mr-1 text-fouthtiary"
+                      >
+                        Selengkapnya
+                      </p>
+                      <img className="w-[12px] h-[10px]" src={Panah} alt="" />
+                    </div>
+                    <div className="flex items-center ">
+                      <img
+                        className="w-[31px] h-[31px] mr-2"
+                        src={WhatsApp}
+                        alt=""
+                      />
+                      <img className="w-[31px] h-[31px]" src={Twitter} alt="" />
+                    </div>
+                  </div>
+                </CardFooter>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {/* <Card maxW="250px" style={{ borderRadius: "18px" }}>
           <CardBody>
             <img src={Pengumuman} alt="" className="w-[232px] h-[133]" />
             <Stack mt="6" spacing="3">
@@ -320,8 +735,8 @@ export default function TabAndCard() {
           <CardFooter>
             <div className="flex justify-between">
               <div className="flex items-center mr-14">
-                <p className="text-xm font-semibold mr-1  text-fouthtiary">
-                  Read More
+                <p style={{ fontSize: "14px" }} className="text-xm mr-1  text-fouthtiary">
+                  Selengkapnya
                 </p>
                 <img className="w-[12px] h-[10px]" src={Panah} alt="" />
               </div>
@@ -331,7 +746,7 @@ export default function TabAndCard() {
               </div>
             </div>
           </CardFooter>
-        </Card>
+        </Card> */}
       </Tab>
     </Tabs>
   );
