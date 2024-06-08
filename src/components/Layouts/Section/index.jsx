@@ -20,7 +20,7 @@ const Section = ({
   const childrenOnceViewPortProps = childrenOnceViewPort ? { once: true } : {};
 
   return (
-    <div className="w-full flex flex-col justify-center items-center my-8">
+    <div className="w-full flex flex-col justify-center items-center my-8 overflow-hidden">
       <div className="mb-10">
         <motion.h2
           initial={{ y: "100%", opacity: 0 }}
