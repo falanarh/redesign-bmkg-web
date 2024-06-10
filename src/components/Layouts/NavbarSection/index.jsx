@@ -43,7 +43,6 @@ const NavbarSection = () => {
           "data-[active=true]:after:rounded-[2px]",
           "data-[active=true]:after:bg-active",
         ],
-        
       }}
     >
       <NavbarContent>
