@@ -15,14 +15,12 @@ const warningData = [
   {
     date: "Selasa, 12 Mei 2024",
     city: "Surabaya",
-    warning:
-      "Potensi hujan dengan guntur dan angin kencang di beberapa wilayah. Waspadai banjir lokal.",
+    warning: "Potensi hujan dengan guntur dan angin kencang di beberapa wilayah. Waspadai banjir lokal.",
   },
   {
     date: "Rabu, 13 Mei 2024",
     city: "Jakarta",
-    warning:
-      "Hujan lebat dengan angin kencang di beberapa wilayah. Hindari perjalanan tidak perlu.",
+    warning: "Hujan lebat dengan angin kencang di beberapa wilayah. Hindari perjalanan tidak perlu.",
   },
   {
     date: "Kamis, 14 Mei 2024",
@@ -31,11 +29,12 @@ const warningData = [
   },
 ];
 
-const EarlyWarning = () => {
+const EarlyWarning = ({ onClose }) => {
   const [showEarlyWarning, setShowEarlyWarning] = useState(true);
 
   const handleClose = () => {
     setShowEarlyWarning(false);
+    onClose();
   };
 
   return showEarlyWarning ? (
