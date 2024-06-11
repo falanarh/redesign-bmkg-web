@@ -5,8 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@nextui-org/button";
 import { Card } from "antd";
 import { delay, easeIn, motion, useInView } from "framer-motion";
-import ActiveMarker from "../../../assets/icons/green_marker.png";
-import NonActiveMarker from "../../../assets/icons/black_marker.png";
+// import ActiveMarker from "../../../assets/icons/green_marker.png";
+// import NonActiveMarker from "../../../assets/icons/black_marker.png";
+import ActiveMarker from "../../../assets/icons/active_marker.png";
+import ActiveWarningMarker from "../../../assets/icons/active_warning_marker.png";
+import InactiveMarker from "../../../assets/icons/inactive_marker.png";
+import InactiveWarningMarker from "../../../assets/icons/inactive_warning_marker.png";
 import Cloud from "../../../assets/icons/Cloud.png";
 import Water from "../../../assets/icons/Water.png";
 import Thermometer from "../../../assets/icons/Thermometer.png";
@@ -72,17 +76,32 @@ const itemVariants = {
   },
 };
 
-// Default marker icon
-const nonActiveIcon = new L.icon({
-  iconUrl: NonActiveMarker,
+const activeMarker = new L.icon({
+  iconUrl: ActiveMarker,
+  iconSize: [36, 36],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const activeWarningMarker = new L.icon({
+  iconUrl: ActiveWarningMarker,
   iconSize: [41, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41],
 });
 
-const activeIcon = new L.icon({
-  iconUrl: ActiveMarker,
+const inactiveMarker = new L.icon({
+  iconUrl: InactiveMarker,
+  iconSize: [35, 35],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const inactiveWarningMarker = new L.icon({
+  iconUrl: InactiveWarningMarker,
   iconSize: [41, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -113,21 +132,6 @@ const CenterMap = ({ center, zoom }) => {
   return null;
 };
 
-// const mapContainerVariants = {
-//   hidden: { x: "-100%", opacity: 0 },
-//   visible: {
-//     x: 0,
-//     opacity: 1,
-//     transition: {
-//       delay: 0.2, 
-//       type: "spring", 
-//       stiffness: 60, 
-//       duration: 1,
-//       ease: "easeIn",
-//     },
-//   },
-// };
-
 const cardVariants = {
   hidden: { x: "100%", opacity: 0 },
   visible: {
@@ -135,6 +139,16 @@ const cardVariants = {
     opacity: 1,
     transition: { type: "spring", stiffness: 50, duration: 1 },
   },
+};
+
+const getMarkerIcon = (marker, selectedMarker) => {
+  const isActive = selectedMarker === marker;
+  const hasWarning = marker.earthquake != null;
+
+  if (isActive && hasWarning) return activeWarningMarker;
+  if (isActive && !hasWarning) return activeMarker;
+  if (!isActive && hasWarning) return inactiveWarningMarker;
+  return inactiveMarker;
 };
 
 const Map = () => {
@@ -198,24 +212,24 @@ const Map = () => {
   return (
     <div className="">
       <div className="flex relative">
+        <motion.div
+          initial={{ x: "-100%", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
+          ease="easeIn"
+          className="h-[550px] w-[65%] rounded-l-2xl shadow-md z-0 relative"
+        >
         <Button
           isIconOnly
           size="lg"
           color="warning"
           variant="faded"
           aria-label="Center my location"
-          className="m-3 absolute bottom-0 left-0 z-10"
+          className="m-3 absolute bottom-0 left-0 z-[999]"
           onClick={handleCenterButtonClick}
         >
           <img src={CenterIcon} className="size-6" alt="Center Icon" />
         </Button>
-        <motion.div
-          initial={{ x: "-100%", opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
-          ease="easeIn"
-          className="h-[550px] w-[65%] rounded-l-2xl shadow-md z-0"
-        >
           <MapContainer
             center={mapCenter.center}
             zoom={mapCenter.zoom}
@@ -237,7 +251,7 @@ const Map = () => {
               <Marker
                 key={index}
                 position={[marker.lat, marker.lng]}
-                icon={selectedMarker === marker ? activeIcon : nonActiveIcon}
+                icon={getMarkerIcon(marker, selectedMarker)}
                 eventHandlers={{
                   click: () => handleMarkerClick(marker, index),
                 }}
@@ -305,10 +319,10 @@ const Map = () => {
                       >
                         <img src={item.icon} className="size-12"></img>
                         <span className="flex flex-col justify-center items-start w-full ml-1">
-                          <h3 className="text-[14px] leading-tight font-bold">
+                          <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                             {item.title}
                           </h3>
-                          <p className="text-[14px] leading-tight">
+                          <p className="text-[14px] font-pt-sans leading-tight">
                             {item.value}
                           </p>
                         </span>
@@ -332,10 +346,10 @@ const Map = () => {
                     >
                       <img src={CentralHeating} className="size-12"></img>
                       <span className="flex flex-col justify-center items-start w-full ml-1">
-                        <h3 className="text-[14px] leading-tight font-bold">
+                        <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                           {selectedMarker.airQuality.status}
                         </h3>
-                        <p className="text-[14px] leading-tight">
+                        <p className="text-[14px] font-pt-sans leading-tight">
                           {selectedMarker.airQuality.value} µg/m<sup>3</sup>
                         </p>
                       </span>
@@ -400,10 +414,10 @@ const Map = () => {
                       >
                         <img src={item.icon} className="size-12"></img>
                         <span className="flex flex-col justify-center items-start w-full ml-1">
-                          <h3 className="text-[14px] leading-tight font-bold">
+                          <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                             {item.title}
                           </h3>
-                          <p className="text-[14px] leading-tight">
+                          <p className="text-[14px] font-pt-sans leading-tight">
                             {item.value}
                           </p>
                         </span>

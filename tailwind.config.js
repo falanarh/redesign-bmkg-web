@@ -33,7 +33,7 @@ export default {
       'lg': '1120px',
       // => @media (min-width: 1120px) { ... }
 
-      'xl': '1280px',
+      'xl': '1281px',
       // => @media (min-width: 1280px) { ... }
 
       '2xl': '1536px',
