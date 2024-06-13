@@ -5,6 +5,7 @@ import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
 import GempaBumi from "./pages/gempabumi"; // Commented out as in your original code
 import PrimaryLayout from "./pages/primarylayout"; // Import not used
+import Profil from "./pages/profil";
 
 export default function App() {
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
@@ -19,7 +20,10 @@ export default function App() {
         {/* <Beranda /> */}
       </div>
       <div className="mt-[135px]">
-        <GempaBumi></GempaBumi>
+        {/* <GempaBumi></GempaBumi> */}
+      </div>
+      <div className="mt-[135px]">
+        <Profil></Profil>
       </div>
       <SideFooter />
     </div>
