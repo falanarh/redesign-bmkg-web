@@ -1,35 +1,35 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EarlyWarning from "./components/Elements/EarlyWarning";
 import NavbarSection from "./components/Layouts/NavbarSection";
 import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
-import GempaBumi from "./pages/gempabumi"; // Commented out as in your original code
-import PrimaryLayout from "./pages/primarylayout"; // Import not used
-import Profil from "./pages/profil";
+import Cuaca from "./pages/cuaca";
+import GempaBumi from "./pages/gempabumi";
 
 export default function App() {
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
 
   return (
-    <div className="relative">
-      <div className={`fixed top-0 left-0 right-0 z-50 ${!isEarlyWarningVisible && "shadow-md"}`}>
-        <NavbarSection />
-        {isEarlyWarningVisible && <EarlyWarning onClose={() => setIsEarlyWarningVisible(false)} />}
+    <Router>
+      <div className="relative">
+        <div className={`fixed top-0 left-0 right-0 z-50 ${!isEarlyWarningVisible && "shadow-md"}`}>
+          <NavbarSection />
+          {isEarlyWarningVisible && <EarlyWarning onClose={() => setIsEarlyWarningVisible(false)} />}
+        </div>
+        <div className="mt-[80px]">
+          <Routes>
+            <Route path="/" element={<Beranda />} />
+            <Route path="/cuaca" element={<Cuaca />} />
+            <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
+          </Routes>
+        </div>
+        <SideFooter />
       </div>
-      <div className="mt-[120px]">
-        {/* <Beranda /> */}
-      </div>
-      <div className="mt-[135px]">
-        {/* <GempaBumi></GempaBumi> */}
-      </div>
-      <div className="mt-[135px]">
-        <Profil></Profil>
-      </div>
-      <SideFooter />
-    </div>
+    </Router>
   );
 }
-
 
 // /* eslint-disable no-unused-vars */
 // import EarlyWarning from "./components/Elements/EarlyWarning";

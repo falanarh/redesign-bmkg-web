@@ -11,7 +11,18 @@
     font-family: 'PT Sans', sans-serif !important;
 }
 
-.ant-menu-submenu-selected .ant-menu-submenu-title {
+.ant-menu-submenu-selected > div.ant-menu-submenu-title {
+    color: #1C2B78 !important;
+    font-weight: 600 !important;
+    font-family: 'PT Sans', sans-serif !important;
+}
+
+.ant-menu-submenu-selected .ant-menu-submenu-title .ant-menu-item-selected {
+    color: #1C2B78 !important;
+    font-weight: 600 !important;
+    font-family: 'PT Sans', sans-serif !important;
+}
+.ant-menu-submenu-selected .ant-menu-submenu-title .ant-menu-item-selected {
     color: #1C2B78 !important;
     font-weight: 600 !important;
     font-family: 'PT Sans', sans-serif !important;
@@ -23,7 +34,7 @@
     font-family: 'PT Sans', sans-serif !important;
 }
 
-.ant-breadcrumb-link {
+nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
     color: #1C2B78 !important;
 }
 

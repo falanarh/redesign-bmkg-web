@@ -108,7 +108,7 @@ const MapSlider = () => {
             onMouseLeave={handleMouseLeave}
           >
             <div
-              className={`static top-0 left-0 w-full mb-6 text-2xl font-bold text-center text-active uppercase ${
+              className={`static top-0 left-0 w-full mb-6 text-xl font-bold text-center italic ${
                 index === activeIndex
                   ? "visible animate-slideDown"
                   : "invisible"
@@ -122,7 +122,7 @@ const MapSlider = () => {
               alt={`Slide ${index + 1}`}
             />
             {index === activeIndex && isHovered && hoveredIndex === index && (
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 p-4 flex justify-center items-center bg-white bg-opacity-60 rounded-lg transition-all w-full h-full">
+              <div className="absolute top-10 left-1/2 transform -translate-x-1/2 p-4 flex justify-center items-center bg-white bg-opacity-60 rounded-lg transition-all w-full h-[90%]">
                 <Button onPress={() => handleOpen(slide)} color="primary">
                   <p className="text-lg font-pt-sans font-bold">Lihat Detail</p>
                 </Button>

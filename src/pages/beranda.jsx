@@ -5,7 +5,7 @@ import Hero from "../components/Fragments/Hero";
 
 export default function Beranda() {
   return (
-    <div className="flex flex-col justify-center items-center w-full">
+    <div className="flex flex-col justify-center items-center w-full overflow-x-hidden">
       <Hero />
       <BerandaAtas />
       <BerandaTengah />
