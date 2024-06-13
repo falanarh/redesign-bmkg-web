@@ -1,49 +1,56 @@
 import { useState } from 'react';
 import {
   AppstoreOutlined,
+  CloudTwoTone,
   MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
+import { FaCloudSunRain, FaEarthAmericas } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
+import PrakiraanCuacaLokasi from '../components/Fragments/PrakiraanCuacaLokasi';
+import PrakiraanCuacaWaktu from '../components/Fragments/PrakiraanCuacaWaktu';
+import PrakiraanCuacaMaritim from '../components/Fragments/PrakiraanCuacaMaritim';
+import PrakiraanBerbasisDampak from '../components/Fragments/PrakiraanBerbasisDampak';
+import CuacaPenerbangan from '../components/Fragments/CuacaPenerbangan';
 
 const { Header, Sider, Content } = Layout;
 
 const sidebarItems = [
   {
     key: '1',
-    icon: <MailOutlined />,
+    icon: <FaCloudSunRain className='size-[24px]' />,
     label: 'Prakiraan Cuaca',
     children: [
       {
         key: '11',
         label: 'Berdasarkan Lokasi',
-        content: 'Konten Berdasarkan Lokasi',
+        content: <PrakiraanCuacaLokasi />,
       },
       {
         key: '12',
         label: 'Berdasarkan Waktu',
-        content: 'Konten Berdasarkan Waktu',
+        content: <PrakiraanCuacaWaktu />,
       },
       {
         key: '13',
         label: 'Berdasarkan Jenis',
         children: [
-          { key: '131', label: 'Penerbangan', content: 'Konten Penerbangan' },
-          { key: '132', label: 'Maritim', content: 'Konten Maritim' },
+          { key: '131', label: 'Penerbangan', content: <CuacaPenerbangan /> },
+          { key: '132', label: 'Maritim', content: <PrakiraanCuacaMaritim /> },
         ],
       },
       {
         key: '14',
         label: 'Berbasis Dampak',
-        content: 'Konten Berbasis Dampak',
+        content: <PrakiraanBerbasisDampak />,
       },
     ],
   },
   {
     key: '2',
-    icon: <AppstoreOutlined />,
+    icon: <FaEarthAmericas className='size-[22px]' />,
     label: 'Pengindaraan Jauh',
     children: [
       {
@@ -88,8 +95,12 @@ export default function Cuaca() {
     }
     return breadcrumb;
   };
-
-  const breadcrumbItems = generateBreadcrumb(selectedMenu, sidebarItems);
+  
+  const breadcrumbItems = [
+    { title: 'Cuaca' },
+    ...generateBreadcrumb(selectedMenu, sidebarItems),
+  ];
+  
 
   const findSelectedMenu = (menuKey, items) => {
     for (let item of items) {
@@ -106,7 +117,7 @@ export default function Cuaca() {
   const selectedSidebarItem = findSelectedMenu(selectedMenu, sidebarItems);
 
   return (
-    <div className='flex justify-center w-full'>
+    <div className='flex justify-center w-full mt-[135px]'>
       <Layout className='max-w-[1280px] px-6 bg-white'>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="demo-logo-vertical" />

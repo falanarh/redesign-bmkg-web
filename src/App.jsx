@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EarlyWarning from "./components/Elements/EarlyWarning";
 import NavbarSection from "./components/Layouts/NavbarSection";
 import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
 import Cuaca from "./pages/cuaca";
+import GempaBumi from "./pages/gempabumi";
 
 export default function App() {
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
@@ -16,10 +18,11 @@ export default function App() {
           <NavbarSection />
           {isEarlyWarningVisible && <EarlyWarning onClose={() => setIsEarlyWarningVisible(false)} />}
         </div>
-        <div className="mt-[135px]">
+        <div className="mt-[80px]">
           <Routes>
             <Route path="/" element={<Beranda />} />
             <Route path="/cuaca" element={<Cuaca />} />
+            <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
           </Routes>
         </div>
         <SideFooter />

@@ -9,6 +9,7 @@ import {
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
 import KontenGbTerkini from '../components/Fragments/KontenGbTerkini';
+import TableComponent2 from '../components/TableComponent2';
 
 const { Header, Sider, Content } = Layout;
 
@@ -144,6 +145,7 @@ export default function GempaBumi() {
                         className=''
                     >
                         <KontenGbTerkini />
+                        {/* <TableComponent2 /> */}
                     </Content>
                 </Layout>
             </Layout>
