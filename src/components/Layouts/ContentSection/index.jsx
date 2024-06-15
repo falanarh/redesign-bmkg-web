@@ -11,7 +11,7 @@ const ContentSection = ({ title, description = "", children }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <h1 className="text-2xl font-pt-sans-caption font-bold text-active mb-3">
         {title}
       </h1>

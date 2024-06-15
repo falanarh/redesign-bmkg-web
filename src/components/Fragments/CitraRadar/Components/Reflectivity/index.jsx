@@ -72,7 +72,7 @@ const Reflectivity = () => {
               headerSortActiveBg: "#1C2B78",
               headerColor: "#ffffff",
               rowHoverBg: "#ced2d7",
-              borderColor: "#FFFFFF",
+              borderColor: "#FCFCFC",
               // expandIconBg: '#000000',
               bodySortBg: "#fdfefe",
               fontFamily: "PT Sans",
