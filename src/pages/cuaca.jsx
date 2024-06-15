@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import {
-  AppstoreOutlined,
-  CloudTwoTone,
-  MailOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
@@ -13,7 +10,9 @@ import PrakiraanCuacaLokasi from '../components/Fragments/PrakiraanCuacaLokasi';
 import PrakiraanCuacaWaktu from '../components/Fragments/PrakiraanCuacaWaktu';
 import PrakiraanCuacaMaritim from '../components/Fragments/PrakiraanCuacaMaritim';
 import PrakiraanBerbasisDampak from '../components/Fragments/PrakiraanBerbasisDampak';
-import CuacaPenerbangan from '../components/Fragments/CuacaPenerbangan';
+import CitraSatelit from '../components/Fragments/CitraSatelit';
+import PrakiraanCuacaPenerbangan from '../components/Fragments/PrakiraanCuacaPenerbangan';
+import CitraRadar from '../components/Fragments/CitraRadar';
 
 const { Header, Sider, Content } = Layout;
 
@@ -37,7 +36,7 @@ const sidebarItems = [
         key: '13',
         label: 'Berdasarkan Jenis',
         children: [
-          { key: '131', label: 'Penerbangan', content: <CuacaPenerbangan /> },
+          { key: '131', label: 'Penerbangan', content: <PrakiraanCuacaPenerbangan /> },
           { key: '132', label: 'Maritim', content: <PrakiraanCuacaMaritim /> },
         ],
       },
@@ -56,12 +55,12 @@ const sidebarItems = [
       {
         key: '21',
         label: 'Citra Satelit',
-        content: 'Konten Citra Satelit',
+        content: <CitraSatelit />,
       },
       {
         key: '22',
         label: 'Citra Radar',
-        content: 'Konten Citra Radar',
+        content: <CitraRadar />,
       },
     ],
   },

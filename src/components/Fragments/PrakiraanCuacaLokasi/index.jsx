@@ -1,6 +1,8 @@
 import { Tabs } from 'antd';
 import { useState, useEffect } from 'react';
 import MapSlider from '../../Elements/MapSlider';
+import ContentSection from '../../Layouts/ContentSection';
+import { Link } from '@nextui-org/react';
 
 const customColumns = [
     {
@@ -82,15 +84,9 @@ const PrakiraanCuacaLokasi = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <h1 className="text-2xl font-pt-sans-caption font-bold text-active mb-3">
-        Prakiraan Cuaca Berdasarkan Lokasi
-      </h1>
-      <p className="text-[14px] font-pt-sans">
-        Menampilkan prakiraan cuaca terkini berdasarkan lokasi yang dipilih. Untuk informasi selengkapnya kunjungi website berikut.
-      </p>
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} className="mt-5" />
-    </div>
+    <ContentSection title="Prakiraan Cuaca Lokasi" description={<p className='text-[14px] font-pt-sans'>Menampilkan prakiraan cuaca terkini berdasarkan lokasi yang dipilih.  Untuk informasi selengkapnya kunjungi <Link href="https://web-meteo.bmkg.go.id/id/?fromURL=www.bmkg.go.id" className='text-active font-semibold' target="_blank">website</Link> berikut.</p>}>
+      <Tabs defaultActiveKey="1" items={items} onChange={onChange}  />
+    </ContentSection>
   );
 };
 

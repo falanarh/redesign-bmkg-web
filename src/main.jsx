@@ -10,6 +10,9 @@ import { ConfigProvider } from "antd";
 const themeConfig = {
   token: {
     colorPrimary: "#1C2B78",
+    // headerBg: "#1C2B78",
+    // footerBg: "#1C2B78",
+    // bodySortBg: "#1C2B78",
   },
 };
 
