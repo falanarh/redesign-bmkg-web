@@ -3,7 +3,7 @@ export const data = [
         id: 1,
         image: 'https://cdn.bmkg.go.id/Web/Screenshot-717-250x150.png',
         title: 'Di Forum WSIS+20, BMKG Paparkan Perkembangan Sistem Peringatan Dini Tsunami Terintegrasi',
-        link: 'https://example.com', // Contoh link
+        link: '/profil/publikasi-dan-informasi/kegiatan-internasional/artikel-1', // Contoh link
         tgl: "30 Mei 2024",
         penulis: "Dian Endah",
         paragraf: [

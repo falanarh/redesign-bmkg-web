@@ -67,7 +67,7 @@ const sidebarItems = [
     label: '  Publikasi dan Informasi',
     children: [
       {
-        key: '21',
+        key: 'kegiatan-internasional',
         label: 'Kegiatan Internasional',
         content: <ProfilKegiatanInternasional />,
       },
@@ -147,7 +147,7 @@ export default function Profil() {
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={['11']}
+            defaultSelectedKeys={['kegitan-internasional']}
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
