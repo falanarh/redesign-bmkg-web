@@ -7,6 +7,8 @@ import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
 import Cuaca from "./pages/cuaca";
 import GempaBumi from "./pages/gempabumi";
+import Profil from "./pages/profil";
+import Artikel from "./components/Fragments/Artikel";
 
 export default function App() {
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
@@ -21,8 +23,11 @@ export default function App() {
         <div className="mt-[80px]">
           <Routes>
             <Route path="/" element={<Beranda />} />
+            <Route path="/profil" element={<Profil />} />
             <Route path="/cuaca" element={<Cuaca />} />
             <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
+            <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional" element={<Artikel />} />
+            <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional/artikel/:id" element={<Artikel />} />
           </Routes>
         </div>
         <SideFooter />

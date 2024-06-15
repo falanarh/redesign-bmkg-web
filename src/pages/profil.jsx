@@ -3,12 +3,18 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
+import {  FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
-import GBAntisipasi from '../components/Fragments/GempaBumiAntisipasi';
-import GBSkalaMMI from '../components/Fragments/GempaBumiSkalaMMI';
-import GBSkalaIntesitas from '../components/Fragments/GempaBumiSkalaIntesitas';
+import ProfilSejarah from '../components/Fragments/ProfilSejarah';
+import ProfilLogo from '../components/Fragments/ProfilLogo';
+import ProfilVisiMisi from '../components/Fragments/ProfilVisiMisi';
+import ProfilTugasFungsi from '../components/Fragments/ProfilTugasFungsi';
+import ProfilStrukturOrganisasi from '../components/Fragments/ProfilStrukturOrganisasi';
+import ProfilTransparasiKinerja from '../components/Fragments/ProfilTransparasiKinerja';
+import ProfilDaftarInfoPublik from '../components/Fragments/ProfilDaftarInfoPublik';
+import ProfilInfoDikecualikan from '../components/Fragments/ProfilInfoDikecualikan';
+import ProfilKegiatanInternasional from '../components/Fragments/ProfilKegiatanIntenasional';
 
 const { Header, Sider, Content } = Layout;
 
@@ -16,41 +22,41 @@ const sidebarItems = [
   {
     key: '1',
     icon: <FaRegBuilding className='size-[24px]' />,
-    label: 'Gempa Bumi',
+    label: 'Profil BMKG',
     children: [
       {
         key: '11',
-        label: 'Gempa Bumi Terkini',
-        // content: <ProfilSejarah />,
+        label: 'Sejarah',
+        content: <ProfilSejarah />,
       },
       {
         key: '12',
-        label: 'Gempa Bumi Dirasakan',
-        // content: <ProfilLogo/>,
+        label: 'Logo',
+        content: <ProfilLogo/>,
       },
       {
         key: '13',
-        label: 'Gempa Bumi Real Time',
-        // content: <ProfilVisiMisi/>,
+        label: 'Visi dan Misi',
+        content: <ProfilVisiMisi/>,
       },
       {
         key: '14',
-        label: 'Antisipasi Gempa Bumi',
-        content: <GBAntisipasi />,
+        label: 'Tugas dan Fungsi',
+        content: <ProfilTugasFungsi />,
       },
       {
         key: '15',
-        label: 'Skala Intesitas Gempa Bumi',
-        content: <GBSkalaIntesitas />,
+        label: 'Struktur Organisasi',
+        content: <ProfilStrukturOrganisasi />,
       },
       {
         key: '16',
-        label: 'Skala MMI',
-        content: <GBSkalaMMI />,
+        label: 'Balai Besar MKG',
+        // content: <PrakiraanBerbasisDampak />,
       },
       {
         key: '17',
-        label: 'Data Gempa Bumi',
+        label: 'Stasiun MKG',
         // content: <PrakiraanBerbasisDampak />,
       },
     ],
@@ -58,24 +64,33 @@ const sidebarItems = [
   {
     key: '2',
     icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Tsunami',
-    // content: <PrakiraanBerbasisDampak />
-  },
-  {
-    key: '3',
-    icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Seismologi Teknik',
-    // content: <PrakiraanBerbasisDampak />
-  },
-  {
-    key: '4',
-    icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Geofisika Potensial & Tanda Waktu',
-    // content: <PrakiraanBerbasisDampak />
+    label: '  Publikasi dan Informasi',
+    children: [
+      {
+        key: 'kegiatan-internasional',
+        label: 'Kegiatan Internasional',
+        content: <ProfilKegiatanInternasional />,
+      },
+      {
+        key: '22',
+        label: 'Transparasi Kinerja',
+        content: <ProfilTransparasiKinerja/>,
+      },
+      {
+        key: '23',
+        label: 'Daftar Informasi Publik',
+        content: <ProfilDaftarInfoPublik/>,
+      },
+      {
+        key: '24',
+        label: 'Informasi yang Dikecualikan',
+        content: <ProfilInfoDikecualikan />,
+      },
+    ],
   },
 ];
 
-export default function GempaBumiAntisipasi() {
+export default function Profil() {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('11');
@@ -103,12 +118,12 @@ export default function GempaBumiAntisipasi() {
     }
     return breadcrumb;
   };
-
+  
   const breadcrumbItems = [
     { title: 'Profil' },
     ...generateBreadcrumb(selectedMenu, sidebarItems),
   ];
-
+  
 
   const findSelectedMenu = (menuKey, items) => {
     for (let item of items) {
@@ -132,11 +147,11 @@ export default function GempaBumiAntisipasi() {
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={['11']}
+            defaultSelectedKeys={['kegitan-internasional']}
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
-            className='w-[120%] h-full pt-2'
+            className='w-[125%] h-full pt-2'
           />
         </Sider>
         <Layout className='bg-white'>
