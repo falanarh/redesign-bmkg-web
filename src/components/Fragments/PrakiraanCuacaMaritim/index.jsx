@@ -1,6 +1,14 @@
 import { ExportOutlined } from "@ant-design/icons";
 import { Button } from "@nextui-org/button";
-import { Card, CardBody, CardFooter, CardHeader, Divider } from "@nextui-org/react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Divider,
+  Link,
+} from "@nextui-org/react";
+import ContentSection from "../../Layouts/ContentSection";
 
 const data = [
   {
@@ -14,18 +22,27 @@ const data = [
 
 const PrakiraanCuacaMaritim = () => {
   return (
-    <div className="flex flex-col mb-10">
-      <h1 className="text-2xl font-pt-sans-caption font-bold text-active mb-3">
-        Prakiraan Cuaca Maritim
-      </h1>
-      <p className="text-[14px] font-pt-sans">
-        Memuat informasi mengenai peringatan gelombang tinggi. Selain itu,
-        disajikan variasi tinggi gelombang yang berpeluang terjadi di beberapa
-        daerah tertentu yang dimuat dalam laporan di bawah ini. Untuk informasi
-        selengkapnya kunjungi website berikut.
-      </p>
+    <ContentSection
+      title="Prakiraan Cuaca Maritim"
+      description={
+        <p className="text-[14px] font-pt-sans">
+          Memuat informasi mengenai peringatan gelombang tinggi. Selain itu,
+          disajikan variasi tinggi gelombang yang berpeluang terjadi di beberapa
+          daerah tertentu yang dimuat dalam laporan di bawah ini. Untuk
+          informasi selengkapnya kunjungi{" "}
+          <Link
+            href="https://maritim.bmkg.go.id/?fromURL=www.bmkg.go.id"
+            target="_blank"
+            className="text-active font-semibold"
+          >
+            website
+          </Link>{" "}
+          berikut.
+        </p>
+      }
+    >
       {data.map((item) => (
-        <Card key={item.id} className="w-full font-pt-sans mt-10" shadow="sm">
+        <Card key={item.id} className="w-full font-pt-sans mb-10" shadow="sm">
           <CardHeader className="flex gap-3 bg-[#F5F5F5] px-5">
             <h2 className="text-[18px] font-semibold text-active">
               {item.title}
@@ -49,7 +66,7 @@ const PrakiraanCuacaMaritim = () => {
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </ContentSection>
   );
 };
 

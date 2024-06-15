@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import { Button } from "@nextui-org/button";
 import { ExportOutlined } from "@ant-design/icons";
+import ContentSection from "../../Layouts/ContentSection";
 
 const data = [
   {
@@ -37,16 +38,12 @@ const data = [
 
 export default function PrakiraanCuacaWaktu() {
   return (
-    <div className="flex flex-col mb-10">
-      <h1 className="text-2xl font-pt-sans-caption font-bold text-active mb-3">
-        Prakiraan Cuaca Berdasarkan Waktu
-      </h1>
-      <p className="text-[14px] font-pt-sans">
-        Menampilkan prakiraan cuaca terkini berdasarkan lokasi yang dipilih.
-        Untuk informasi selengkapnya kunjungi website berikut.
-      </p>
+    <ContentSection
+      title="Prakiraan Cuaca Waktu"
+      description="Menampilkan prakiraan cuaca berdasarkan waktu harian, tiga harian, dan mingguan."
+    >
       {data.map((item) => (
-        <Card key={item.id} className="w-full font-pt-sans mt-10" shadow="sm">
+        <Card key={item.id} className="w-full font-pt-sans mb-10" shadow="sm">
           <CardHeader className="flex gap-3 bg-[#F5F5F5] px-5">
             <h2 className="text-[18px] font-semibold text-active">
               {item.title}
@@ -70,6 +67,6 @@ export default function PrakiraanCuacaWaktu() {
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </ContentSection>
   );
 }

@@ -1,0 +1,7 @@
+.odd-row {
+  background-color: #FFFFFF; /* Warna gelap untuk baris ganjil */
+}
+
+.even-row {
+  background-color: #EDF2F7; /* Warna putih untuk baris genap */
+}

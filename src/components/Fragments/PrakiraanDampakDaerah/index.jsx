@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@nextui-org/react";
+import { Divider, Select, SelectItem } from "@nextui-org/react";
 import { provinces, times, daftarDataPrakiraan } from "./data";
 import React from "react";
 
@@ -65,23 +65,29 @@ const PrakiraanDampakDaerah = () => {
       </div>
       {selectedWilayah && selectedWaktu ? (
         selectedData ? (
-          <div className="flex flex-col items-center mt-10">
-            <p className="text-xl font-pt-sans-caption font-semibold italic">
+          <div className="flex flex-col items-center mt-7">
+            <Divider className="mt-3" />
+            <h1 className="text-xl font-pt-sans-caption font-semibold italic my-3">
               Wilayah {selectedProvince?.label} pada {selectedTime?.label}
-            </p>
+            </h1>
+            <Divider className="mb-3" />
             <img
               key={selectedData.key}
               src={selectedData.src}
               alt={selectedData.key}
-              className="mt-6 rounded-2xl"
+              className="mt-3"
             />
           </div>
         ) : (
-          <p className="mt-6 font-pt-sans-caption font-bold">
+          <p className=" text-base font-pt-sans font-bold italic my-10">
             Data tidak ditemukan
           </p>
         )
-      ) : null}
+      ) : (
+        <p className="text-base font-pt-sans font-bold italic my-10">
+          Gambar akan keluar setelah memilih wilayah dan waktu.
+        </p>
+      )}
     </div>
   );
 };
