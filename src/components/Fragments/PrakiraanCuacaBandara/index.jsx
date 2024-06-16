@@ -78,17 +78,9 @@ const PrakiraanCuacaBandara = () => {
       title: "Bandara/Stasiun",
       dataIndex: "bandaraStasiun",
       key: "bandaraStasiun",
-      filters: [
-        {
-          text: "Surabaya",
-          value: "Surabaya",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
+      filters: [...new Set(prakiraanCuaca.map(item => item.bandaraStasiun))].map(bandara => ({ text: bandara, value: bandara })),
       filteredValue: filteredInfo.bandaraStasiun || null,
+      onFilter: (value, record) => record.bandaraStasiun.includes(value),
       sorter: (a, b) => a.bandaraStasiun.length - b.bandaraStasiun.length,
       sortOrder:
         sortedInfo.columnKey === "bandaraStasiun" ? sortedInfo.order : null,
@@ -100,16 +92,7 @@ const PrakiraanCuacaBandara = () => {
       title: "Waktu Prakiraan (WIB)",
       dataIndex: "waktuPrakiraan",
       key: "waktuPrakiraan",
-      filters: [
-        {
-          text: "London",
-          value: "London",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
+      filters: [...new Set(prakiraanCuaca.map(item => item.waktuPrakiraan))].map(waktu => ({ text: waktu, value: waktu })),
       filteredValue: filteredInfo.waktuPrakiraan || null,
       onFilter: (value, record) => record.waktuPrakiraan.includes(value),
       sorter: (a, b) => {
@@ -127,16 +110,7 @@ const PrakiraanCuacaBandara = () => {
       title: "Arah Angin",
       dataIndex: "arahAngin",
       key: "arahAngin",
-      filters: [
-        {
-          text: "London",
-          value: "London",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
+      filters: [...new Set(prakiraanCuaca.map(item => item.arahAngin))].map(arah => ({ text: arah, value: arah })),
       filteredValue: filteredInfo.arahAngin || null,
       onFilter: (value, record) => record.arahAngin.includes(value),
       sorter: (a, b) => a.arahAngin.length - b.arahAngin.length,
@@ -147,7 +121,6 @@ const PrakiraanCuacaBandara = () => {
       title: "Kecepatan Angin (km/jam)",
       dataIndex: "kecepatanAnginKmJam",
       key: "kecepatanAnginKmJam",
-      onFilter: (value, record) => record.kecepatanAnginKmJam.includes(value),
       sorter: (a, b) => a.kecepatanAnginKmJam - b.kecepatanAnginKmJam,
       sortOrder:
         sortedInfo.columnKey === "kecepatanAnginKmJam"
@@ -160,7 +133,6 @@ const PrakiraanCuacaBandara = () => {
       title: "Jarak Pandang (km)",
       dataIndex: "jarakPandangKm",
       key: "jarakPandangKm",
-      onFilter: (value, record) => record.jarakPandangKm.includes(value),
       sorter: (a, b) => a.jarakPandangKm - b.jarakPandangKm,
       sortOrder:
         sortedInfo.columnKey === "jarakPandangKm" ? sortedInfo.order : null,
@@ -171,16 +143,7 @@ const PrakiraanCuacaBandara = () => {
       title: "Cuaca",
       dataIndex: "cuaca",
       key: "cuaca",
-      filters: [
-        {
-          text: "London",
-          value: "London",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
+      filters: [...new Set(prakiraanCuaca.map(item => item.cuaca))].map(cuaca => ({ text: cuaca, value: cuaca })),
       filteredValue: filteredInfo.cuaca || null,
       onFilter: (value, record) => record.cuaca.includes(value),
       sorter: (a, b) => a.cuaca.length - b.cuaca.length,
