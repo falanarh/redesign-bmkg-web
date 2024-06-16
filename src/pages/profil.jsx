@@ -1,4 +1,6 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -15,88 +17,171 @@ import ProfilTransparasiKinerja from '../components/Fragments/ProfilTransparasiK
 import ProfilDaftarInfoPublik from '../components/Fragments/ProfilDaftarInfoPublik';
 import ProfilInfoDikecualikan from '../components/Fragments/ProfilInfoDikecualikan';
 import ProfilKegiatanInternasional from '../components/Fragments/ProfilKegiatanIntenasional';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import Artikel from '../components/Fragments/Artikel';
 
 const { Header, Sider, Content } = Layout;
 
 const sidebarItems = [
   {
-    key: '1',
+    key: 'profil-bmkg',
     icon: <FaRegBuilding className='size-[24px]' />,
     label: 'Profil BMKG',
     children: [
       {
-        key: '11',
-        label: 'Sejarah',
+        key: 'sejarah',
+        label: <Link to="/profil/profil-bmkg/sejarah">Sejarah</Link>,
         content: <ProfilSejarah />,
       },
       {
-        key: '12',
-        label: 'Logo',
-        content: <ProfilLogo/>,
+        key: 'logo',
+        label: <Link to="/profil/profil-bmkg/logo">Logo</Link>,
+        content: <ProfilLogo />,
       },
       {
-        key: '13',
-        label: 'Visi dan Misi',
-        content: <ProfilVisiMisi/>,
+        key: 'visi-dan-misi',
+        label: <Link to="/profil/profil-bmkg/visi-dan-misi">Visi dan Misi</Link>,
+        content: <ProfilVisiMisi />,
       },
       {
-        key: '14',
-        label: 'Tugas dan Fungsi',
+        key: 'tugas-dan-fungsi',
+        label: <Link to="/profil/profil-bmkg/tugas-dan-fungsi">Tugas dan Fungsi</Link>,
         content: <ProfilTugasFungsi />,
       },
       {
-        key: '15',
-        label: 'Struktur Organisasi',
+        key: 'struktur-organisasi',
+        label: <Link to="/profil/profil-bmkg/struktur-organisasi">Struktur Organisasi</Link>,
         content: <ProfilStrukturOrganisasi />,
       },
       {
-        key: '16',
-        label: 'Balai Besar MKG',
+        key: 'balai-besar-mkg',
+        label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
         // content: <PrakiraanBerbasisDampak />,
       },
       {
-        key: '17',
-        label: 'Stasiun MKG',
+        key: 'stasion-mkg',
+        label: <Link to="/profil/profil-bmkg/stasion-mkg">Stasiun MKG</Link>,
         // content: <PrakiraanBerbasisDampak />,
       },
     ],
   },
   {
-    key: '2',
+    key: 'publikasi-dan-informasi',
     icon: <FaEarthAmericas className='size-[22px]' />,
-    label: '  Publikasi dan Informasi',
+    label: 'Publikasi dan Informasi',
     children: [
       {
         key: 'kegiatan-internasional',
-        label: 'Kegiatan Internasional',
+        label: <Link to="/profil/publikasi-dan-informasi/kegiatan-internasional">Kegiatan Internasional</Link>,
         content: <ProfilKegiatanInternasional />,
       },
       {
-        key: '22',
-        label: 'Transparasi Kinerja',
-        content: <ProfilTransparasiKinerja/>,
+        key: 'transparansi-kinerja',
+        label: <Link to="/profil/publikasi-dan-informasi/transparansi-kinerja">Transparasi Kinerja</Link>,
+        content: <ProfilTransparasiKinerja />,
       },
       {
-        key: '23',
-        label: 'Daftar Informasi Publik',
-        content: <ProfilDaftarInfoPublik/>,
+        key: 'daftar-informasi-publik',
+        label: <Link to="/profil/publikasi-dan-informasi/daftar-informasi-publik">Daftar Informasi Publik</Link>,
+        content: <ProfilDaftarInfoPublik />,
       },
       {
-        key: '24',
-        label: 'Informasi yang Dikecualikan',
+        key: 'informasi-dikecualikan',
+        label: <Link to="/profil/publikasi-dan-informasi/informasi-dikecualikan">Informasi yang Dikecualikan</Link>,
         content: <ProfilInfoDikecualikan />,
       },
     ],
   },
 ];
 
-export default function Profil() {
-
+export default function Profil({ endpoint = 'sejarah'}) {
+  const sidebarItems = [
+    {
+      key: 'profil-bmkg',
+      icon: <FaRegBuilding className='size-[24px]' />,
+      label: 'Profil BMKG',
+      children: [
+        {
+          key: 'sejarah',
+          label: <Link to="/profil/profil-bmkg/sejarah">Sejarah</Link>,
+          content: <ProfilSejarah />,
+        },
+        {
+          key: 'logo',
+          label: <Link to="/profil/profil-bmkg/logo">Logo</Link>,
+          content: <ProfilLogo />,
+        },
+        {
+          key: 'visi-dan-misi',
+          label: <Link to="/profil/profil-bmkg/visi-dan-misi">Visi dan Misi</Link>,
+          content: <ProfilVisiMisi />,
+        },
+        {
+          key: 'tugas-dan-fungsi',
+          label: <Link to="/profil/profil-bmkg/tugas-dan-fungsi">Tugas dan Fungsi</Link>,
+          content: <ProfilTugasFungsi />,
+        },
+        {
+          key: 'struktur-organisasi',
+          label: <Link to="/profil/profil-bmkg/struktur-organisasi">Struktur Organisasi</Link>,
+          content: <ProfilStrukturOrganisasi />,
+        },
+        {
+          key: 'balai-besar-mkg',
+          label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
+          // content: <PrakiraanBerbasisDampak />,
+        },
+        {
+          key: 'stasion-mkg',
+          label: <Link to="/profil/profil-bmkg/stasion-mkg">Stasiun MKG</Link>,
+          // content: <PrakiraanBerbasisDampak />,
+        },
+      ],
+    },
+    {
+      key: 'publikasi-dan-informasi',
+      icon: <FaEarthAmericas className='size-[22px]' />,
+      label: 'Publikasi dan Informasi',
+      children: [
+        {
+          key: 'kegiatan-internasional',
+          label: <Link to="/profil/publikasi-dan-informasi/kegiatan-internasional">Kegiatan Internasional</Link>,
+          content: <ProfilKegiatanInternasional />,
+        },
+        {
+          key: 'transparansi-kinerja',
+          label: <Link to="/profil/publikasi-dan-informasi/transparansi-kinerja">Transparasi Kinerja</Link>,
+          content: <ProfilTransparasiKinerja />,
+        },
+        {
+          key: 'daftar-informasi-publik',
+          label: <Link to="/profil/publikasi-dan-informasi/daftar-informasi-publik">Daftar Informasi Publik</Link>,
+          content: <ProfilDaftarInfoPublik />,
+        },
+        {
+          key: 'informasi-dikecualikan',
+          label: <Link to="/profil/publikasi-dan-informasi/informasi-dikecualikan">Informasi yang Dikecualikan</Link>,
+          content: <ProfilInfoDikecualikan />,
+        },
+      ],
+    },
+  ];
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState('11');
+  const [selectedMenu, setSelectedMenu] = useState(endpoint);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const location = useLocation();
+  const isArticleRoute = location.pathname.includes('artikel');
+
+  useEffect(() => {
+    if (isArticleRoute) {
+      setSelectedMenu('kegiatan-internasional');
+    } else {
+      setSelectedMenu(endpoint);
+    }
+  }, [isArticleRoute, endpoint]);
 
   const handleMenuClick = ({ key }) => {
     setSelectedMenu(key);
@@ -147,7 +232,7 @@ export default function Profil() {
           <Menu
             theme="light"
             mode="inline"
-            defaultSelectedKeys={['kegitan-internasional']}
+            defaultSelectedKeys={['11']}
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
@@ -160,7 +245,7 @@ export default function Profil() {
               padding: 0,
               background: colorBgContainer,
             }}
-            className='relative ml-8'
+            className='relative ml-[50px]'
           >
             <Button
               type="text"
@@ -174,19 +259,23 @@ export default function Profil() {
             />
             <Breadcrumb
               items={breadcrumbItems}
-              className="px-6 mb-4 absolute top-5 left-10 font-pt-sans font-semibold"
+              className="absolute px-6 mb-4 font-semibold top-5 left-10 font-pt-sans"
             />
           </Header>
           <Content
             style={{
-              margin: '0 0 0 96px',
+              margin: '0 0 0 115px',
               padding: 0,
               minHeight: 280,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-            {selectedSidebarItem?.content || 'Content'}
+            {isArticleRoute ? (
+              <Artikel />
+            ) : (
+              selectedSidebarItem?.content || 'Content'
+            )}
           </Content>
         </Layout>
       </Layout>

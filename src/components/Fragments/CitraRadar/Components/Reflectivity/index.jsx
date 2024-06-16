@@ -2,45 +2,43 @@ import { ConfigProvider, Table } from "antd";
 import styled from "styled-components";
 import { intensitasHujan } from "./data";
 
-const Reflectivity = () => {
-  const ItalicText = styled.span`
-    font-style: italic;
-  `;
-  const columns = [
-    {
-      title: "Kategori Intensitas Hujan",
-      dataIndex: "kategori_intensitas_hujan",
-      key: "kategori_intensitas_hujan",
-      ellipsis: true,
-      render: (text) => {
-        const parts = text.match(/^(.*?)(\s*\(.*\))$/); // Memisahkan teks dan bagian dalam kurung
-        return (
-          <>
-            {parts[1]}
-            <ItalicText>{parts[2]}</ItalicText>
-          </>
-        );
-      },
-    },
-    {
-      title: "Nilai DBZ",
-      dataIndex: "nilai_dbz",
-      key: "nilai_dbz",
-      ellipsis: true,
-    },
-    {
-      title: "MM/Jam",
-      dataIndex: "mm_jam",
-      key: "mm_jam",
-      ellipsis: true,
-    },
-  ];
+const ItalicText = styled.span`
+  font-style: italic;
+`;
 
+const columns = [
+  {
+    title: "Kategori Intensitas Hujan",
+    dataIndex: "kategori_intensitas_hujan",
+    key: "kategori_intensitas_hujan",
+    ellipsis: true,
+    render: (text) => {
+      const parts = text.match(/^(.*?)(\s*\(.*\))$/); // Memisahkan teks dan bagian dalam kurung
+      return (
+        <>
+          {parts[1]}
+          <ItalicText>{parts[2]}</ItalicText>
+        </>
+      );
+    },
+  },
+  {
+    title: "Nilai DBZ",
+    dataIndex: "nilai_dbz",
+    key: "nilai_dbz",
+    ellipsis: true,
+  },
+  {
+    title: "MM/Jam",
+    dataIndex: "mm_jam",
+    key: "mm_jam",
+    ellipsis: true,
+  },
+];
+
+const Reflectivity = () => {
   return (
     <>
-      <h2 className="text-xl font-pt-sans font-bold text-active italic mb-3">
-        Reflectivity
-      </h2>
       <p className="text-[14px] font-pt-sans">
         Citra radar cuaca menggambarkan potensi intensitas curah hujan yang
         dideteksi oleh radar cuaca. Pengukuran intensitas curah hujan

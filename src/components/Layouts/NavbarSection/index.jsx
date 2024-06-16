@@ -8,11 +8,13 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
+  Link as NextUILink,
 } from "@nextui-org/react";
+import { Link, useLocation } from "react-router-dom";
 
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation(); // Get current location
 
   const menuItems = [
     { label: "Beranda", href: "/" },
@@ -22,6 +24,13 @@ const NavbarSection = () => {
     { label: "Kualitas Udara", href: "/kualitas-udara" },
     { label: "Gempa Bumi & Tsunami", href: "/gempa-bumi-tsunami" },
   ];
+
+  const isActive = (href) => {
+    if (href === "/") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <Navbar
@@ -51,7 +60,7 @@ const NavbarSection = () => {
           className="lg:hidden"
         />
         <NavbarBrand>
-        <img
+          <img
             className="p-[6px] mr-2 w-8 h-10 xs:w-12 xs:h-14"
             src={BMKGLogo}
             alt="BMKG Logo"
@@ -71,12 +80,12 @@ const NavbarSection = () => {
         {menuItems.map((item, index) => (
           <NavbarItem
             key={index}
-            isActive={window.location.pathname === item.href}
+            isActive={isActive(item.href)} // Use isActive function to get the current path
           >
             <Link
-              href={item.href}
+              to={item.href} // Use Link from react-router-dom
               className={
-                window.location.pathname === item.href
+                isActive(item.href)
                   ? "text-active font-pt-sans-caption text-[14px] font-semibold"
                   : "text-nonActive font-pt-sans-caption text-[14px] font-semibold"
               }
@@ -92,11 +101,11 @@ const NavbarSection = () => {
           <NavbarMenuItem key={`${item.label}-${index}`} className="my-3">
             <Link
               className={`w-full ${
-                window.location.pathname === item.href
+                isActive(item.href)
                   ? "text-active font-pt-sans-caption"
                   : "text-nonActive font-pt-sans-caption"
               }`}
-              href={item.href}
+              to={item.href}
               size="lg"
             >
               {item.label.toUpperCase()}

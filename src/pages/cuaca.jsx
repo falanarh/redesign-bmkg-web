@@ -116,7 +116,7 @@ export default function Cuaca() {
   const selectedSidebarItem = findSelectedMenu(selectedMenu, sidebarItems);
 
   return (
-    <div className='flex justify-center w-full mt-[140px]'>
+    <div className='flex justify-center w-full mt-[130px]'>
       <Layout className='max-w-[1280px] px-6 bg-white'>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="demo-logo-vertical" />
@@ -150,7 +150,7 @@ export default function Cuaca() {
             />
             <Breadcrumb
               items={breadcrumbItems}
-              className="px-6 mb-4 absolute top-5 left-10 font-pt-sans font-semibold"
+              className="absolute px-6 mb-4 font-semibold top-5 left-10 font-pt-sans"
             />
           </Header>
           <Content
