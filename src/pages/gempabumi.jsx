@@ -9,6 +9,7 @@ import "./index.css";
 import GBAntisipasi from '../components/Fragments/GempaBumiAntisipasi';
 import GBSkalaMMI from '../components/Fragments/GempaBumiSkalaMMI';
 import GBSkalaIntesitas from '../components/Fragments/GempaBumiSkalaIntesitas';
+import GempaBumiTerkini from '../components/Fragments/GempaBumiTerkini';
 
 const { Header, Sider, Content } = Layout;
 
@@ -21,7 +22,7 @@ const sidebarItems = [
       {
         key: '11',
         label: 'Gempa Bumi Terkini',
-        // content: <ProfilSejarah />,
+        content: <GempaBumiTerkini />,
       },
       {
         key: '12',
@@ -75,7 +76,7 @@ const sidebarItems = [
   },
 ];
 
-export default function GempaBumiAntisipasi() {
+export default function GempaBumi() {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('11');
