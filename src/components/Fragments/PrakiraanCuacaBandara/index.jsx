@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ConfigProvider, Table } from "antd";
 import "./index.css";
 import { FaSearch } from "react-icons/fa";
+import { position } from "@chakra-ui/react";
 
 const PrakiraanCuacaBandara = () => {
   const [filteredInfo, setFilteredInfo] = useState({});
@@ -250,6 +251,7 @@ const PrakiraanCuacaBandara = () => {
             x: 1500,
             y: 500,
           }}
+          pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '25', '50', '100'], position: ['bottomCenter']}}
         />
       </ConfigProvider>
     </div>
