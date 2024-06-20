@@ -10,6 +10,7 @@ import GempaBumi from "./pages/gempabumi";
 import Profil from "./pages/profil";
 import Artikel from "./components/Fragments/Artikel";
 import { NextUIProvider } from "@nextui-org/react";
+import Iklim from "./pages/iklim";
 
 export default function App() {
   const navigate = useNavigate();
