@@ -1,31 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { NextUIProvider } from "@nextui-org/react";
 import App from "./App.jsx";
 import "./index.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { PrimeReactProvider } from "primereact/api";
 import { ConfigProvider } from "antd";
+import { BrowserRouter } from "react-router-dom";
 
 const themeConfig = {
   token: {
     colorPrimary: "#1C2B78",
-    // headerBg: "#1C2B78",
-    // footerBg: "#1C2B78",
-    // bodySortBg: "#1C2B78",
   },
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
-      <NextUIProvider>
+    <BrowserRouter>
+      <ChakraProvider>
         <PrimeReactProvider>
           <ConfigProvider theme={themeConfig}>
             <App />
           </ConfigProvider>
         </PrimeReactProvider>
-      </NextUIProvider>
-    </ChakraProvider>
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

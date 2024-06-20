@@ -66,7 +66,7 @@ const CitraSatelitCard = ({
       >
         <div>
           <img src={image} alt={title} style={{ width: "100%" }} />
-          <h2 className="text-base font-pt-sans font-semibold my-3">{title}</h2>
+          <h2 className="my-3 text-base font-semibold font-pt-sans">{title}</h2>
           <p className="text-[14px] font-pt-sans">{description}</p>
         </div>
         <Button
@@ -88,7 +88,7 @@ const CitraSatelitCard = ({
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 font-pt-sans-caption font-bold">
+              <ModalHeader className="flex flex-col gap-1 font-bold font-pt-sans-caption">
                 {title}
               </ModalHeader>
               <ModalBody>
@@ -99,7 +99,7 @@ const CitraSatelitCard = ({
                   showScrollIndicators={true}
                   selectedKeys={locationValue}
                   onSelectionChange={setLocationValue}
-                  className="max-w-xs font-pt-sans mr-5"
+                  className="max-w-xs mr-5 font-pt-sans"
                 >
                   {(location) => (
                     <SelectItem key={location.key} value={location.key}>
@@ -111,7 +111,7 @@ const CitraSatelitCard = ({
                   selectedData ? (
                     <>
                       <Divider className="mt-3" />
-                      <h1 className="text-xl font-pt-sans font-bold italic ml-2 text-active text-center my-3">
+                      <h1 className="my-3 ml-2 text-xl italic font-bold text-center font-pt-sans text-active">
                         {title} - {selectedData?.label}
                       </h1>
                       <Divider className="mb-3" />
@@ -121,7 +121,7 @@ const CitraSatelitCard = ({
                       />
                     </>
                   ) : (
-                    <p className="text-base font-pt-sans font-bold italic">
+                    <p className="text-base italic font-bold font-pt-sans">
                       Data ditemukan
                     </p>
                   )
@@ -155,11 +155,10 @@ const CitraSatelit = () => {
       <div className="flex flex-wrap gap-5">
         <Input
           label="Pencarian"
-          isClearable
           radius="lg"
           classNames={{
             label:
-              "text-black/50 dark:text-white/90 font-pt-sans-caption font-semibold",
+              "text-black/50 dark:text-white/90 font-pt-sans-caption",
             input: [
               "bg-transparent",
               "text-black/90 dark:text-white/90 font-pt-sans",

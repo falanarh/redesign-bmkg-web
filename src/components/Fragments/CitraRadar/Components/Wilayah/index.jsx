@@ -11,7 +11,7 @@ const Wilayah = () => {
   );
 
   return (
-    <>
+    <div>
       <Select
         items={wilayahCitraRadar}
         label="Wilayah Citra Radar"
@@ -46,11 +46,11 @@ const Wilayah = () => {
           </p>
         )
       ) : (
-        <p className="text-base font-pt-sans font-bold italic mx-auto mt-[15%]">
+        <p className="text-base font-pt-sans font-bold italic text-center mt-[15%]">
           Gambar akan keluar setelah memilih wilayah citra satelit.
         </p>
       )}
-    </>
+    </div>
   );
 };
 

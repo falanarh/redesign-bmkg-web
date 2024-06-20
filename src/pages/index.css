@@ -34,10 +34,18 @@
     font-family: 'PT Sans', sans-serif !important;
 }
 
+nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link > a{
+    color: #1C2B78 !important;
+}
+
 nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
     color: #1C2B78 !important;
 }
 
 .ant-breadcrumb a:hover {
     color: #1C2B78 !important;
+}
+
+:where(.css-dev-only-do-not-override-1h13xwb).ant-layout .ant-layout-sider {
+    background-color: #FFFFFF !important;
 }
