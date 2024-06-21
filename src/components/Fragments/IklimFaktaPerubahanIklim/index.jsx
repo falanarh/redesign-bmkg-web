@@ -3,30 +3,25 @@ import ContentSection from "../../Layouts/ContentSection";
 import React from "react";
 import { FaCalendarDays, FaPen } from "react-icons/fa6";
 import { Divider } from "antd";
-// eslint-disable-next-line no-unused-vars
-import { informasiHujanBulanan } from "../IklimInfoHujanBulanan/data";
-import { bulan, dinamikaAtmosfir, rentang, tahun } from "./data";
+import { bulan, faktaPerubahan, tahun } from "./data";
 
 
-const IndeksPresipitasiTerstandarisasi = () => {
-    const [rentangValue, setRentangValue] = React.useState(new Set());
+const FaktaPerubahanIklim = () => {
     const [bulanValue, setBulanValue] = React.useState(new Set());
     const [tahunValue, setTahunValue] = React.useState(new Set());
 
     // Konversi Set menjadi string
-    const selectedRentang = Array.from(rentangValue).join("");
     const selectedBulan = Array.from(bulanValue).join("");
     const selectedTahun = Array.from(tahunValue).join("");
-    const selectedKey = `${selectedRentang}-${selectedBulan}-${selectedTahun}`;
+    const selectedKey = `${selectedBulan}-${selectedTahun}`;
 
     // Debugging logs
-    console.log("Rentang Value:", selectedRentang);
     console.log("Bulan Value:", selectedBulan);
     console.log("Tahun Value:", selectedTahun);
     console.log("Selected Key:", selectedKey);
 
 
-    const selectedData = dinamikaAtmosfir.find(
+    const selectedData = faktaPerubahan.find(
         (data) => data.key === selectedKey
     );
 
@@ -34,23 +29,8 @@ const IndeksPresipitasiTerstandarisasi = () => {
     console.log("Selected Data:", selectedData);
 
     return (
-        <ContentSection title="Indeks Presipitasi Terstandarisasi">
+        <ContentSection title="Fakta Perubahan Iklim" >
             <div className="flex">
-                <Select
-                    items={rentang}
-                    label="Rentang"
-                    placeholder="Pilih Rentang"
-                    showScrollIndicators={true}
-                    selectedKeys={rentangValue}
-                    onSelectionChange={setRentangValue}
-                    className="max-w-xs font-pt-sans mr-5"
-                >
-                    {(rentang) => (
-                        <SelectItem key={rentang.key} value={rentang.key}>
-                            {rentang.label}
-                        </SelectItem>
-                    )}
-                </Select>
                 <Select
                     items={bulan}
                     label="Bulan"
@@ -82,7 +62,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
                     )}
                 </Select>
             </div>
-            {selectedRentang && selectedBulan && selectedTahun ? (
+            {selectedBulan && selectedTahun ? (
                 selectedData ? (
                     <div className="flex flex-col font-pt-sans">
                         <Divider className="mt-9 mb-6 bg-[#eaeaea]" />
@@ -96,21 +76,8 @@ const IndeksPresipitasiTerstandarisasi = () => {
                                 <FaPen /> {selectedData.penulis}
                             </p>
                         </div>
-
                         <img className="mt-3"
                             src={selectedData.link}
-                        />
-                        {/* {selectedData.descriptions.map((description, index) => (
-                            <p key={index} className="text-[14px] mb-3">{description}</p>
-                        ))} */}
-
-                        <iframe
-                            className='mt-4 w-full'
-                            src={selectedData.pdfLink}
-                            height="500px"
-                            style={{ border: 'none' }}
-                            allowFullScreen
-                            title="PDF Viewer"
                         />
                     </div>
                 ) : (
@@ -120,11 +87,11 @@ const IndeksPresipitasiTerstandarisasi = () => {
                 )
             ) : (
                 <p className="text-base font-pt-sans font-bold italic my-10">
-                    Gambar akan keluar setelah memilih rentang, bulan, dan tahun.
+                    Gambar akan keluar setelah memilih bulan dan tahun.
                 </p>
             )}
         </ContentSection>
     );
 };
 
-export default IndeksPresipitasiTerstandarisasi;
+export default FaktaPerubahanIklim;

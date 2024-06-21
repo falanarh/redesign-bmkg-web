@@ -227,7 +227,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
   return (
     <div className='flex justify-center w-full mt-[140px]'>
       <Layout className='max-w-[1280px] px-6 bg-white'>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed} width={242}>
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
@@ -236,7 +236,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
-            className='w-[125%] h-full pt-2'
+            className=' h-full pt-2'
           />
         </Sider>
         <Layout className='bg-white'>
@@ -245,7 +245,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
               padding: 0,
               background: colorBgContainer,
             }}
-            className='relative ml-[50px]'
+            className='relative'
           >
             <Button
               type="text"
@@ -264,7 +264,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
           </Header>
           <Content
             style={{
-              margin: '0 0 0 115px',
+              margin: '0 0 0 65px',
               padding: 0,
               minHeight: 280,
               background: colorBgContainer,

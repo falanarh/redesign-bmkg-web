@@ -29,7 +29,7 @@ const AirTersediaBagiTanaman = () => {
     console.log("Selected Data:", selectedData);
 
     return (
-        <ContentSection title="Buletin Informasi Iklim" description="Memuat informasi tentang analisis curah hujan yang terjadi dan prediksi hujan 3 (tiga) bulan ke depan. Dalam buletin ini juga dibahas analisis dinamika atmosfer dan laut serta prediksi El Nino Southern Oscilation (ENSO), Indian Ocean Dipole (IOD), monsun dan suhu muka laut (SST).">
+        <ContentSection title="Air Tersedia Bagi Tanaman (ATi)" description="Memuat informasi tentang analisis curah hujan yang terjadi dan prediksi hujan 3 (tiga) bulan ke depan. Dalam buletin ini juga dibahas analisis dinamika atmosfer dan laut serta prediksi El Nino Southern Oscilation (ENSO), Indian Ocean Dipole (IOD), monsun dan suhu muka laut (SST).">
             <div className="flex">
                 <Select
                     items={bulan}

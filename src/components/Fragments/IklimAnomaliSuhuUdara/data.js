@@ -33,7 +33,7 @@ export const bulan = [
     {key: "3-bulan", label :"3 Bulanan"},
   ]
 
-  export const dinamikaAtmosfir =[
+  export const anomaliSuhuUdara =[
     {
         key: '1-bulan-mei-24',
         title :'The Standardized Precipitation Index Mei 2024',

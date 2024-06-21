@@ -84,7 +84,7 @@ const BuletinInformasiIklim = () => {
             <iframe 
                     className='mt-4 w-full'
                     src={selectedData.link}
-                    height="500px"
+                    height="800px"
                     style={{ border: 'none'}}
                     allowFullScreen
                     title="PDF Viewer"

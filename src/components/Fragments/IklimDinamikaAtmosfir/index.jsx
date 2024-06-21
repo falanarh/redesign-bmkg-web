@@ -119,7 +119,7 @@ const IklimDinamikaAtmosfir = () => {
                 )
             ) : (
                 <p className="text-base font-pt-sans font-bold italic my-10">
-                    Gambar akan keluar setelah memilih dasarian, bulan, dan tahun.
+                    Gambar akan keluar setelah memilih jenis dasarian, bulan, dan tahun.
                 </p>
             )}
         </ContentSection>

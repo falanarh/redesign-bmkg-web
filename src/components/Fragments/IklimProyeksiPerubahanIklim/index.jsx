@@ -2,11 +2,11 @@ import { Select, SelectItem } from "@nextui-org/react";
 import ContentSection from "../../Layouts/ContentSection";
 import React from "react";
 import { jenis } from "./data";
-import AnalisisLajuPerubahanCurahHujan from "../AnalisisLajuCurah";
-import AnalisisLajuPerubahanSuhuUdara from "../AnalisisLajuSuhu";
+import ProyeksiPerubahanCurahHujan from "../ProyeksiCurahHujan";
+import ProyeksiPerubahanSuhuUdara from "../ProyeksiSuhuUdara";
 
 
-const AnalisisLajuPerubahan = () => {
+const ProyeksiPerubahanIklim = () => {
     const [jenisValue, setJenisValue] = React.useState(new Set());
 
     // Konversi Set menjadi string
@@ -18,7 +18,7 @@ const AnalisisLajuPerubahan = () => {
     console.log("Selected Key:", selectedKey);
 
     return (
-        <ContentSection title="Analisis Laju Perubahan">
+        <ContentSection title="Proyeksi Perubahan Iklim">
             <div className="flex">
                 <Select
                     items={jenis}
@@ -37,9 +37,9 @@ const AnalisisLajuPerubahan = () => {
                 </Select>
             </div>
             {selectedJenis === 'curah' ? (
-                <AnalisisLajuPerubahanCurahHujan />
+                <ProyeksiPerubahanCurahHujan />
             ) : selectedJenis === 'suhu' ? (
-                <AnalisisLajuPerubahanSuhuUdara />
+                <ProyeksiPerubahanSuhuUdara/>
             ) : (
                 <p className="text-base font-pt-sans font-bold italic my-10">Silakan pilih jenis analisis yang diinginkan.</p>
             )}
@@ -48,4 +48,4 @@ const AnalisisLajuPerubahan = () => {
     );
 };
 
-export default AnalisisLajuPerubahan;
+export default ProyeksiPerubahanIklim;

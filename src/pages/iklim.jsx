@@ -12,6 +12,10 @@ import IklimInformasiHujanBulanan from '../components/Fragments/IklimInfoHujanBu
 import IklimDinamikaAtmosfir from '../components/Fragments/IklimDinamikaAtmosfir';
 import IndeksPresipitasiTerstandarisasi from '../components/Fragments/IklimIndeksPresipitasiTerstandarisasi';
 import AirTersediaBagiTanaman from '../components/Fragments/IklimAirTersediaBagiTanaman';
+import PrakiraanIklim from '../components/Fragments/IklimPrakiraanIklim';
+import AnalisisLajuPerubahan from '../components/Fragments/IklimAnalisisLajuPerubahan';
+import FaktaPerubahanIklim from '../components/Fragments/IklimFaktaPerubahanIklim';
+import ProyeksiPerubahanIklim from '../components/Fragments/IklimProyeksiPerubahanIklim';
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,7 +33,7 @@ const sidebarItems = [
             {
                 key: '12',
                 label: 'Buletin Iklim',
-                content: <BuletinInformasiIklim/>,
+                content: <BuletinInformasiIklim />,
             },
         ],
     },
@@ -47,17 +51,17 @@ const sidebarItems = [
             {
                 key: '22',
                 label: 'Dinamika Atmosfir',
-                content: <IklimDinamikaAtmosfir/>,
+                content: <IklimDinamikaAtmosfir />,
             },
             {
                 key: '23',
                 label: 'Indeks Presipitasi Terstandarisasi',
-                content: <IndeksPresipitasiTerstandarisasi/>,
+                content: <IndeksPresipitasiTerstandarisasi />,
             },
             {
                 key: '24',
                 label: 'Air Tersedia Bagi Tanaman (ATi)',
-                content: <AirTersediaBagiTanaman/>,
+                content: <AirTersediaBagiTanaman />,
             },
         ],
     },
@@ -65,7 +69,7 @@ const sidebarItems = [
         key: '3',
         icon: <FaEarthAmericas className='size-[22px]' />,
         label: 'Prakiraan Iklim',
-        // content: <PrakiraanBerbasisDampak />
+        content: <PrakiraanIklim />
     },
     {
         key: '4',
@@ -81,12 +85,12 @@ const sidebarItems = [
             {
                 key: '42',
                 label: 'Analisis Laju Perubahan',
-                // content: <ProfilLogo/>,
+                content: <AnalisisLajuPerubahan />,
             },
             {
                 key: '43',
                 label: 'Fakta Perubahan Iklim',
-                // content: <ProfilLogo/>,
+                content: <FaktaPerubahanIklim />,
             },
         ],
     },
@@ -94,24 +98,7 @@ const sidebarItems = [
         key: '5',
         icon: <FaEarthAmericas className='size-[22px]' />,
         label: 'Proyeksi Perubahan Iklim',
-        // content: <PrakiraanBerbasisDampak />
-        // children: [
-        //     {
-        //         key: '41',
-        //         label: 'Anomali Suhu Udara',
-        //         // content: <GempaBumiTerkini />,
-        //     },
-        //     {
-        //         key: '42',
-        //         label: 'Analisis Laju Perubahan',
-        //         // content: <ProfilLogo/>,
-        //     },
-        //     {
-        //         key: '43',
-        //         label: 'Fakta Perubahan Iklim',
-        //         // content: <ProfilLogo/>,
-        //     },
-        // ],
+        content: <ProyeksiPerubahanIklim />
     },
 ];
 
@@ -145,7 +132,7 @@ export default function Iklim() {
     };
 
     const breadcrumbItems = [
-        { title: 'Profil' },
+        { title: 'Iklim' },
         ...generateBreadcrumb(selectedMenu, sidebarItems),
     ];
 
@@ -167,7 +154,7 @@ export default function Iklim() {
     return (
         <div className='flex justify-center w-full mt-[140px]'>
             <Layout className='max-w-[1280px] px-6 bg-white'>
-                <Sider trigger={null} collapsible collapsed={collapsed}>
+                <Sider trigger={null} collapsible collapsed={collapsed} width={270}>
                     <div className="demo-logo-vertical" />
                     <Menu
                         theme="light"
@@ -176,7 +163,7 @@ export default function Iklim() {
                         selectedKeys={[selectedMenu]}
                         onClick={handleMenuClick}
                         items={sidebarItems}
-                        className='w-[120%] h-full pt-2'
+                        className='h-full pt-2'
                     />
                 </Sider>
                 <Layout className='bg-white'>
@@ -185,7 +172,7 @@ export default function Iklim() {
                             padding: 0,
                             background: colorBgContainer,
                         }}
-                        className='relative ml-8'
+                        className='relative '
                     >
                         <Button
                             type="text"
@@ -204,7 +191,7 @@ export default function Iklim() {
                     </Header>
                     <Content
                         style={{
-                            margin: '0 0 0 96px',
+                            margin: '0 0 0 65px',
                             padding: 0,
                             minHeight: 280,
                             background: colorBgContainer,

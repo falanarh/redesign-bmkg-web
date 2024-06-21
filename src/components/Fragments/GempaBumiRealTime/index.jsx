@@ -1,19 +1,16 @@
-import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { useState, useEffect } from "react";
 import { ConfigProvider, Table } from "antd";
 import "./index.css";
 import { FaSearch } from "react-icons/fa";
-import { position } from "@chakra-ui/react";
 import ContentSection from "../../Layouts/ContentSection";
-import { gempaBumiTerkini } from "./data";
+import { gempaBumiRealTime} from "./data";
 
-const GempaBumiTerkini = () => {
+const GempaBumiRealTime = () => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(gempaBumiTerkini);
-  const [timeValue, setTimeValue] = useState("");
-  const selectedTime = Array.from(timeValue).join("");
+  const [filteredData, setFilteredData] = useState(gempaBumiRealTime);
 
   const handleChange = (pagination, filters, sorter) => {
     console.log("Various parameters", pagination, filters, sorter);
@@ -22,7 +19,7 @@ const GempaBumiTerkini = () => {
   };
 
   useEffect(() => {
-    const filtered = gempaBumiTerkini.filter((item) =>
+    const filtered = gempaBumiRealTime.filter((item) =>
       Object.keys(item).some((key) =>
         String(item[key]).toLowerCase().includes(searchTerm.toLowerCase())
       )
@@ -45,7 +42,7 @@ const GempaBumiTerkini = () => {
       title: "Tanggal",
       dataIndex: "tgl",
       key: "tgl",
-      filters: [...new Set(gempaBumiTerkini.map(item => item.tgl))].map(bandara => ({ text: bandara, value: bandara })),
+      filters: [...new Set(gempaBumiRealTime.map(item => item.tgl))].map(bandara => ({ text: bandara, value: bandara })),
       filteredValue: filteredInfo.tgl || null,
       onFilter: (value, record) => record.tgl.includes(value),
       sorter: (a, b) => a.tgl.length - b.tgl.length,
@@ -56,7 +53,7 @@ const GempaBumiTerkini = () => {
       width: 10,
     },
     {
-      title: "Waktu (WIB)",
+      title: "Waktu (UTC)",
       dataIndex: "jam",
       key: "jam",
       sorter: (a, b) => a.jam.length - b.jam.length,
@@ -85,6 +82,9 @@ const GempaBumiTerkini = () => {
       title: "Bujur",
       dataIndex: "bujur",
       key: "bujur",
+      filters: [...new Set(gempaBumiRealTime.map(item => item.bujur))].map(arah => ({ text: arah, value: arah })),
+      filteredValue: filteredInfo.bujur || null,
+      onFilter: (value, record) => record.bujur.includes(value),
       sorter: (a, b) => a.bujur.length - b.bujur.length,
       sortOrder: sortedInfo.columnKey === "bujur" ? sortedInfo.order : null,
       ellipsis: false,
@@ -122,8 +122,8 @@ const GempaBumiTerkini = () => {
   ];
 
   return (
-    <ContentSection title="Gempa Bumi Terkini" description={<p>
-Gempa bumi terkini merupakan informasi gempabumi yang <span className="font-bold"> didiseminasikan dalam waktu kurang dari 5 menit</span> setelah kejadian gempa. Informasi ini merupakan informasi gempabumi secara cepat dan tidak ada pemutakhiran parameter gempabumi. Parameter gempabumi yang final bisa jadi berbeda.
+    <ContentSection title="Gempa Bumi Real Time" description={<p>
+Gempa bumi realtime merupakan informasi gempabumi yang <span className="font-bold">didiseminasikan secara otomatis dan realtime.</span> Terdapat pemutakhiran parameter gempa setelah dilakukan analisis oleh ahli geofisika hingga semua data waveform seismik yang terekam dari stasiun remote tiba di BMKG.
     </p>}
       >
       <div className="flex flex-col">
@@ -160,11 +160,6 @@ Gempa bumi terkini merupakan informasi gempabumi yang <span className="font-bold
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        {/* <Divider className="my-4" />
-      <h1 className="text-[18px] italic font-bold text-active text-center">
-        Tabel Prakiraan Cuaca Bandara atau Stasiun
-      </h1>
-      <Divider className="my-4" /> */}
         <ConfigProvider
           theme={{
             components: {
@@ -208,4 +203,4 @@ Gempa bumi terkini merupakan informasi gempabumi yang <span className="font-bold
   );
 };
 
-export default GempaBumiTerkini;
+export default GempaBumiRealTime;
