@@ -3,25 +3,22 @@ import ContentSection from "../../Layouts/ContentSection";
 import React from "react";
 import { Divider } from "antd";
 import { FaCalendarDays, FaPen } from "react-icons/fa6";
-import { anomaliBulanan, bulan, tahun } from "./data";
+import { anomaliTahunan, tahun } from "./data";
 
 
-const AnomaliSuhuUdaraBulanan = () => {
-    const [bulanValue, setJenisValue] = React.useState(new Set());
+const AnomaliSuhuUdaraTahunan = () => {
     const [tahunValue, setTahunValue] = React.useState(new Set());
 
     // Konversi Set menjadi string
-    const selectedBulan = Array.from(bulanValue).join("");
     const selectedTahun = Array.from(tahunValue).join("");
-    const selectedKey = `${selectedBulan}-${selectedTahun}`;
+    const selectedKey = `${selectedTahun}`;
 
     // Debugging logs
-    console.log("Bulan Value:", selectedBulan);
     console.log("Tahun Value:", selectedTahun);
     console.log("Selected Key:", selectedKey);
 
 
-    const selectedData = anomaliBulanan.find(
+    const selectedData = anomaliTahunan.find(
         (data) => data.key === selectedKey
     );
 
@@ -31,21 +28,6 @@ const AnomaliSuhuUdaraBulanan = () => {
     return (
         <ContentSection>
             <div className="flex -mt-5">
-                <Select
-                    items={bulan}
-                    label="Bulan"
-                    placeholder="Pilih Bulan"
-                    showScrollIndicators={true}
-                    selectedKeys={bulanValue}
-                    onSelectionChange={setJenisValue}
-                    className="max-w-xs font-pt-sans mr-5"
-                >
-                    {(bulan) => (
-                        <SelectItem key={bulan.key} value={bulan.key}>
-                            {bulan.label}
-                        </SelectItem>
-                    )}
-                </Select>
                 <Select
                     items={tahun}
                     label="Tahun"
@@ -62,7 +44,7 @@ const AnomaliSuhuUdaraBulanan = () => {
                     )}
                 </Select>
             </div>
-            {selectedBulan && selectedTahun ? (
+            {selectedTahun ? (
                 selectedData ? (
                     <div className="flex flex-col font-pt-sans">
                         <Divider className="mt-3" />
@@ -92,10 +74,13 @@ const AnomaliSuhuUdaraBulanan = () => {
                                     ) : (
                                         <img className="mt-2" src={content.link} alt={`Image ${index}`} />
                                     )}
-
-                                    {content.description.map((desc, idx) => (
-                                        <p key={idx} className="text-[14px] my-4">{desc}</p>
-                                    ))}
+                                    {Array.isArray(content.description) ? (
+                                        content.description.map((desc, idx) => (
+                                            <p key={idx} className="text-[14px] my-2">{desc}</p>
+                                        ))
+                                    ) : (
+                                        <p className="text-[14px] my-2">{content.description}</p>
+                                    )}
                                 </div>
                             ))}
                         </div>
@@ -115,4 +100,4 @@ const AnomaliSuhuUdaraBulanan = () => {
     );
 };
 
-export default AnomaliSuhuUdaraBulanan;
+export default AnomaliSuhuUdaraTahunan;

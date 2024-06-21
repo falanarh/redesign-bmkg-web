@@ -16,6 +16,7 @@ import PrakiraanIklim from '../components/Fragments/IklimPrakiraanIklim';
 import AnalisisLajuPerubahan from '../components/Fragments/IklimAnalisisLajuPerubahan';
 import FaktaPerubahanIklim from '../components/Fragments/IklimFaktaPerubahanIklim';
 import ProyeksiPerubahanIklim from '../components/Fragments/IklimProyeksiPerubahanIklim';
+import AnomaliSuhuUdara from '../components/Fragments/IklimAnomaliSuhuUdara';
 
 const { Header, Sider, Content } = Layout;
 
@@ -80,7 +81,7 @@ const sidebarItems = [
             {
                 key: '41',
                 label: 'Anomali Suhu Udara',
-                // content: <GempaBumiTerkini />,
+                content: <AnomaliSuhuUdara />,
             },
             {
                 key: '42',

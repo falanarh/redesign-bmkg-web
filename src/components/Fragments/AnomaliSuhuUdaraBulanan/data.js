@@ -13,8 +13,8 @@ export const bulan = [
     { key: "desember", label: "Desember" },
 ];
 
-// export const tahun = [
-//     { key: "24", label: "2024" },
+export const tahun = [
+    { key: "24", label: "2024" },
     // { key: "2", label: "Februari" },
     // { key: "3", label: "Maret" },
     // { key: "4", label: "April" },
@@ -26,37 +26,52 @@ export const bulan = [
     // { key: "10", label: "Oktober" },
     // { key: "11", label: "November" },
     // { key: "12", label: "Desember" },
-// ];
+];
 
-export const anomalibulanan = [
+export const anomaliBulanan = [
     {
-        key: 'kemarau-24',
-        title: 'Prediksi Musim Kemarau Tahun 2024 di Indonesia',
-        penulis: 'Kukuh Prasetyaningtyas',
-        tgl: '06 Jun 2024',
-        descriptions: [
-            'BMKG merilis prediksi musim kemarau 2024 pada awal Maret 2024, menggunakan hasil pemodelan iklim versi Januari 2024 (selanjutnya disebut versi Januari). Dalam mekanisme update prediksi musim kemarau 2024, faktor yang dipertimbangkan tidak hanya hasil pemodelan iklim versi bulan April, tetapi juga hasil analisis perkembangan musim yang dipantau secara berkala setiap dasarian. Berdasarkan pantauan perkembangan musim, terdapat ZOM atau wilayah yang seharusnya sudah memasuki musim kemarau berdasarkan informasi prediksi versi Januari, namun wilayah tersebut masih mengalami musim hujan. Selain itu, ada wilayah yang diprediksi masih mengalami musim hujan, tetapi hasil prediksi versi April menunjukkan perubahan yang signifikan. Oleh karena itu, informasi prediksi musim pada wilayah tersebut juga perlu di-update untuk meningkatkan ketepatan prediksi musim.',
-            'Berdasarkan syarat dan ketentuan yang sudah ditetapkan dan hasil konsensus dengan forecaster lokal, terdapat 111 ZOM (16%) yang dilakukan update. Sementara itu, sebanyak 475 ZOM (68%) tidak dilakukan update dikarenakan tidak terjadi perubahan signifikan antara prediksi versi Januari dengan prediksi versi April.',
-        ],
-    content: [
-        {
-            link: 'https://cdn.bmkg.go.id/Web/PMK_Apr24.png',
-            linkPDF: 'https://cdn.bmkg.go.id/web/Update_PMK2024.pdf',
-        },
-    ]
-},
-// {
-//     key: 'dasa-1-juli-24',
-//         title: 'Prakiraan Daerah Potensi Banjir Dasarian I Juli 2024',
-//             penulis: ' Kukuh Prasetyaningtyas',
-//                 tgl: '13 Jun 2024',
-//                     content: [
-//                         {
-//                             link: 'https://prosesweb.bmkg.go.id/wp-content/uploads/Potensi-Banjir-Das-1-Juli-2024.jpg',
-//                             linkPDF: 'https://cdn.bmkg.go.id/web/Banjir_Dasarian_Juli-1_OK-8.pdf',
-
-//                         },
-
-//                     ]
-// },
+        key: 'mei-24',
+        title: 'Anomali Suhu Udara Bulan Mei 2024',
+        penulis: ' Adityo Wicaksono',
+        tgl: '04 Jun 2024',
+        content: [
+            {
+                link: [
+                    'https://cdn.bmkg.go.id/Web/Thumbnail-Anomali-Bulanan-4.png',
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Grafik-Suhu-rata-rata-Hingga-Mei-2024-1.png',
+                ],
+                description:[
+                    'Berdasarkan analisis dari 115 stasiun pengamatan BMKG, suhu udara rata-rata bulan Mei 2024 adalah sebesar 27.77 °C. Normal suhu udara klimatologis untuk bulan Mei 2024 periode 1991-2020 di Indonesia adalah sebesar 26.99 °C (dalam kisaran normal 20.08 °C - 28.63 °C).',
+                ],
+            },
+            {
+                link: [
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Grafik-Anomali-Suhu-Mei-1981-2024.png',
+                ],
+                description:[
+                    'Berdasarkan nilai-nilai tersebut, anomali suhu udara rata-rata pada bulan Mei 2024 menunjukkan anomali positif dengan nilai sebesar 0.78 °C. Anomali suhu udara Indonesia pada bulan Mei 2024 ini merupakan nilai anomali tertinggi ke-1 sepanjang periode pengamatan sejak 1981.',
+                ],
+            },
+            {
+                link: [
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Anomali-Suhu-Mei-2024.jpg',
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Tabel-Anomali-Suhu-Mei-2024.png',
+                ],
+                description:[
+                    'Secara umum di wilayah Indonesia, anomali suhu udara rata-rata per-stasiun pada bulan Mei 2024 menunjukkan nilai anomali positif atau lebih tinggi dari rata-rata klimatologisnya. Anomali maksimum tercatat di Stasiun Meteorologi Gusti Syamsir Alam - Kab. Kotabaru (1.9 °C), sedangkan anomali minimum tercatat di Stasiun Meteorologi Karel Sadsuitubun - Maluku Tenggara (-0.3 °C).',
+                ],
+            },
+            {
+                link: [
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Suhu-rata-rata-Mei-2024.jpg',
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Tabel-Suhu-Rata-Rata-Mei-2024-1.png',
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Mdiff-Mei-2024-apr-2024.jpg',
+                    'https://prosesweb.bmkg.go.id/wp-content/uploads/Tabel-Selisih-Suhu-Rata-Rata-Mei-April-2024.png',
+                ],
+                description:[
+                    'Perbedaan (selisih) suhu udara rata-rata bulan Mei 2024 terhadap bulan sebelumnya (April 2024), dari 161 stasiun pengamatan BMKG di Indonesia secara umum menunjukkan kenaikan suhu (nilai positif. Peningkatan suhu terbesar tercatat di Stasiun Klimatologi Sulawesi Utara - Minahasa Utara (1 °C), sedangkan penurunan suhu terbesar tercatat di Stasiun Meteorologi Yogyakarta - Kab. Kulon Progo (-1 °C).',
+                ],
+            },
+        ]
+    },
 ]

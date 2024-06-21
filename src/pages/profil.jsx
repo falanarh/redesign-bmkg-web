@@ -19,6 +19,7 @@ import ProfilInfoDikecualikan from '../components/Fragments/ProfilInfoDikecualik
 import ProfilKegiatanInternasional from '../components/Fragments/ProfilKegiatanIntenasional';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Artikel from '../components/Fragments/Artikel';
+import ProfilStasiunMKG from '../components/Fragments/ProfilStasiunMKG';
 
 const { Header, Sider, Content } = Layout;
 
@@ -134,7 +135,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
         {
           key: 'stasion-mkg',
           label: <Link to="/profil/profil-bmkg/stasion-mkg">Stasiun MKG</Link>,
-          // content: <PrakiraanBerbasisDampak />,
+          content: <ProfilStasiunMKG />,
         },
       ],
     },

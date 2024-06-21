@@ -1,5 +1,7 @@
 import { Tabs } from "antd";
 import ContentSection from "../../Layouts/ContentSection";
+import AnomaliSuhuUdaraBulanan from "../AnomaliSuhuUdaraBulanan";
+import AnomaliSuhuUdaraTahunan from "../AnomaliSuhuUdaraTahunan";
 
 const onChange = (key) => {
     console.log(key);
@@ -8,19 +10,19 @@ const onChange = (key) => {
     {
       key: "1",
       label: "Anomali Suhu Udara Bulanan",
-    //   children: <PrakiraanHujan />,
+      children: <AnomaliSuhuUdaraBulanan />,
     },
     {
       key: "2",
       label: "Anomali Suhu Udara Tahunan",
-    //   children: <PrakiraanMusim />,
+      children: <AnomaliSuhuUdaraTahunan />,
     },
   ];
   
-  const PrakiraanIklim = () => {
+  const AnomaliSuhuUdara = () => {
     return (
       <ContentSection
-        title="Prakiraan Iklim"
+        title="Anomali Suhu Udara"
         // description={
         //   <p className="text-[14px] font-pt-sans">
         //     Prakiraan berbasis dampak atau Impact-Based Forecast (IBF) merupakan
@@ -37,5 +39,5 @@ const onChange = (key) => {
     );
   };
   
-  export default PrakiraanIklim;
+  export default AnomaliSuhuUdara;
   

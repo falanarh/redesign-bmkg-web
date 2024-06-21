@@ -263,22 +263,6 @@ const GempaBumiDirasakan = () => {
                                             </div>
 
                                         </div>
-
-
-                                        {/* <p>Tanggal: {selectedData.tgl}</p>
-                                        <p>Jam: {selectedData.jam}</p>
-                                        <p>Lintang: {selectedData.lintang}</p>
-                                        <p>Bujur: {selectedData.bujur}</p>
-                                        <p>Magnitudo: {selectedData.magnitudo}</p>
-                                        <p>Kedalaman: {selectedData.kedalaman}</p>
-                                        <p>Dirasakan: {selectedData.dirasakan.value}</p>
-                                        <div>
-                                            {selectedData.dirasakan.bandara.map((bandaraItem, index) => (
-                                                <Tag color="#008BF9" key={index} className="m-[2px]">
-                                                    {bandaraItem}
-                                                </Tag>
-                                            ))}
-                                        </div> */}
                                     </ModalBody>
                                 </>
                             )}

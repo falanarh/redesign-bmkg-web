@@ -12,6 +12,7 @@ import GBSkalaIntesitas from '../components/Fragments/GempaBumiSkalaIntesitas';
 import GempaBumiTerkini from '../components/Fragments/GempaBumiTerkini';
 import GempaBumiRealTime from '../components/Fragments/GempaBumiRealTime';
 import GempaBumiDirasakan from '../components/Fragments/GempaBumiDirasakan';
+import GempaBumiTsunami from '../components/Fragments/GempaBumiTsunami';
 
 const { Header, Sider, Content } = Layout;
 
@@ -57,7 +58,7 @@ const sidebarItems = [
     key: '2',
     icon: <FaEarthAmericas className='size-[22px]' />,
     label: 'Tsunami',
-    // content: <PrakiraanBerbasisDampak />
+    content: <GempaBumiTsunami />
   },
 ];
 
