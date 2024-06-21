@@ -10,7 +10,7 @@ import GempaBumi from "./pages/gempabumi";
 import Profil from "./pages/profil";
 import Artikel from "./components/Fragments/Artikel";
 import { NextUIProvider } from "@nextui-org/react";
-import Iklim from "./pages/iklim";
+import KualitasUdara from "./pages/kualitasudara";
 
 export default function App() {
   const navigate = useNavigate();
@@ -43,6 +43,15 @@ export default function App() {
             <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
             {/* <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional" element={<Artikel />} /> */}
             <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional/artikel/:id/*" element={<Profil />} />
+            <Route path="/kualitas-udara" element={<Navigate to="/kualitas-udara/pemantauan-kualitas-udara/partikulat-pm" replace />} />
+            <Route path="/kualitas-udara/pemantauan-kualitas-udara/partikulat-pm" element={<KualitasUdara endpoint="partikulat-pm" />} />
+            <Route path="/kualitas-udara/pemantauan-kualitas-udara/gas-rumah-kaca" element={<KualitasUdara endpoint="gas-rumah-kaca" />} />
+            <Route path="/kualitas-udara/analisis-kualitas-udara/ozon-permukaan" element={<KualitasUdara endpoint="ozon-permukaan" />} />
+            <Route path="/kualitas-udara/analisis-kualitas-udara/sulfur-dioksida" element={<KualitasUdara endpoint="sulfur-dioksida" />} />
+            <Route path="/kualitas-udara/analisis-kualitas-udara/nitrogen-dioksida" element={<KualitasUdara endpoint="nitrogen-dioksida" />} />
+            <Route path="/kualitas-udara/analisis-kualitas-udara/partikulat" element={<KualitasUdara endpoint="partikulat" />} />
+            <Route path="/kualitas-udara/analisis-kualitas-udara/kimia-air-hujan" element={<KualitasUdara endpoint="kimia-air-hujan" />} />
+            <Route path="/kualitas-udara/prakiraan-kualitas-udara" element={<KualitasUdara endpoint="prakiraan-kualitas-udara" />} />
           </Routes>
         </div>
         <SideFooter />
