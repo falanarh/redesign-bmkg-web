@@ -135,7 +135,7 @@ export default function KualitasUdara({ endpoint = 'partikulat-pm'}) {
   return (
     <div className='flex justify-center w-full mt-[130px]'>
       <Layout className='max-w-[1280px] px-6 bg-white'>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed} width={280}>
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
@@ -144,7 +144,7 @@ export default function KualitasUdara({ endpoint = 'partikulat-pm'}) {
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
-            className='w-[140%] h-full pt-2'
+            className='h-full pt-2'
           />
         </Sider>
         <Layout className='bg-white'>
@@ -153,7 +153,7 @@ export default function KualitasUdara({ endpoint = 'partikulat-pm'}) {
               padding: 0,
               background: colorBgContainer,
             }}
-            className='relative ml-[80px]'
+            className='relative'
           >
             <Button
               type="text"
@@ -172,7 +172,7 @@ export default function KualitasUdara({ endpoint = 'partikulat-pm'}) {
           </Header>
           <Content
             style={{
-              margin: '0 0 0 145px',
+              margin: '0 0 0 65px',
               padding: 0,
               minHeight: 280,
               background: colorBgContainer,
