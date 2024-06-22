@@ -2,6 +2,7 @@ import { Tabs } from "antd";
 import PrakiraanCuacaBandara from "../PrakiraanCuacaBandara";
 import ContentSection from "../../Layouts/ContentSection";
 import { Link } from "@nextui-org/react";
+import PrakiraanCuacaBandaraAktual from "../PrakiraanCuacaBandaraAktual";
 
 const onChange = (key) => {
   console.log(key);
@@ -15,7 +16,7 @@ const items = [
   {
     key: "2",
     label: "Laporan Cuaca Aktual Bandara",
-    children: "",
+    children: <PrakiraanCuacaBandaraAktual />,
   },
 ];
 
@@ -31,7 +32,7 @@ const PrakiraanCuacaPenerbangan = () => {
           <Link
             href="https://web-aviation.bmkg.go.id/"
             target="_blank"
-            className="text-active font-semibold"
+            className="font-semibold text-active"
           >
             website
           </Link>{" "}

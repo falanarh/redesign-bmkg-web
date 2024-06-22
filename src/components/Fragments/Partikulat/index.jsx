@@ -4,7 +4,7 @@ import Chart from "react-apexcharts";
 
 const options = {
   title: {
-    text: "Monitoring Sulfur Dioksida Bulan Mei 2024",
+    text: "Monitoring Suspended Particular Matter Bulan Mei 2024",
     align: "center",
     margin: 10,
     offsetX: 0,
@@ -37,15 +37,15 @@ const options = {
   plotOptions: {
     bar: {
       horizontal: true,
-      colors: {
-        ranges: [
-          {
-            from: 0.01,
-            to: 1,
-            color: "#f25d5d",
-          },
-        ],
-      },
+      // colors: {
+      //   ranges: [
+      //     {
+      //       from: 0.01,
+      //       to: 1,
+      //       color: "#f25d5d",
+      //     },
+      //   ],
+      // },
       dataLabels: {
         position: "top",
       },
@@ -58,25 +58,29 @@ const options = {
       "BANDENGAN",
       "BIVAK",
       "GROGOL",
+      "KEDIRI",
       "KEMAYORAN",
       "KEMENTAN",
       "KOTOTABANG",
       "MONAS",
+      "NEGARA",
+      "NGURAHRAI",
+      "PONDOK BETUNG",
       "TMII",
     ],
     min: 0,
-    max: 0.15,
-    tickAmount: 4, // Untuk menampilkan 5 tick (0, 0.05, 0.1, 0.15)
+    max: 300,
+    tickAmount: 3, // Untuk menampilkan 3 tick
     labels: {
       formatter: function (value) {
-        return value.toFixed(2); // Format nilai menjadi 2 desimal
+        return value.toFixed(0); // Format nilai menjadi 2 desimal
       },
     },
   },
   annotations: {
     xaxis: [
       {
-        x: 0.14,
+        x: 230,
         borderColor: "#ff0000",
         label: {
           borderColor: "#ffa200",
@@ -92,7 +96,7 @@ const options = {
   dataLabels: {
     enabled: true,
     formatter: function (val) {
-      return val.toFixed(3); // Tampilkan nilai dengan 3 angka desimal
+      return val.toFixed(2); // Tampilkan nilai dengan 3 angka desimal
     },
     offsetX: 40, // Geser label ke kanan
     style: {
@@ -110,37 +114,36 @@ const options = {
 
 const series = [
   {
-    name: "Konsentrasi SO2",
-    data: [0.005, 0.007, 0.005, 0.006, 0.009, 0.003, 0.001, 0.142, 0.004],
+    name: "Konsentrasi (SPM)",
+    data: [
+      172.66, 128.46, 92, 114.48, 128.31, 146.64, 121.81, 27.38, 114.42, 93.83,
+      52.28, 177.52, 135.49,
+    ],
   },
 ];
 
-const SulfurDioksida = () => {
+const Partikulat = () => {
   return (
     <ContentSection
-      title={
-        <p className="mb-3 text-2xl font-bold font-pt-sans-caption text-active">
-          Monitoring Sulfur Dioksida (SO<sub>2</sub>) (Mei 2024)
-        </p>
-      }
+      title="Monitoring Suspended Particulated Matter (Mei 2024)"
       description={
         <div>
           <p className="mb-2">
-            Pemantauan Sulfur Dioksida (SO<sub>2</sub>) di wilayah DKI-Jakarta
-            dilakukan di 9 (sembilan) lokasi yaitu: Ancol, Bandengan (Delta),
-            Bivak, Glodok, Grogol, Kemayoran, Kementan, TMII, dan Monas. Di
-            wilayah Sumatera Barat dan Kalimantan dilakukan di masing-masing 1
-            (satu) lokasi yaitu : Kototabang dan Siantan.
+            Pemantauan Suspended Particulated Matter (SPM) di Indonesia
+            dilakukan di 13 stasiun.
           </p>
           <p className="mb-2">
-            Pengukuran kadar SO<sub>2</sub> dilakukan dengan metode passive gas
-            menggunakan alat passive sampler. Analisis sampel dilakukan di
-            laboratorium kualitas udara BMKG, menggunakan alat ion
-            chromatography.
+            Pemantauan SPM dilakukan dengan metode sampling menggunakan, 
+            <span className="italic">High Volume Sampler (HVS)</span>, sedangkan
+            untuk analisis laboratorium menggunakan 
+            <span className="italic">Neraca Analitik (Analytical Balance)</span>
+            .
           </p>
           <p>
-            Hasil pengukuran kadar SO<sub>2</sub> pada bulan ini dapat dilihat
-            pada Grafik di bawah ini.
+            Hasil analisa laboratorium pada bulan Mei 2024, menunjukkan bahwa
+            kadar partikulat di stasiun-stasiun berikut berada di bawah nilai
+            baku mutu (230 ug/m<sup>3</sup>) seperti terlihat pada grafik di
+            bawah ini:
           </p>
         </div>
       }
@@ -153,19 +156,12 @@ const SulfurDioksida = () => {
         height="500"
       />
       <p>
-        Pada bulan ini,{" "}
-        <span className="font-bold text-red-700">
-          {" "}
-          kadar SO2 tertinggi di MONAS (0.142 ppm)
-        </span>{" "}
-        dan{" "}
-        <span className="font-bold">
-          telah melewati Nilai Baku Mutu (0.14 ppm){" "}
-        </span>{" "}
-        sedangkan kadar terendah di KOTOTABANG (0.001 ppm).
+        Pada bulan ini, kadar SPM tertinggi di PONDOK BETUNG (177.52 ug/m
+        <sup>3</sup>) dan kadar terendah di KOTOTABANG (27.38 ug/m<sup>3</sup>),
+        namun masih berada di bawah Nilai Baku Mutu (230 ug/m<sup>3</sup>).
       </p>
     </ContentSection>
   );
 };
 
-export default SulfurDioksida;
+export default Partikulat;

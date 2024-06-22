@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
 import { Card, CardBody, CardFooter, Stack, Text } from "@chakra-ui/react";
@@ -58,7 +59,7 @@ const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) 
                 <div className="flex items-center mr-14">
                   <p
                     style={{ fontSize: "12px" }}
-                    className="text-xm mr-1 text-fouthtiary cursor-pointer"
+                    className="mr-1 cursor-pointer text-xm text-fouthtiary"
                   >
                     Selengkapnya
                   </p>
@@ -111,7 +112,7 @@ export default function TabAndCard() {
       variant="bordered"
       selectedKey={selected}
       onSelectionChange={setSelected}
-      className="w-full justify-center"
+      className="justify-center w-full"
     >
       {tabs.map((tab) => (
         <Tab

@@ -4,12 +4,16 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { FaCloudSunRain, FaEarthAmericas } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
 import { Link } from 'react-router-dom';
-import { MdOutlineTimeline, MdOutlineTroubleshoot, MdOutlineWaves } from 'react-icons/md';
+import { MdOutlineTimeline, MdOutlineTroubleshoot } from 'react-icons/md';
 import SulfurDioksida from '../components/Fragments/SulfurDioksida';
+import NitrogenDioksida from '../components/Fragments/NitogenDioksida';
+import Partikulat from '../components/Fragments/Partikulat';
+import KimiaAirHujan from '../components/Fragments/KimiaAirHujan';
+import GasRumahKaca from '../components/Fragments/GasRumahKaca';
+import PartikulatPm from '../components/Fragments/PartikulatPm';
 
 const { Header, Sider, Content } = Layout;
 
@@ -22,12 +26,12 @@ const sidebarItems = [
       {
         key: 'partikulat-pm',
         label: <Link to="/kualitas-udara/pemantauan-kualitas-udara/partikulat-pm">Partikulat (PM2.5)</Link>,
-        content: 'partikulat-pm',
+        content: <PartikulatPm />,
       },
       {
         key: 'gas-rumah-kaca',
         label: <Link to="/kualitas-udara/pemantauan-kualitas-udara/gas-rumah-kaca">Gas Rumah Kaca</Link>,
-        content: 'gas-rumah-kaca',
+        content: <GasRumahKaca />,
       },
     ],
   },
@@ -36,11 +40,11 @@ const sidebarItems = [
     icon: <MdOutlineTimeline className='size-[24px]'/>,
     label: 'Analisis Kualitas Udara',
     children: [
-      {
-        key: 'ozon-permukaan',
-        label: <Link to="/kualitas-udara/analisis-kualitas-udara/ozon-permukaan">Ozon Permukaan</Link>,
-        content: 'ozon-permukaan',
-      },
+      // {
+      //   key: 'ozon-permukaan',
+      //   label: <Link to="/kualitas-udara/analisis-kualitas-udara/ozon-permukaan">Ozon Permukaan</Link>,
+      //   content: 'ozon-permukaan',
+      // },
       {
         key: 'sulfur-dioksida',
         label: <Link to="/kualitas-udara/analisis-kualitas-udara/sulfur-dioksida">Sulfur Dioksida</Link>,
@@ -49,38 +53,38 @@ const sidebarItems = [
       {
         key: 'nitrogen-dioksida',
         label: <Link to="/kualitas-udara/analisis-kualitas-udara/nitrogen-dioksida">Nitrogen Dioksida</Link>,
-        content: 'nitrogen-dioksida',
+        content: <NitrogenDioksida />,
       },
       {
         key: 'partikulat',
-        label: <Link to="/kualitas-udara/analisis-kualitas-udara/partikulat">Partikulat</Link>,
-        content: 'partikulat',
+        label: <Link to="/kualitas-udara/analisis-kualitas-udara/partikulat">Partikulat (SPM)</Link>,
+        content: <Partikulat />,
       },
       {
         key: 'kimia-air-hujan',
         label: <Link to="/kualitas-udara/analisis-kualitas-udara/kimia-air-hujan">Kimia Air Hujan</Link>,
-        content: 'kimia-air-hujan',
+        content: <KimiaAirHujan />,
       },
     ],
   },
-  {
-    key: 'prakiraan-kualitas-udara',
-    icon: <MdOutlineWaves className='size-[22px]' />,
-    label: <Link to="/kualitas-udara/prakiraan-kualitas-udara">Prakiraan Kualitas Udara</Link>,
-    content: 'prakiraan-kualitas-udara',
-    // children: [
-    //   {
-    //     key: '21',
-    //     label: 'Citra Satelit',
-    //     content: <CitraSatelit />,
-    //   },
-    //   {
-    //     key: '22',
-    //     label: 'Citra Radar',
-    //     content: <CitraRadar />,
-    //   },
-    // ],
-  },
+  // {
+  //   key: 'prakiraan-kualitas-udara',
+  //   icon: <MdOutlineWaves className='size-[22px]' />,
+  //   label: <Link to="/kualitas-udara/prakiraan-kualitas-udara">Prakiraan Kualitas Udara</Link>,
+  //   content: 'prakiraan-kualitas-udara',
+  //   // children: [
+  //   //   {
+  //   //     key: '21',
+  //   //     label: 'Citra Satelit',
+  //   //     content: <CitraSatelit />,
+  //   //   },
+  //   //   {
+  //   //     key: '22',
+  //   //     label: 'Citra Radar',
+  //   //     content: <CitraRadar />,
+  //   //   },
+  //   // ],
+  // },
 ];
 
 export default function KualitasUdara({ endpoint = 'partikulat-pm'}) {
