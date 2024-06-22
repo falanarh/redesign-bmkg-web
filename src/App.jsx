@@ -6,6 +6,7 @@ import NavbarSection from "./components/Layouts/NavbarSection";
 import SideFooter from "./components/Layouts/SideFooter";
 import Beranda from "./pages/beranda";
 import Cuaca from "./pages/cuaca";
+import Iklim from "./pages/iklim";
 import GempaBumi from "./pages/gempabumi";
 import Profil from "./pages/profil";
 import Artikel from "./components/Fragments/Artikel";
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/profil/publikasi-dan-informasi/daftar-informasi-publik" element={<Profil endpoint="daftar-informasi-publik"/>} />
             <Route path="/profil/publikasi-dan-informasi/informasi-dikecualikan" element={<Profil endpoint="informasi-dikecualikan"/>} />
             <Route path="/cuaca" element={<Cuaca />} />
+            <Route path="/iklim" element={<Iklim />} />
             <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
             {/* <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional" element={<Artikel />} /> */}
             <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional/artikel/:id/*" element={<Profil />} />

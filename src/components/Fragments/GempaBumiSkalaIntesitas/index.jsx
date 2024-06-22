@@ -1,14 +1,11 @@
 import EarthquakeTable from "../../Elements/EarthquakeTable";
+import ContentSection from "../../Layouts/ContentSection";
 
 const GBSkalaIntesitas = () => {
     return (
-        <div className="flex flex-col font-pt-sans">
-            <p className="text-2xl font-bold text-active ">Struktur Organisasi</p>
-            <p className="mt-4 text-[14px]">
-                Gambar berikut adalah struktur organisasi Badan Meteorologi, Klimatologi, dan Geofisika.
-            </p>
-            <EarthquakeTable />
-        </div>
+        <ContentSection title="Gempa Bumi Skala Intensitas" description="Skala Intensitas Gempabumi (SIG-BMKG) menyatakan dampak yang ditimbulkan akibat terjadinya gempabumi. SIG-BMKG digagas dan disusun dengan mengakomodir keterangan dampak gempabumi berdasarkan tipikal budaya atau bangunan di Indonesia. Skala ini disusun lebih sederhana dengan hanya memiliki lima tingkatan yaitu I-V. SIG-BMKG diharapkan bermanfaat untuk digunakan dalam penyampaian informasi terkait mitigasi gempabumi dan atau respon cepat pada kejadian gempabumi merusak. Skala ini dapat memberikan kemudahan kepada masyarakat untuk dapat memahami tingkatan dampak yang terjadi akibat gempabumi dengan lebih baik dan akurat.">
+
+        </ContentSection>
     );
 };
 

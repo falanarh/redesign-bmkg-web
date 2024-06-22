@@ -9,6 +9,10 @@ import "./index.css";
 import GBAntisipasi from '../components/Fragments/GempaBumiAntisipasi';
 import GBSkalaMMI from '../components/Fragments/GempaBumiSkalaMMI';
 import GBSkalaIntesitas from '../components/Fragments/GempaBumiSkalaIntesitas';
+import GempaBumiTerkini from '../components/Fragments/GempaBumiTerkini';
+import GempaBumiRealTime from '../components/Fragments/GempaBumiRealTime';
+import GempaBumiDirasakan from '../components/Fragments/GempaBumiDirasakan';
+import GempaBumiTsunami from '../components/Fragments/GempaBumiTsunami';
 
 const { Header, Sider, Content } = Layout;
 
@@ -21,17 +25,17 @@ const sidebarItems = [
       {
         key: '11',
         label: 'Gempa Bumi Terkini',
-        // content: <ProfilSejarah />,
+        content: <GempaBumiTerkini />,
       },
       {
         key: '12',
         label: 'Gempa Bumi Dirasakan',
-        // content: <ProfilLogo/>,
+        content: <GempaBumiDirasakan/>,
       },
       {
         key: '13',
         label: 'Gempa Bumi Real Time',
-        // content: <ProfilVisiMisi/>,
+        content: <GempaBumiRealTime/>,
       },
       {
         key: '14',
@@ -48,34 +52,17 @@ const sidebarItems = [
         label: 'Skala MMI',
         content: <GBSkalaMMI />,
       },
-      {
-        key: '17',
-        label: 'Data Gempa Bumi',
-        // content: <PrakiraanBerbasisDampak />,
-      },
     ],
   },
   {
     key: '2',
     icon: <FaEarthAmericas className='size-[22px]' />,
     label: 'Tsunami',
-    // content: <PrakiraanBerbasisDampak />
-  },
-  {
-    key: '3',
-    icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Seismologi Teknik',
-    // content: <PrakiraanBerbasisDampak />
-  },
-  {
-    key: '4',
-    icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Geofisika Potensial & Tanda Waktu',
-    // content: <PrakiraanBerbasisDampak />
+    content: <GempaBumiTsunami />
   },
 ];
 
-export default function GempaBumiAntisipasi() {
+export default function GempaBumi() {
 
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState('11');
@@ -105,7 +92,7 @@ export default function GempaBumiAntisipasi() {
   };
 
   const breadcrumbItems = [
-    { title: 'Profil' },
+    { title: 'Gempa Bumi & Tsunami' },
     ...generateBreadcrumb(selectedMenu, sidebarItems),
   ];
 
@@ -127,7 +114,7 @@ export default function GempaBumiAntisipasi() {
   return (
     <div className='flex justify-center w-full mt-[140px]'>
       <Layout className='max-w-[1280px] px-6 bg-white'>
-        <Sider trigger={null} collapsible collapsed={collapsed}>
+        <Sider trigger={null} collapsible collapsed={collapsed} width={288}>
           <div className="demo-logo-vertical" />
           <Menu
             theme="light"
@@ -136,7 +123,7 @@ export default function GempaBumiAntisipasi() {
             selectedKeys={[selectedMenu]}
             onClick={handleMenuClick}
             items={sidebarItems}
-            className='w-[120%] h-full pt-2'
+            className='h-full pt-2'
           />
         </Sider>
         <Layout className='bg-white'>
@@ -145,7 +132,7 @@ export default function GempaBumiAntisipasi() {
               padding: 0,
               background: colorBgContainer,
             }}
-            className='relative ml-8'
+            className='relative'
           >
             <Button
               type="text"
@@ -164,7 +151,7 @@ export default function GempaBumiAntisipasi() {
           </Header>
           <Content
             style={{
-              margin: '0 0 0 96px',
+              margin: '0 0 0 65px',
               padding: 0,
               minHeight: 280,
               background: colorBgContainer,
