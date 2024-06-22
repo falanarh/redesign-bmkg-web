@@ -5,7 +5,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import {  FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
+import {  FaBookOpenReader, FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
 import ProfilSejarah from '../components/Fragments/ProfilSejarah';
@@ -141,7 +141,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
     },
     {
       key: 'publikasi-dan-informasi',
-      icon: <FaEarthAmericas className='size-[22px]' />,
+      icon: <FaBookOpenReader className='size-[22px]' />,
       label: 'Publikasi dan Informasi',
       children: [
         {

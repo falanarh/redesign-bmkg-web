@@ -148,8 +148,8 @@ const GempaBumiDirasakan = () => {
     ];
 
     return (
-        <ContentSection title="Gempa Bumi Real Time" description={<p>
-            Gempa bumi Dirasakan merupakan informasi gempabumi yang <span className="font-bold">didiseminasikan secara otomatis dan realtime.</span> Terdapat pemutakhiran parameter gempa setelah dilakukan analisis oleh ahli geofisika hingga semua data waveform seismik yang terekam dari stasiun remote tiba di BMKG.
+        <ContentSection title="Gempa Bumi Dirasakan" description={<p>
+            Gempa bumi dirasakan merupakan informasi gempabumi yang didiseminasikan setelah BMKG menerima <span className="font-bold">laporan kerusakan atau dirasakan dari masyarakat.</span> Tidak ada pemutakhiran parameter gempabumi dan parameter gempabumi final bisa jadi berbeda dengan informasi dalam daftar ini. 
         </p>}
         >
             <div className="flex flex-col">

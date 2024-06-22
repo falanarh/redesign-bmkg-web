@@ -3,7 +3,7 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
+import { FaCloudMoonRain, FaCloudShowersHeavy, FaCloudSunRain, FaEarthAmericas, FaRegBuilding, FaWatchmanMonitoring, FaWind } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
 import IklimHariTanpaHujan from '../components/Fragments/IklimHariTanpaHujan';
@@ -17,13 +17,15 @@ import AnalisisLajuPerubahan from '../components/Fragments/IklimAnalisisLajuPeru
 import FaktaPerubahanIklim from '../components/Fragments/IklimFaktaPerubahanIklim';
 import ProyeksiPerubahanIklim from '../components/Fragments/IklimProyeksiPerubahanIklim';
 import AnomaliSuhuUdara from '../components/Fragments/IklimAnomaliSuhuUdara';
+import { LuCloudDrizzle, LuCloudSunRain } from 'react-icons/lu';
+import { WiNightAltCloudyGusts } from 'react-icons/wi';
 
 const { Header, Sider, Content } = Layout;
 
 const sidebarItems = [
     {
         key: '1',
-        icon: <FaRegBuilding className='size-[24px]' />,
+        icon: <FaWatchmanMonitoring className='size-[24px]' />,
         label: 'Monitoring Iklim',
         children: [
             {
@@ -40,7 +42,7 @@ const sidebarItems = [
     },
     {
         key: '2',
-        icon: <FaEarthAmericas className='size-[22px]' />,
+        icon: <FaCloudShowersHeavy className='size-[22px]' />,
         label: 'Analisis Iklim',
         // content: <PrakiraanBerbasisDampak />
         children: [
@@ -68,13 +70,13 @@ const sidebarItems = [
     },
     {
         key: '3',
-        icon: <FaEarthAmericas className='size-[22px]' />,
+        icon: <FaCloudMoonRain className='size-[22px]' />,
         label: 'Prakiraan Iklim',
         content: <PrakiraanIklim />
     },
     {
         key: '4',
-        icon: <FaEarthAmericas className='size-[22px]' />,
+        icon: <FaWind className='size-[22px]' />,
         label: 'Perubahan Iklim',
         // content: <PrakiraanBerbasisDampak />
         children: [
@@ -97,7 +99,7 @@ const sidebarItems = [
     },
     {
         key: '5',
-        icon: <FaEarthAmericas className='size-[22px]' />,
+        icon: <FaCloudSunRain className='size-[22px]' />,
         label: 'Proyeksi Perubahan Iklim',
         content: <ProyeksiPerubahanIklim />
     },
