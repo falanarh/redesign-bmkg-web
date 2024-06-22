@@ -103,21 +103,26 @@ const PrakiraanHujan = () => {
                         <div>
                             {selectedData.content.map((content, index) => (
                                 <div key={index} className="mb-5">
-                                    <p className="text-[20px] font-bold text-active mt-3">{content.subtitle}</p>
-                                    <img className="mt-2"
-                                        src={content.link}
-                                    />
-                                    <iframe
-                                        className='mt-10 w-full'
-                                        src={content.linkPDF}
-                                        height="500px"
-                                        style={{ border: 'none' }}
-                                        allowFullScreen
-                                        title="PDF Viewer"
-                                    />
+                                    {content.subtitle && (
+                                        <p className="text-[20px] font-bold text-active mt-3">{content.subtitle}</p>
+                                    )}
+                                    {content.link && (
+                                        <img className="mt-2" src={content.link} alt={content.subtitle || "Image"} />
+                                    )}
+                                    {content.linkPDF && (
+                                        <iframe
+                                            className="mt-10 w-full"
+                                            src={content.linkPDF}
+                                            height="500px"
+                                            style={{ border: 'none' }}
+                                            allowFullScreen
+                                            title="PDF Viewer"
+                                        />
+                                    )}
                                 </div>
                             ))}
                         </div>
+
 
                     </div>
                 ) : (

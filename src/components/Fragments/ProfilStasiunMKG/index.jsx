@@ -88,8 +88,8 @@ const ProfilStasiunMKG = () => {
     ];
 
     return (
-        <ContentSection title="Gempa Bumi Terkini" description={<p>
-            Gempa bumi terkini merupakan informasi gempabumi yang <span className="font-bold"> didiseminasikan dalam waktu kurang dari 5 menit</span> setelah kejadian gempa. Informasi ini merupakan informasi gempabumi secara cepat dan tidak ada pemutakhiran parameter gempabumi. Parameter gempabumi yang final bisa jadi berbeda.
+        <ContentSection title="Stasiun dan UPT Meteorologi, Klimatologi, dan Geofisika" description={<p>
+            Kumpulan informasi terkait stasiun dan UPT meteorologi, klimatologi, dan geofisika di tiap daerah.
         </p>}
         >
             <div className="flex flex-col">
