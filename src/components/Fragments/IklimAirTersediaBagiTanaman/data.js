@@ -34,13 +34,34 @@ export const bulan = [
         title :'Tingkat Ketersediaan Air Bagi Tanaman - Mei 2024',
         tgl:'04 Jun 2024',
         penulis:'Kukuh Prasetyaningtyas',
-        descriptions:[
-            'Tingkat Ketersediaan Air Tanah bagi Tanaman (ATi) menggunakan perhitungan neraca air dengan metode Thornthwaite and Mather.',
-            'ATi dihitung dengan persamaan sebagai berikut : ((KAT - TLP)/(KL - TLP)) x 100%.',
-            'Dengan kriteria:',
-            '1) Kurang : jika ketersediaan air tanah < 40%',
-            '2) Sedang : jika ketersediaan air tanah 40% - 60%',
-            '3) Cukup : jika ketersediaan air tanah > 60%',
-        ],
-        link: "https://cdn.bmkg.go.id/Web/2024.05_Indonesia_ATi_web.jpg",}
+        link: "https://cdn.bmkg.go.id/Web/2024.05_Indonesia_ATi_web.jpg",
+      },
+      {
+        key: 'april-24',
+        title :'Tingkat Ketersediaan Air Bagi Tanaman - April 2024',
+        tgl:'03 Mei 2024',
+        penulis:'Mohammad Ridwan',
+        link: "https://cdn.bmkg.go.id/Web/2024.04_Indonesia_ATi_web-1.jpg",
+      },
+      {
+        key: 'maret-24',
+        title :'Tingkat Ketersediaan Air Bagi Tanaman - Maret 2024',
+        tgl:'04 Apr 2024',
+        penulis:'Kukuh Prasetyaningtyas',
+        link: "https://cdn.bmkg.go.id/Web/2024.04_Indonesia_ATi_web.jpg",
+      },
+      {
+        key: 'februari-24',
+        title :'Tingkat Ketersediaan Air Bagi Tanaman - Februari 2024',
+        tgl:'05 Mar 2024',
+        penulis:'Kukuh Prasetyaningtyas',
+        link: "https://cdn.bmkg.go.id/Web/2024.02_Indonesia_ATi_web.jpg",
+      },
+      {
+        key: 'januari-24',
+        title :'Tingkat Ketersediaan Air Bagi Tanaman - Januari 2024',
+        tgl:'05 Feb 2024',
+        penulis:'Kukuh Prasetyaningtyas',
+        link: "https://cdn.bmkg.go.id/Web/2024.01_Indonesia_ATi_web.jpg",
+      },
   ]

@@ -15,7 +15,7 @@ const ProfilDaftarInfoPublik = () => {
       }
     >
     <iframe
-    className='w-full mt-4'
+    className='w-full'
     src={pdfUrl}
     height="500px"
     style={{ border: 'none'}}

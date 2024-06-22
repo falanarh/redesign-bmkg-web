@@ -79,10 +79,16 @@ const AirTersediaBagiTanaman = () => {
                         <img className="mt-3"
                             src={selectedData.link}
                         />
-                        {selectedData.descriptions.map((description, index) => (
-                            <p key={index} className="text-[14px] mt-3 ">{description}</p>
-                        ))}
-
+                        <div className="text-[14px] ">
+                            <p className="mt-3">Tingkat Ketersediaan Air Tanah bagi Tanaman (ATi) menggunakan perhitungan neraca air dengan metode Thornthwaite and Mather.</p>
+                            <p className="mt-2">ATi dihitung dengan persamaan sebagai berikut : ((KAT - TLP)/(KL - TLP)) x 100%.</p>
+                            <p className="mt-2">Dengan kriteria:</p>
+                            <ul className="list-disc list-inside ml-6">
+                                <li className="mt-1">Kurang : jika ketersediaan air tanah {'<'} 40%</li>
+                                <li className="mt-1">Sedang : jika ketersediaan air tanah 40% - 60%</li>
+                                <li className="mt-1">Cukup : jika ketersediaan air tanah {'>'} 60%</li>
+                            </ul>
+                        </div>
                     </div>
                 ) : (
                     <p className=" text-base font-pt-sans font-bold italic my-10">
