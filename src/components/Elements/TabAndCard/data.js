@@ -1,20 +1,3 @@
-/* eslint-disable no-unused-vars */
-import Berita from "../../../assets/images/berita.png";
-import Berita1 from "../../../assets/images/berita1.png";
-import Berita2 from "../../../assets/images/berita2.jpeg";
-import Berita3 from "../../../assets/images/berita3.jpeg";
-import Berita4 from "../../../assets/images/berita4.jpeg";
-import Pengumuman from "../../../assets/images/pengumuman.png";
-import Pengumuman1 from "../../../assets/images/pengumuman1.jpeg";
-import Pengumuman2 from "../../../assets/images/pengumuman2.jpeg";
-import Pengumuman3 from "../../../assets/images/pengumuman3.jpeg";
-import Pengumuman4 from "../../../assets/images/pengumuman4.jpeg";
-import Artikel from "../../../assets/images/artikel.png";
-import Artikel1 from "../../../assets/images/artikel1.jpeg";
-import Artikel2 from "../../../assets/images/artikel2.jpeg";
-import Artikel3 from "../../../assets/images/artikel3.jpeg";
-import Artikel4 from "../../../assets/images/artikel4.jpeg";
-
 export const informasi = [
   {
     id: 'b1',
