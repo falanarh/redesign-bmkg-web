@@ -20,6 +20,7 @@ import Artikel from "./components/Fragments/Artikel";
 import { NextUIProvider } from "@nextui-org/react";
 import KualitasUdara from "./pages/kualitasudara";
 import { FaArrowUp } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 export default function App() {
   const navigate = useNavigate();
