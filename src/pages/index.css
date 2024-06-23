@@ -49,3 +49,23 @@ nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
 :where(.css-dev-only-do-not-override-1h13xwb).ant-layout .ant-layout-sider {
     background-color: #FFFFFF !important;
 }
+
+.sider-collapsed {
+    /* height: 100vh !important; */
+    min-width: 0px !important;
+    flex: 0 0 0px !important;
+    max-width: 0px !important;
+    width: 0px !important;
+    /* Contoh lain jika diperlukan */
+  }
+
+  .sider {
+    /* min-width: 100% !important;
+    flex: 0 0 100px !important;
+    max-width: 100% !important;
+    width: 100% !important; */
+  }
+  
+  .ant-layout-sider-trigger {
+    width: 0px !important;
+  }

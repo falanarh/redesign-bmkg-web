@@ -11,11 +11,12 @@ const ProfilStrukturOrganisasi = () => {
         </p>
       }
     >
-      <div className="flex items-center justify-center mt-6 mb-16">
+      <div className="flex items-center justify-center sm:mb-16 sm:mt-6">
         <img
-          style={{ width: 1028, height: 709, marginLeft: 100 }}
+          // style={{ width: 1028, height: 709, marginLeft: 100 }}
           src="https://cdn.bmkg.go.id/Web/Struktur.jpg"
           alt="Struktur Organisasi"
+          className="w-full h-auto ml-8 sm:ml-16"
         />
       </div>
     </ContentSection>

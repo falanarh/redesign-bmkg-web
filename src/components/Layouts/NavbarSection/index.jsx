@@ -11,6 +11,7 @@ import {
   Link as NextUILink,
 } from "@nextui-org/react";
 import { Link, useLocation } from "react-router-dom";
+import { IoIosMenu, IoMdClose } from "react-icons/io";
 
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -58,10 +59,21 @@ const NavbarSection = () => {
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="lg:hidden"
+          icon={
+            isMenuOpen ? (
+              <>
+                <IoMdClose className="text-xl" />
+              </>
+            ) : (
+              <>
+                <IoIosMenu className="text-xl" />
+              </>
+            )
+          }
         />
         <NavbarBrand>
           <img
-            className="p-[6px] mr-2 w-8 h-10 xs:w-12 xs:h-14"
+            className="h-8 mr-3 w-7 xs:w-12 xs:h-14"
             src={BMKGLogo}
             alt="BMKG Logo"
           />
@@ -76,7 +88,7 @@ const NavbarSection = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden lg:flex gap-8" justify="center">
+      <NavbarContent className="hidden gap-8 lg:flex" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={index}
@@ -96,7 +108,7 @@ const NavbarSection = () => {
         ))}
       </NavbarContent>
 
-      <NavbarMenu className="mt-8">
+      <NavbarMenu className="z-[100]">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.label}-${index}`} className="my-3">
             <Link

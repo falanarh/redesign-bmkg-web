@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import EarlyWarning from "./components/Elements/EarlyWarning";
 import NavbarSection from "./components/Layouts/NavbarSection";
@@ -12,19 +13,45 @@ import Profil from "./pages/profil";
 import Artikel from "./components/Fragments/Artikel";
 import { NextUIProvider } from "@nextui-org/react";
 import KualitasUdara from "./pages/kualitasudara";
+import { FaArrowUp } from "react-icons/fa";
 
 export default function App() {
   const navigate = useNavigate();
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <NextUIProvider navigate={navigate}>
       <div className="relative">
         <div className={`fixed top-0 left-0 right-0 z-50 ${!isEarlyWarningVisible && "shadow-md"}`}>
-          <NavbarSection />
+          <NavbarSection/>
           {isEarlyWarningVisible && <EarlyWarning onClose={() => setIsEarlyWarningVisible(false)} />}
         </div>
-        <div className="mt-[80px]">
+        <motion.div
+          initial={{ y: isEarlyWarningVisible ? 80 : 0 }}
+          animate={{ y: isEarlyWarningVisible ? 0 : -80 }}
+          transition={{ type: "spring", stiffness: 60, duration: 0.5 }}
+          className="mt-[8vh]"
+        >
           <Routes>
             <Route path="/" element={<Beranda />} />
             <Route path="/profil" element={<Navigate to="/profil/profil-bmkg/sejarah" replace />} />
@@ -55,8 +82,19 @@ export default function App() {
             <Route path="/kualitas-udara/analisis-kualitas-udara/kimia-air-hujan" element={<KualitasUdara endpoint="kimia-air-hujan" />} />
             <Route path="/kualitas-udara/prakiraan-kualitas-udara" element={<KualitasUdara endpoint="prakiraan-kualitas-udara" />} />
           </Routes>
-        </div>
+        </motion.div>
         <SideFooter />
+        {showBackToTop && (
+          <motion.button
+            onClick={scrollToTop}
+            className="fixed p-3 text-white rounded-full shadow-lg bg-active bottom-5 right-5"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <FaArrowUp />
+          </motion.button>
+        )}
       </div>
     </NextUIProvider>
   );

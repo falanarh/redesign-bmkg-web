@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { delay, easeIn, motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Section = ({
   title,
@@ -12,15 +12,21 @@ const Section = ({
   subtitleOnceViewPort = false,
   childrenOnceViewPort = false,
 }) => {
-  const titleProps = titleAnimateOnView ? { whileInView: { y: 0, opacity: 1 } } : { animate: { y: 0, opacity: 1 } };
-  const subtitleProps = subtitleAnimateOnView ? { whileInView: { y: 0, opacity: 1 } } : { animate: { y: 0, opacity: 1 } };
-  const childrenProps = childrenAnimateOnView ? { whileInView: { y: 0, opacity: 1 } } : { animate: { y: 0, opacity: 1 } };
+  const titleProps = titleAnimateOnView
+    ? { whileInView: { y: 0, opacity: 1 } }
+    : { animate: { y: 0, opacity: 1 } };
+  const subtitleProps = subtitleAnimateOnView
+    ? { whileInView: { y: 0, opacity: 1 } }
+    : { animate: { y: 0, opacity: 1 } };
+  const childrenProps = childrenAnimateOnView
+    ? { whileInView: { y: 0, opacity: 1 } }
+    : { animate: { y: 0, opacity: 1 } };
   const titleOnceViewPortProps = titleOnceViewPort ? { once: true } : {};
   const subtitleOnceViewPortProps = subtitleOnceViewPort ? { once: true } : {};
   const childrenOnceViewPortProps = childrenOnceViewPort ? { once: true } : {};
 
   return (
-    <div className="w-full flex flex-col justify-center items-center my-8 overflow-hidden">
+    <div className="flex flex-col items-center justify-center w-full my-8 overflow-hidden">
       <div className="mb-10">
         <motion.h2
           initial={{ y: "100%", opacity: 0 }}
@@ -33,7 +39,8 @@ const Section = ({
             duration: 1,
           }}
           ease="easeIn"
-          className="text-2xl text-center text-active font-bold mb-2"
+          viewport={{ once: true }}
+          className="px-5 mb-2 text-xl font-bold text-center sm:text-2xl text-active"
         >
           {title}
         </motion.h2>
@@ -49,13 +56,14 @@ const Section = ({
               duration: 1,
             }}
             ease="easeIn"
-            className="text-[16px] text-center text-slate-700"
+            viewport={{ once: true }}
+            className="text-[13px] sm:text-[16px] lg:text-[18px] text-center text-slate-700 px-5"
           >
             {subtitle}
           </motion.h3>
         )}
       </div>
-      <div className="content max-w-[1280px] w-full pl-10 pr-6">
+      <div className="content max-w-[1280px] w-full px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ y: "100%", opacity: 0 }}
           {...childrenProps}
@@ -67,6 +75,7 @@ const Section = ({
             duration: 1,
           }}
           ease="easeIn"
+          viewport={{ once: true }}
         >
           {children}
         </motion.div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
 import { Card, CardBody, CardFooter, Stack, Text } from "@chakra-ui/react";
@@ -16,16 +17,40 @@ import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
 import { informasi, berita, siaran_pers } from "./data";
 
-const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) => {
+const TabContent = ({
+  data,
+  hoveredIndex,
+  handleCardHover,
+  handleCardUnhover,
+}) => {
   return (
     <Swiper
       modules={[Navigation, Autoplay, Pagination, A11y]}
       spaceBetween={15}
-      slidesPerView={4}
+      // slidesPerView={4}
       navigation={true}
       autoplay={{ delay: 2500, disableOnInteraction: false }}
       pagination={{ clickable: true }}
       className="p-8"
+      style={{
+        "--swiper-navigation-color": "#1C2B78",
+        "--swiper-pagination-color": "#1C2B78",
+        "--swiper-navigation-size": "35px",
+      }}
+      breakpoints={{
+          300: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+          // 768: {
+          //   slidesPerView: 4,
+          //   spaceBetween: 40,
+          // },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 15,
+          },
+        }}
     >
       {data.map((item, index) => (
         <SwiperSlide key={index}>
@@ -37,9 +62,15 @@ const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) 
             onMouseLeave={handleCardUnhover}
           >
             <CardBody>
-              <img src={item.image} alt="" className="w-[284px] h-[140px] rounded-xl" />
+              <img
+                src={item.image}
+                alt=""
+                className="w-[284px] h-[140px] rounded-xl"
+              />
               <Stack mt="6" spacing="3">
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   <p style={{ fontSize: "14px" }} className="font-bold">
                     {item.title}
                   </p>
@@ -57,7 +88,7 @@ const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) 
                 <div className="flex items-center mr-14">
                   <p
                     style={{ fontSize: "12px" }}
-                    className="text-xm mr-1 text-fouthtiary cursor-pointer"
+                    className="mr-1 cursor-pointer text-xm text-fouthtiary"
                   >
                     Selengkapnya
                   </p>
@@ -65,12 +96,16 @@ const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) 
                 </div>
                 <div className="flex items-center">
                   <img
-                    className={`w-[31px] h-[31px] mr-2 cursor-pointer ${hoveredIndex === index ? "" : "grayscale"}`}
+                    className={`w-[31px] h-[31px] mr-2 cursor-pointer ${
+                      hoveredIndex === index ? "" : "grayscale"
+                    }`}
                     src={WhatsApp}
                     alt=""
                   />
                   <img
-                    className={`w-[31px] h-[31px] cursor-pointer ${hoveredIndex === index ? "" : "grayscale"}`}
+                    className={`w-[31px] h-[31px] cursor-pointer ${
+                      hoveredIndex === index ? "" : "grayscale"
+                    }`}
                     src={Twitter}
                     alt=""
                   />
@@ -109,14 +144,17 @@ export default function TabAndCard() {
       variant="bordered"
       selectedKey={selected}
       onSelectionChange={setSelected}
-      className="w-full justify-center"
+      className="justify-center w-full"
     >
       {tabs.map((tab) => (
         <Tab
           className="flex"
           key={tab.key}
           title={
-            <div className="flex items-center justify-center space-x-2" style={{ width: "180px" }}>
+            <div
+              className="flex items-center justify-center space-x-2"
+              style={{ width: "180px" }}
+            >
               <img className="size-[28px]" src={tab.icon} alt={tab.title} />
               <span>{tab.title}</span>
             </div>

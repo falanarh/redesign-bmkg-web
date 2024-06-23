@@ -211,13 +211,14 @@ const Map = () => {
 
   return (
     <div className="">
-      <div className="flex relative">
+      <div className="relative flex flex-col justify-between gap-5 sm:flex-row">
         <motion.div
           initial={{ x: "-100%", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
           ease="easeIn"
-          className="h-[550px] w-[65%] rounded-l-2xl shadow-md z-0 relative"
+          viewport={{ once: true }}
+          className="h-[400px] xxl:h-[420px] w-full sm:w-[65%] shadow-md z-0 relative"
         >
         <Button
           isIconOnly
@@ -233,7 +234,7 @@ const Map = () => {
           <MapContainer
             center={mapCenter.center}
             zoom={mapCenter.zoom}
-            className="h-full w-full rounded-l-2xl"
+            className="w-full h-full rounded-l-2xl sm:rounded-r-none rounded-r-2xl"
             scrollWheelZoom={false}
           >
             <CenterMap center={mapCenter.center} zoom={mapCenter.zoom} />
@@ -260,7 +261,7 @@ const Map = () => {
                 <Popup
                   offset={[10, 0]}
                   closeOnClick={false}
-                  className="font-pt-sans-caption font-semibold"
+                  className="font-semibold font-pt-sans-caption"
                 >
                   {marker.name}
                 </Popup>
@@ -273,9 +274,10 @@ const Map = () => {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
           ease="easeIn"
-          className="h-[550px] w-[35%]"
+          viewport={{ once: true }}
+          className="sm:h-[400px] h-[420px] xxl:h-[420px] w-full sm:w-[32%]"
         >
-          <Card className="flex flex-col justify-center items-center w-full h-full ml-4 p-0 rounded-l-none rounded-r-2xl border-slate-300/60 shadow bg-slate-100 ring-offset-[-10px] ring-offset-y-[10px]">
+          <Card className="flex flex-col justify-center items-center w-full h-full p-0 sm:rounded-l-none rounded-l-2xl rounded-r-2xl border-slate-300/60 shadow bg-slate-100 ring-offset-[-10px] ring-offset-y-[10px]">
             {selectedMarker ? (
               <>
                 <motion.div
@@ -284,10 +286,10 @@ const Map = () => {
                   animate="visible"
                   variants={containerVariants}
                 >
-                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  <h1 className="text-[14px] underline underline-offset-2 font-bold px-1">
                     Prakiraan Cuaca
                   </h1>
-                  <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                  <div className="flex flex-wrap items-stretch justify-between px-1 h-34">
                     {[
                       {
                         icon: Cloud,
@@ -312,13 +314,13 @@ const Map = () => {
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className={`flex justify-between items-center m-1 p-1 ${
-                          index % 2 === 0 ? "w-[35%]" : "w-[52%]"
+                        className={`flex justify-between items-center m-1 ${
+                          index % 2 === 0 ? "w-[35%]" : "w-[48%]"
                         }`}
                         variants={itemVariants}
                       >
-                        <img src={item.icon} className="size-12"></img>
-                        <span className="flex flex-col justify-center items-start w-full ml-1">
+                        <img src={item.icon} className="size-8"></img>
+                        <span className="flex flex-col items-start justify-center w-full ml-1">
                           <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                             {item.title}
                           </h3>
@@ -331,21 +333,21 @@ const Map = () => {
                   </div>
                 </motion.div>
                 <motion.div
-                  className="flex flex-col my-2"
+                  className="flex flex-col my-4"
                   initial="hidden"
                   animate="visible"
                   variants={containerVariants}
                 >
-                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  <h1 className="text-[14px] underline underline-offset-2 font-bold px-1">
                     Kualitas Udara
                   </h1>
-                  <div className="flex flex-wrap justify-between items-stretch h-17 px-1">
+                  <div className="flex flex-wrap items-stretch justify-between px-1 h-17">
                     <motion.div
-                      className="flex justify-between items-center m-1 p-1 w-[50%]"
+                      className="flex justify-between items-center m-1 w-[50%]"
                       variants={itemVariants}
                     >
-                      <img src={CentralHeating} className="size-12"></img>
-                      <span className="flex flex-col justify-center items-start w-full ml-1">
+                      <img src={CentralHeating} className="size-8"></img>
+                      <span className="flex flex-col items-start justify-center w-full ml-1">
                         <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                           {selectedMarker.airQuality.status}
                         </h3>
@@ -362,10 +364,10 @@ const Map = () => {
                   animate="visible"
                   variants={containerVariants}
                 >
-                  <h1 className="text-[18px] underline underline-offset-2 font-bold px-1">
+                  <h1 className="text-[14px] underline underline-offset-2 font-bold px-1">
                     Gempa Bumi
                   </h1>
-                  <div className="flex flex-wrap justify-between items-stretch h-34 px-1">
+                  <div className="flex flex-wrap items-stretch justify-between px-1 h-34">
                     {[
                       {
                         icon: Pulse,
@@ -406,14 +408,14 @@ const Map = () => {
                     ].map((item, index) => (
                       <motion.div
                         key={index}
-                        className={`flex justify-between items-center m-1 p-1 ${
+                        className={`flex justify-between items-center m-1  ${
                           item.width ||
-                          (index % 2 === 0 ? "w-[35%]" : "w-[52%]")
+                          (index % 2 === 0 ? "w-[35%]" : "w-[48%]")
                         }`}
                         variants={itemVariants}
                       >
-                        <img src={item.icon} className="size-12"></img>
-                        <span className="flex flex-col justify-center items-start w-full ml-1">
+                        <img src={item.icon} className="size-8"></img>
+                        <span className="flex flex-col items-start justify-center w-full ml-1">
                           <h3 className="text-[14px] font-pt-sans-caption leading-tight font-bold">
                             {item.title}
                           </h3>
@@ -429,7 +431,7 @@ const Map = () => {
             ) : (
               <div className="flex flex-col justify-between items-center h-[300px]">
                 <motion.h3
-                  className="text-2xl font-pt-sans-caption font-semibold"
+                  className="text-2xl font-semibold font-pt-sans-caption"
                   initial="hidden"
                   animate="visible"
                   variants={infoContainerVariants}
@@ -444,7 +446,7 @@ const Map = () => {
                   variants={infoImageVariants}
                 />
                 <motion.p
-                  className="text-base font-pt-sans font-bold"
+                  className="text-base font-bold text-center font-pt-sans"
                   initial="hidden"
                   animate="visible"
                   variants={infoTextVariants}
@@ -460,7 +462,7 @@ const Map = () => {
                   Atau
                 </motion.p>
                 <motion.span
-                  className="text-base font-pt-sans font-bold text-center"
+                  className="text-base font-bold text-center font-pt-sans"
                   initial="hidden"
                   animate="visible"
                   variants={infoTextVariants}

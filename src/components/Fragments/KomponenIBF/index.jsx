@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-irregular-whitespace */
 import VennDiagram from "../../../assets/images/risk-hazard-vulnerability-exposure.png";
 import Table from "../../../assets/images/warning-level-Impact-based-forecast.png";
 
-const KomponenIBF = () => {
+const KomponenIBF = ({isMobile}) => {
+  console.log(isMobile);
   return (
     <div className="flex flex-col">
-      <div className="flex w-full">
-        <img src={VennDiagram} className="w-[200px] h-[150px] mr-10"></img>
+      <div className={`flex w-full ${isMobile ? "flex-col" : "flex-row"}`}>
+        <img src={VennDiagram} className={`${isMobile ? "w-[60%]" : "w-[200px]"} ${isMobile ? "h-auto" : "h-[150px]"} ${isMobile ? "mx-auto" : "mx-0"} ${isMobile ? "" : "mr-10"} ${isMobile ? "my-5" : ""}`}></img>
         <div className="flex flex-col">
           <p className="mb-5">
             Komponen penting dalam sistem IBF adalah risk (risiko), yang
@@ -24,8 +27,8 @@ const KomponenIBF = () => {
         </div>
       </div>
 
-      <div className="flex w-full mt-8">
-        <img src={Table} className="w-[165px] h-[150px] mr-10"></img>
+      <div className={`flex w-full mt-8 ${isMobile ? "flex-col" : "flex-row"}`}>
+        <img src={Table} className={`${isMobile ? "w-[60%]" : "w-[165px]"} ${isMobile ? "h-auto" : "h-[150px]"} ${isMobile ? "mx-auto" : "mx-0"} ${isMobile ? "" : "mr-10"} ${isMobile ? "my-5" : ""}`}></img>
         <div className="flex flex-col justify-between">
           <p className="mb-5">
             Tingkatannya (warning level) terdiri dari sangat rendah (very

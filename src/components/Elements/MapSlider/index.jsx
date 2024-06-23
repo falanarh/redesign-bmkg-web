@@ -45,7 +45,7 @@ const slides = [
   },
 ];
 
-const MapSlider = () => {
+const  MapSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -76,7 +76,7 @@ const MapSlider = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <Swiper
         ref={swiperRef}
         effect={"coverflow"}
@@ -103,7 +103,7 @@ const MapSlider = () => {
         {slides.map((slide, index) => (
           <SwiperSlide
             key={index}
-            className="h-[400px] w-[500px] relative"
+            className="h-[350px] w-[400px] relative"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
@@ -118,13 +118,13 @@ const MapSlider = () => {
             </div>
             <img
               src={slide.src}
-              className="object-cover w-full h-full"
+              className="object-cover"
               alt={`Slide ${index + 1}`}
             />
             {index === activeIndex && isHovered && hoveredIndex === index && (
               <div className="absolute top-10 left-1/2 transform -translate-x-1/2 p-4 flex justify-center items-center bg-white bg-opacity-60 rounded-lg transition-all w-full h-[90%]">
                 <Button onPress={() => handleOpen(slide)} color="primary">
-                  <p className="text-lg font-pt-sans font-bold">Lihat Detail</p>
+                  <p className="text-lg font-bold font-pt-sans">Lihat Detail</p>
                 </Button>
               </div>
             )}
@@ -132,11 +132,11 @@ const MapSlider = () => {
         ))}
       </Swiper>
 
-      <Modal isOpen={isOpen} onOpenChange={handleClose} isDismissable={false} size="4xl">
+      <Modal isOpen={isOpen} onOpenChange={handleClose} isDismissable={false} className="max-w-[40rem] my-auto sm:my-0">
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 font-pt-sans-caption font-bold text-xl text-center uppercase">
+              <ModalHeader className="flex flex-col gap-1 text-xl font-bold text-center uppercase font-pt-sans-caption">
                 {modalData?.title}
               </ModalHeader>
               <ModalBody>

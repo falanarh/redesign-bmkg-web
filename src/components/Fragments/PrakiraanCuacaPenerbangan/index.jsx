@@ -1,25 +1,26 @@
+/* eslint-disable react/prop-types */
 import { Tabs } from "antd";
 import PrakiraanCuacaBandara from "../PrakiraanCuacaBandara";
 import ContentSection from "../../Layouts/ContentSection";
 import { Link } from "@nextui-org/react";
+import PrakiraanCuacaBandaraAktual from "../PrakiraanCuacaBandaraAktual";
 
 const onChange = (key) => {
   console.log(key);
 };
-const items = [
-  {
-    key: "1",
-    label: "Prakiraan Cuaca Bandara",
-    children: <PrakiraanCuacaBandara />,
-  },
-  {
-    key: "2",
-    label: "Laporan Cuaca Aktual Bandara",
-    children: "",
-  },
-];
-
-const PrakiraanCuacaPenerbangan = () => {
+const PrakiraanCuacaPenerbangan = ({isMobile}) => {
+  const items = [
+    {
+      key: "1",
+      label: "Prakiraan Cuaca Bandara",
+      children: <PrakiraanCuacaBandara isMobile={isMobile} />,
+    },
+    {
+      key: "2",
+      label: "Laporan Cuaca Aktual Bandara",
+      children: <PrakiraanCuacaBandaraAktual isMobile={isMobile} />,
+    },
+  ];
   return (
     <ContentSection
       title="Cuaca Penerbangan"
@@ -31,7 +32,7 @@ const PrakiraanCuacaPenerbangan = () => {
           <Link
             href="https://web-aviation.bmkg.go.id/"
             target="_blank"
-            className="text-active font-semibold"
+            className="font-semibold text-active"
           >
             website
           </Link>{" "}

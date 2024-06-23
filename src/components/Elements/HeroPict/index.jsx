@@ -8,8 +8,41 @@ import G from "../../../assets/images/hero_bmkg/g_up.png";
 import BirdsGif from "../../../assets/images/hero_bmkg/birds_gif.gif";
 import CloudC from "../../../assets/images/hero_bmkg/cloud_c.png";
 import CloudB from "../../../assets/images/hero_bmkg/cloud_b.png";
+import { useEffect, useState } from "react";
 
 const HeroPict = ({ size }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let bottomPosition = size * -0.03; // Default bottom position
+
+  // Adjust bottom position based on thresholdWidth and thresholdHeight
+  if (windowWidth <= 450 && windowHeight <= 897) {
+    bottomPosition = size * -0.07;
+  }
+  
+  if (windowWidth <= 450 && windowHeight <= 700) {
+    bottomPosition = size * -0.1;
+  }
+
+  // Adjust bottom position for very small screens
+  // if (windowWidth <= 460) {
+  //   bottomPosition = size * -0.1;
+  // }
+
+  
   const cloudWidth = size * 0.6;
   const cloudHeight = size * 0.35;
   const birdSize = size * 0.2;
@@ -89,8 +122,8 @@ const HeroPict = ({ size }) => {
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
       />
       <p
-        style={{ fontSize: fontSize, width: size * 0.8, left: size * 0.1, bottom: size * -0.03 }}
-        className="absolute text-center font-semibold leading-4"
+        style={{ fontSize: fontSize, width: size * 0.8, left: size * 0.1, bottom: bottomPosition }}
+        className="absolute font-semibold leading-4 text-center"
       >
         "Pelayanan informasi meteorologi, klimatologi, dan geofisika secara luas, cepat, tepat, akurat, dan mudah dipahami"
       </p>

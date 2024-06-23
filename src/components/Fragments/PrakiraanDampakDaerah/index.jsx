@@ -31,7 +31,7 @@ const PrakiraanDampakDaerah = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex">
+      <div className="flex flex-col items-center w-full gap-3 sm:flex-row sm:gap-0">
         <Select
           items={provinces}
           label="Wilayah Provinsi"
@@ -39,7 +39,7 @@ const PrakiraanDampakDaerah = () => {
           showScrollIndicators={true}
           selectedKeys={wilayahValue}
           onSelectionChange={setWilayahValue}
-          className="max-w-xs font-pt-sans mr-5"
+          className="max-w-xs sm:mr-5 font-pt-sans"
         >
           {(province) => (
             <SelectItem key={province.key} value={province.key}>
@@ -67,7 +67,7 @@ const PrakiraanDampakDaerah = () => {
         selectedData ? (
           <div className="flex flex-col items-center mt-7">
             <Divider className="mt-3" />
-            <h1 className="text-xl font-pt-sans-caption font-semibold italic my-3">
+            <h1 className="my-3 text-xl italic font-semibold font-pt-sans-caption">
               Wilayah {selectedProvince?.label} pada {selectedTime?.label}
             </h1>
             <Divider className="mb-3" />
@@ -79,12 +79,12 @@ const PrakiraanDampakDaerah = () => {
             />
           </div>
         ) : (
-          <p className=" text-base font-pt-sans font-bold italic my-10">
+          <p className="my-10 text-base italic font-bold font-pt-sans">
             Data tidak ditemukan
           </p>
         )
       ) : (
-        <p className="text-base font-pt-sans font-bold italic my-10">
+        <p className="mx-auto mt-[10vh] text-base italic font-bold font-pt-sans">
           Gambar akan keluar setelah memilih wilayah dan waktu.
         </p>
       )}
