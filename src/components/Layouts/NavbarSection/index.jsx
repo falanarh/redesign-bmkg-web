@@ -80,11 +80,13 @@ const NavbarSection = () => {
           }
         />
         <NavbarBrand>
-          <img
-            className="h-8 mr-3 w-7 xs:w-12 xs:h-14"
-            src={BMKGLogo}
-            alt="BMKG Logo"
-          />
+          <Link to="/">
+            <img
+              className="h-8 mr-3 w-7 xs:w-12 xs:h-14"
+              src={BMKGLogo}
+              alt="BMKG Logo"
+            />
+          </Link>
           <div className="flex flex-col">
             <p className="text-[10px] xs:text-sm lg:text-[14px] font-bold leading-normal">
               Badan Meteorologi, Klimatologi, dan Geofisika
