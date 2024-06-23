@@ -1,9 +1,9 @@
-export const data = [
+export const dataBerita = [
     {
         id: 'b1',
         image: 'https://cdn.bmkg.go.id/Web/Screenshot-717-250x150.png',
         title: 'Di Forum WSIS+20, BMKG Paparkan Perkembangan Sistem Peringatan Dini Tsunami Terintegrasi',
-        link: '/profil/publikasi-dan-informasi/berita/b1', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b1', // Contoh link
         tgl: "30 Mei 2024",
         penulis: "Dian Endah",
         paragraf: [
@@ -28,7 +28,7 @@ export const data = [
         id: 'b2',
         image: 'https://cdn.bmkg.go.id/Web/Screenshot-497-e1713074131338-250x150.png',
         title: '2024 Ocean Decade Conference: Kepala BMKG Soroti Tantangan dan Solusi Terkait dengan Pemahaman dan Perlindungan terhadap Samudra',
-        link: '/profil/publikasi-dan-informasi/berita/b2', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b2', // Contoh link
         tgl: "11 Apr 2024",
         penulis: "Dian Endah",
         paragraf: [
@@ -52,7 +52,7 @@ export const data = [
         id: 'b3',
         image: 'https://cdn.bmkg.go.id/Web/IMG_9095-1-250x150.jpg',
         title: 'President of World Water Council (WWC) Kunjungi Ruang Operasional Climate Early Warning System (CEWS) BMKG',
-        link: '/profil/publikasi-dan-informasi/berita/b3', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b3', // Contoh link
         tgl: "27 Mar 2024",
         penulis: "Dian Endah",
         paragraf: [
@@ -79,7 +79,7 @@ export const data = [
         id: 'b4',
         image: 'https://cdn.bmkg.go.id/Web/IMG_0229-250x150.jpg',
         title: 'Deputi Klimatologi BMKG Terpilih Sebagai Co-Vice President SERCOM-3: Langkah Awal Indonesia Menuju Peran Global yang Lebih Signifikan',
-        link: '/profil/publikasi-dan-informasi/berita/b4', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b4', // Contoh link
         tgl: "09 Mar 2024",
         penulis: " Ibrahim",
         paragraf: [
@@ -100,7 +100,7 @@ export const data = [
         id: 'b5',
         image: 'https://cdn.bmkg.go.id/Web/IMG_9795-1-250x150.jpg',
         title: 'BMKG Gelar Gender Conference, Dorong Komunitas Internasional Persempit Kesenjangan Gender',
-        link: '/profil/publikasi-dan-informasi/berita/b5', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b5', // Contoh link
         tgl: " 08 Mar 2024",
         penulis: " Ibrahim",
         paragraf: [
@@ -134,7 +134,7 @@ export const data = [
         id: 'b6',
         image: 'https://cdn.bmkg.go.id/Web/IMG_7274-250x150.jpg',
         title: 'BMKG Gelar SERCOM-3 dan Gender Conference - Bahas Dampak Perubahan Iklim dan Pemberdayaan Global',
-        link: '/profil/publikasi-dan-informasi/berita/b6', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b6', // Contoh link
         tgl: "04 Mar 2024",
         penulis: " Ibrahim",
         paragraf: [
@@ -163,7 +163,7 @@ export const data = [
         id: 'b7',
         image: 'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2023-12-19-at-00.20.39-250x150.jpeg',
         title: 'Konferensi AGU',
-        link: '/profil/publikasi-dan-informasi/berita/b7', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b7', // Contoh link
         tgl: "19 Des 2023",
         penulis: "Murni Kemala Dewi",
         paragraf: [
@@ -183,7 +183,7 @@ export const data = [
         id: 'b8',
         image: 'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2023-12-07-at-05.59.38-250x150.jpeg',
         title: 'Kunjungan WMO Education and Training Office ke BMKG',
-        link: '/profil/publikasi-dan-informasi/berita/b8', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b8', // Contoh link
         tgl: "07 Des 2023",
         penulis: "Murni Kemala Dewi",
         paragraf: [
@@ -201,7 +201,7 @@ export const data = [
         id: 'b9',
         image: 'https://cdn.bmkg.go.id/Web/Screenshot-144a-250x150.png',
         title: 'Soroti Perspektif Air dan Iklim, Pentingnya Peran Perempuan untuk Mencapai Tujuan Pembangunan Berkelanjutan',
-        link: '/profil/publikasi-dan-informasi/berita/b9', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b9', // Contoh link
         tgl: "04 Des 2023",
         penulis: "Dian Endah",
         paragraf: [
@@ -225,7 +225,7 @@ export const data = [
         id: 'b10',
         image: 'https://cdn.bmkg.go.id/Web/IMG-20231202-WA0007-250x150.jpg',
         title: 'Talkshow Paviliun Indonesia, Kepala BMKG Bahas Tantangan Krisis Air Global',
-        link: '/profil/publikasi-dan-informasi/berita/b10', // Contoh link
+        link: '/profil/publikasi-dan-informasi/berita/view/b10', // Contoh link
         tgl: "02 Des 2023",
         penulis: "Kholis Nur Cahyo",
         paragraf: [

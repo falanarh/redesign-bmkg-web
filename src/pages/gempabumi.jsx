@@ -1,77 +1,92 @@
-import { useState } from 'react';
-import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-} from '@ant-design/icons';
-import { FaEarthAmericas, FaHouseCrack, FaHouseFloodWater, FaRegBuilding, FaWater } from 'react-icons/fa6';
-import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
+import { useState } from "react";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { FaHouseCrack, FaHouseFloodWater } from "react-icons/fa6";
+import { Breadcrumb, Button, Layout, Menu, theme } from "antd";
 import "./index.css";
-import GBAntisipasi from '../components/Fragments/GempaBumiAntisipasi';
-import GBSkalaMMI from '../components/Fragments/GempaBumiSkalaMMI';
-import GBSkalaIntesitas from '../components/Fragments/GempaBumiSkalaIntesitas';
-import GempaBumiTerkini from '../components/Fragments/GempaBumiTerkini';
-import GempaBumiRealTime from '../components/Fragments/GempaBumiRealTime';
-import GempaBumiDirasakan from '../components/Fragments/GempaBumiDirasakan';
-import GempaBumiTsunami from '../components/Fragments/GempaBumiTsunami';
+import GBAntisipasi from "../components/Fragments/GempaBumiAntisipasi";
+import GBSkalaMMI from "../components/Fragments/GempaBumiSkalaMMI";
+import GBSkalaIntesitas from "../components/Fragments/GempaBumiSkalaIntesitas";
+import GempaBumiTerkini from "../components/Fragments/GempaBumiTerkini";
+import GempaBumiRealTime from "../components/Fragments/GempaBumiRealTime";
+import GempaBumiDirasakan from "../components/Fragments/GempaBumiDirasakan";
+import GempaBumiTsunami from "../components/Fragments/GempaBumiTsunami";
+import { useMediaQuery } from "react-responsive";
+import { RiMenuFold4Fill, RiMenuUnfold4Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
-const sidebarItems = [
-  {
-    key: '1',
-    icon: <FaHouseCrack className='size-[24px]' />,
-    label: 'Gempa Bumi',
-    children: [
-      {
-        key: '11',
-        label: 'Gempa Bumi Terkini',
-        content: <GempaBumiTerkini />,
-      },
-      {
-        key: '12',
-        label: 'Gempa Bumi Dirasakan',
-        content: <GempaBumiDirasakan/>,
-      },
-      {
-        key: '13',
-        label: 'Gempa Bumi Real Time',
-        content: <GempaBumiRealTime/>,
-      },
-      {
-        key: '14',
-        label: 'Antisipasi Gempa Bumi',
-        content: <GBAntisipasi />,
-      },
-      {
-        key: '15',
-        label: 'Skala Intesitas Gempa Bumi',
-        content: <GBSkalaIntesitas />,
-      },
-      {
-        key: '16',
-        label: 'Skala MMI',
-        content: <GBSkalaMMI />,
-      },
-    ],
-  },
-  {
-    key: '2',
-    icon: <FaHouseFloodWater className='size-[22px]' />,
-    label: 'Tsunami',
-    content: <GempaBumiTsunami />
-  },
-];
+export default function GempaBumi({ endpoint }) {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
-export default function GempaBumi() {
+  const sidebarItems = [
+    {
+      key: "gempa-bumi",
+      icon: <FaHouseCrack className="size-[24px]" />,
+      label: "Gempa Bumi",
+      children: [
+        {
+          key: "terkini",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/terkini">Gempa Bumi Terkini</Link>,
+          content: <GempaBumiTerkini isMobile={isMobile} />,
+        },
+        {
+          key: "dirasakan",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/dirasakan">Gempa Bumi Dirasakan</Link>,
+          content: <GempaBumiDirasakan isMobile={isMobile} />,
+        },
+        {
+          key: "real-time",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/real-time">Gempa Bumi Real Time</Link>,
+          content: <GempaBumiRealTime isMobile={isMobile} />,
+        },
+        {
+          key: "antisipasi",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/antisipasi">Antisipasi Gempa Bumi</Link>,
+          content: <GBAntisipasi />,
+        },
+        {
+          key: "skala-intensitas",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/skala-intesitas">Skala Intesitas Gempa Bumi</Link>,
+          content: <GBSkalaIntesitas />,
+        },
+        {
+          key: "skala-mmi",
+          label: <Link to="/gempa-bumi-tsunami/gempa-bumi/skala-mmi">Skala MMI</Link>,
+          content: <GBSkalaMMI />,
+        },
+      ],
+    },
+    {
+      key: "tsunami",
+      icon: <FaHouseFloodWater className="size-[22px]" />,
+      label: <Link to="/gempa-bumi-tsunami/tsunami">Tsunami</Link>,
+      content: <GempaBumiTsunami isMobile={isMobile} />,
+    },
+  ];
 
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState('11');
+  const [mobileCollapsed, setMobileCollapsed] = useState(true);
+  const [selectedMenu, setSelectedMenu] = useState(endpoint);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   const handleMenuClick = ({ key }) => {
     setSelectedMenu(key);
+  };
+
+  const handleMenuClickMobile = ({ key }) => {
+    console.log("menu clicked!");
+    setSelectedMenu(key);
+    console.log(mobileCollapsed);
+    setMobileCollapsed(!mobileCollapsed);
+    console.log(mobileCollapsed); // Output yang sama dengan nilai sebelumnya
+  };
+
+  const handleToggleCollapsed = () => {
+    console.log(mobileCollapsed);
+    setMobileCollapsed(!mobileCollapsed);
   };
 
   const generateBreadcrumb = (menuKey, items, breadcrumb = []) => {
@@ -92,10 +107,9 @@ export default function GempaBumi() {
   };
 
   const breadcrumbItems = [
-    { title: 'Gempa Bumi & Tsunami' },
+    { title: "Gempa Bumi & Tsunami" },
     ...generateBreadcrumb(selectedMenu, sidebarItems),
   ];
-
 
   const findSelectedMenu = (menuKey, items) => {
     for (let item of items) {
@@ -112,53 +126,89 @@ export default function GempaBumi() {
   const selectedSidebarItem = findSelectedMenu(selectedMenu, sidebarItems);
 
   return (
-    <div className='flex justify-center w-full mt-[140px]'>
-      <Layout className='max-w-[1280px] px-6 bg-white'>
-        <Sider trigger={null} collapsible collapsed={collapsed} width={288}>
-          <div className="demo-logo-vertical" />
-          <Menu
-            theme="light"
-            mode="inline"
-            defaultSelectedKeys={['11']}
-            selectedKeys={[selectedMenu]}
-            onClick={handleMenuClick}
-            items={sidebarItems}
-            className='h-full pt-2'
-          />
-        </Sider>
-        <Layout className='bg-white'>
+    <div className="flex justify-center w-full mt-[140px] overflow-x-hidden">
+      <Layout className="max-w-[1280px] sm:px-6 bg-white">
+        {isMobile ? (
+          <>
+            <div
+              onClick={handleToggleCollapsed}
+              className={`absolute z-10 p-0 m-0 border-none shadow-none bg-active top-4 left-0`}
+              style={{ borderRadius: "0 0.375rem 0.375rem 0" }} // Mengatur radius di atas kiri dan bawah kiri
+            >
+              {mobileCollapsed ? (
+                <RiMenuFold4Fill className="m-2 text-2xl text-white" />
+              ) : (
+                <RiMenuUnfold4Fill className="m-2 text-2xl text-white" />
+              )}
+            </div>
+            <Sider
+              className={mobileCollapsed ? "sider-collapsed" : "sider"}
+              width="100%"
+              collapsible
+              collapsed={collapsed}
+              // breakpoint="xs"
+            >
+              <Menu
+                theme="light"
+                mode="inline"
+                defaultSelectedKeys={["11"]}
+                selectedKeys={[selectedMenu]}
+                onClick={handleMenuClickMobile}
+                items={sidebarItems}
+                className="w-full h-full pt-2 mt-12"
+                hidden={mobileCollapsed}
+              />
+            </Sider>
+          </>
+        ) : (
+          <Sider trigger={null} collapsible collapsed={collapsed} width={242}>
+            <Menu
+              theme="light"
+              mode="inline"
+              defaultSelectedKeys={["11"]}
+              selectedKeys={[selectedMenu]}
+              onClick={handleMenuClick}
+              items={sidebarItems}
+              className="h-full pt-2"
+            />
+          </Sider>
+        )}
+        <Layout className="bg-white">
           <Header
             style={{
               padding: 0,
               background: colorBgContainer,
             }}
-            className='relative'
+            className="relative"
           >
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
-              }}
-            />
+            {!isMobile ? (
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+            ) : null}
             <Breadcrumb
               items={breadcrumbItems}
-              className="px-6 mb-4 absolute top-5 left-10 font-pt-sans font-semibold"
+              className="absolute px-6 mb-4 font-semibold top-5 left-10 font-pt-sans"
             />
           </Header>
           <Content
             style={{
-              margin: '0 0 0 65px',
-              padding: 0,
+              // margin: "0 0 0 65px",
+              margin: isMobile ? "0 0 0 0px" : "0 0 0 65px",
+              padding: isMobile ? "25px" : "0 0 55px 0",
               minHeight: 280,
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
           >
-            {selectedSidebarItem?.content || 'Content'}
+            {selectedSidebarItem?.content || "Content"}
           </Content>
         </Layout>
       </Layout>

@@ -8,14 +8,22 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link as NextUILink,
 } from "@nextui-org/react";
 import { Link, useLocation } from "react-router-dom";
 import { IoIosMenu, IoMdClose } from "react-icons/io";
 
 const NavbarSection = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuClicked, setIsMenuClicked] = React.useState(false);
   const location = useLocation(); // Get current location
+
+  const handleMenuClick = () => {
+    setIsMenuClicked(true);
+    setIsMenuOpen(false);
+    setTimeout(() => {
+      setIsMenuClicked(false);
+    }, 300); // Wait 300 milliseconds before setting isMenuClicked back to false
+  };
 
   const menuItems = [
     { label: "Beranda", href: "/" },
@@ -62,11 +70,11 @@ const NavbarSection = () => {
           icon={
             isMenuOpen ? (
               <>
-                <IoMdClose className="text-xl" />
+                <IoMdClose className="text-3xl" />
               </>
             ) : (
               <>
-                <IoIosMenu className="text-xl" />
+                <IoIosMenu className="text-3xl" />
               </>
             )
           }
@@ -108,23 +116,27 @@ const NavbarSection = () => {
         ))}
       </NavbarContent>
 
-      <NavbarMenu className="z-[100]">
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item.label}-${index}`} className="my-3">
-            <Link
-              className={`w-full ${
-                isActive(item.href)
-                  ? "text-active font-pt-sans-caption"
-                  : "text-nonActive font-pt-sans-caption"
-              }`}
-              to={item.href}
-              size="lg"
-            >
-              {item.label.toUpperCase()}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
+      {/* NavbarMenu only shown when isMenuOpen is true */}
+      {isMenuOpen && (
+        <NavbarMenu className={`z-[100] ${isMenuClicked ? "hidden" : ""}`}>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item.label}-${index}`} className="my-3">
+              <Link
+                className={`w-full ${
+                  isActive(item.href)
+                    ? "text-active font-bold font-pt-sans-caption"
+                    : "text-nonActive font-bold font-pt-sans-caption"
+                }`}
+                to={item.href}
+                size="lg"
+                onClick={handleMenuClick}
+              >
+                {item.label.toUpperCase()}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
+      )}
     </Navbar>
   );
 };

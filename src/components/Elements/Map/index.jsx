@@ -108,6 +108,32 @@ const inactiveWarningMarker = new L.icon({
   shadowSize: [41, 41],
 });
 
+function getFormattedCurrentDate() {
+  const months = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
+
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const monthIndex = currentDate.getMonth();
+  const year = currentDate.getFullYear();
+
+  const monthName = months[monthIndex];
+
+  return `${day} ${monthName} ${year}`;
+}
+
 const getDistance = (lat1, lon1, lat2, lon2) => {
   const R = 6371e3; // metres
   const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
@@ -208,6 +234,7 @@ const Map = () => {
       alert("Geolocation is not supported by this browser.");
     }
   };
+  const formattedDate = getFormattedCurrentDate();
 
   return (
     <div className="">
@@ -215,22 +242,27 @@ const Map = () => {
         <motion.div
           initial={{ x: "-100%", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
+          transition={{
+            delay: 0.5,
+            type: "spring",
+            stiffness: 60,
+            duration: 1,
+          }}
           ease="easeIn"
           viewport={{ once: true }}
           className="h-[400px] xxl:h-[420px] w-full sm:w-[65%] shadow-md z-0 relative"
         >
-        <Button
-          isIconOnly
-          size="lg"
-          color="warning"
-          variant="faded"
-          aria-label="Center my location"
-          className="m-3 absolute bottom-0 left-0 z-[999]"
-          onClick={handleCenterButtonClick}
-        >
-          <img src={CenterIcon} className="size-6" alt="Center Icon" />
-        </Button>
+          <Button
+            isIconOnly
+            size="lg"
+            color="warning"
+            variant="faded"
+            aria-label="Center my location"
+            className="m-3 absolute bottom-0 left-0 z-[999]"
+            onClick={handleCenterButtonClick}
+          >
+            <img src={CenterIcon} className="size-6" alt="Center Icon" />
+          </Button>
           <MapContainer
             center={mapCenter.center}
             zoom={mapCenter.zoom}
@@ -272,7 +304,12 @@ const Map = () => {
         <motion.div
           initial={{ x: "100%", opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5, type: "spring", stiffness: 60, duration: 1 }}
+          transition={{
+            delay: 0.5,
+            type: "spring",
+            stiffness: 60,
+            duration: 1,
+          }}
           ease="easeIn"
           viewport={{ once: true }}
           className="sm:h-[400px] h-[420px] xxl:h-[420px] w-full sm:w-[32%]"
@@ -488,6 +525,11 @@ const Map = () => {
           </Card>
         </motion.div>
       </div>
+      <p className="text-[14px] sm:text-[16px] italic font-semibold text-center mt-5">
+        *Data prakiraan suhu dan cuaca ini untuk mengestimasi keadaan cuaca
+        dalam 6 jam kedepan. Sementara, data gempa dan tsunami merupakan data
+        aktual terakhir diambil pada {formattedDate}.
+      </p>
     </div>
   );
 };

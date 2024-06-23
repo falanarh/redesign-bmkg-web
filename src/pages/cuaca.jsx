@@ -12,71 +12,98 @@ import PrakiraanCuacaPenerbangan from "../components/Fragments/PrakiraanCuacaPen
 import CitraRadar from "../components/Fragments/CitraRadar";
 import { useMediaQuery } from "react-responsive";
 import { RiMenuFold4Fill, RiMenuUnfold4Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
-export default function Cuaca() {
+export default function Cuaca({ endpoint }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const sidebarItems = [
     {
-      key: "1",
+      key: "prakiraan-cuaca",
       icon: <FaCloudSunRain className="size-[24px]" />,
-      label: "Prakiraan Cuaca",
+      label: <Link to="/cuaca/prakiraan-cuaca">Prakiraan Cuaca</Link>,
       children: [
         {
-          key: "11",
-          label: "Berdasarkan Lokasi",
-          content: <PrakiraanCuacaLokasi />,
+          key: "berdasarkan-lokasi",
+          label: (
+            <Link to="/cuaca/prakiraan-cuaca/berdasarkan-lokasi">
+              Berdasarkan Lokasi
+            </Link>
+          ),
+          content: <PrakiraanCuacaLokasi isMobile={isMobile} />,
         },
         {
-          key: "12",
-          label: "Berdasarkan Waktu",
+          key: "berdasarkan-waktu",
+          label: (
+            <Link to="/cuaca/prakiraan-cuaca/berdasarkan-waktu">
+              Berdasarkan Waktu
+            </Link>
+          ),
           content: <PrakiraanCuacaWaktu />,
         },
         {
-          key: "13",
+          key: "berdasarkan-jenis",
           label: "Berdasarkan Jenis",
           children: [
             {
-              key: "131",
-              label: "Penerbangan",
+              key: "penerbangan",
+              label: (
+                <Link to="/cuaca/prakiraan-cuaca/berdasarkan-jenis/penerbangan">
+                  Penerbangan
+                </Link>
+              ),
               content: <PrakiraanCuacaPenerbangan isMobile={isMobile} />,
             },
             {
-              key: "132",
-              label: "Maritim",
+              key: "maritim",
+              label: (
+                <Link to="/cuaca/prakiraan-cuaca/berdasarkan-jenis/maritim">
+                  Maritim
+                </Link>
+              ),
               content: <PrakiraanCuacaMaritim />,
             },
           ],
         },
         {
-          key: "14",
-          label: "Berbasis Dampak",
+          key: "berbasis-dampak",
+          label: (
+            <Link to="/cuaca/prakiraan-cuaca/berbasis-dampak">
+              Berbasis Dampak
+            </Link>
+          ),
           content: <PrakiraanBerbasisDampak isMobile={isMobile} />,
         },
       ],
     },
     {
-      key: "2",
+      key: "pengindaraan-jauh",
       icon: <FaEarthAmericas className="size-[22px]" />,
-      label: "Pengindaraan Jauh",
+      label: <Link to="/cuaca/pengindaraan-jauh">Pengindaraan Jauh</Link>,
       children: [
         {
-          key: "21",
-          label: "Citra Satelit",
+          key: "citra-satelit",
+          label: (
+            <Link to="/cuaca/pengindaraan-jauh/citra-satelit">
+              Citra Satelit
+            </Link>
+          ),
           content: <CitraSatelit />,
         },
         {
-          key: "22",
-          label: "Citra Radar",
+          key: "citra-radar",
+          label: (
+            <Link to="/cuaca/pengindaraan-jauh/citra-radar">Citra Radar</Link>
+          ),
           content: <CitraRadar />,
         },
       ],
     },
   ];
   const [collapsed, setCollapsed] = useState(false);
-  const [selectedMenu, setSelectedMenu] = useState("11");
-  const [mobileCollapsed, setMobileCollapsed] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState(endpoint);
+  const [mobileCollapsed, setMobileCollapsed] = useState(true);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -139,18 +166,17 @@ export default function Cuaca() {
       <Layout className="max-w-[1280px] sm:px-6 bg-white">
         {isMobile ? (
           <>
-            <Button
+            <div
               onClick={handleToggleCollapsed}
-              className={`absolute z-10 px-1 m-0 border-none shadow-none bg-active top-4 ${
-                mobileCollapsed ? "left-[12px]" : "left-[25px]"
-              }`}
+              className={`absolute z-10 p-0 m-0 border-none shadow-none bg-active top-4 left-0`}
+              style={{ borderRadius: "0 0.375rem 0.375rem 0" }} // Mengatur radius di atas kiri dan bawah kiri
             >
               {mobileCollapsed ? (
-                <RiMenuFold4Fill className="text-2xl text-white" />
+                <RiMenuFold4Fill className="m-2 text-2xl text-white" />
               ) : (
-                <RiMenuUnfold4Fill className="text-2xl text-white" />
+                <RiMenuUnfold4Fill className="m-2 text-2xl text-white" />
               )}
-            </Button>
+            </div>
             <Sider
               className={mobileCollapsed ? "sider-collapsed" : "sider"}
               width="100%"

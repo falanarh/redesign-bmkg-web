@@ -1,58 +1,64 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { data } from "../ProfilArtikel/data.js"; // pastikan Anda menyesuaikan jalur impor sesuai dengan struktur proyek Anda
+import { dataBerita } from "../ProfilBerita/data"; 
+import { dataSiaranPers } from "../ProfilSiaranPers/data"; 
 import { FaCalendarDays, FaPen } from "react-icons/fa6";
 
 const Artikel = () => {
   const { id } = useParams();
-  const item = data.find((article) => article.id === parseInt(id));
-  console.log(item);
+  const item = dataBerita.find((article) => article.id === id) || dataSiaranPers.find((article) => article.id === id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!item) {
-    return <div>Artikel tidak ditemukan</div>;
+    return <div className="py-10 text-center">Artikel tidak ditemukan</div>;
   }
 
   return (
-    <div className="flex flex-col font-pt-sans">
-      <h1 className="text-2xl font-bold text-active">{item.title}</h1>
-      <div className="flex items-center gap-2 mt-4 mb-6">
-        <p className="flex items-center gap-2 text-[14px] text-graytext">
+    <div className="flex flex-col max-w-4xl mx-auto font-pt-sans">
+      <h1 className="mb-6 text-2xl font-bold md:text-3xl text-active">{item.title}</h1>
+      <div className="flex items-start gap-4 mb-6 text-sm md:flex-row md:items-center text-graytext md:text-base">
+        <p className="flex items-center gap-2">
           <FaCalendarDays />
           {item.tgl}
         </p>
-        <p className="flex items-center gap-2 text-[14px] text-graytext">
+        <p className="flex items-center gap-2">
           <FaPen /> {item.penulis}
         </p>
       </div>
-      <img src={item.image} alt={`image-${item.id}`} className="mb-5"/>
-      {item.paragraf?.map((paragraph, index) => {
-  // Gabungkan paragraf pertama dan kedua
-  if (index === 0 && item.paragraf.length > 1) {
-    return (
-      <p key={index} className="mb-3">
-        <span className="font-bold">{paragraph}</span> {item.paragraf[1]}
-      </p>
-    );
-  }
+      <img src={item.image} alt={`image-${item.id}`} className="object-cover w-full mb-6 rounded-lg" />
+      <div className="mb-6 space-y-4">
+        {item.paragraf?.map((paragraph, index) => {
+          // Combine the first and second paragraphs
+          if (index === 0 && item.paragraf.length > 1) {
+            return (
+              <p key={index} className="text-base leading-relaxed md:text-lg">
+                <span className="font-bold">{paragraph}</span> {item.paragraf[1]}
+              </p>
+            );
+          }
 
-  // Lewatkan paragraf kedua karena sudah digabungkan dengan yang pertama
-  if (index === 1) {
-    return null;
-  }
+          // Skip the second paragraph because it's combined with the first
+          if (index === 1) {
+            return null;
+          }
 
-  // Tampilkan paragraf lainnya seperti biasa
-  return (
-    <p key={index} className="mb-3">
-      {paragraph}
-    </p>
-  );
-})}
-
+          // Display other paragraphs as usual
+          return (
+            <p key={index} className="text-base leading-relaxed md:text-lg">
+              {paragraph}
+            </p>
+          );
+        })}
+      </div>
       {item.dokumentasi && (
         <>
-          <h2 className="text-[18px] font-bold text-center mb-3 text-active font-pt-sans-caption">Dokumentasi</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <h2 className="mb-4 text-2xl font-bold text-center text-active">Dokumentasi</h2>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {item.dokumentasi.map((doc, index) => (
-              <img src={doc} key={index} className="" alt="" />
+              <img src={doc} key={index} className="object-cover w-full h-auto rounded-lg" alt="" />
             ))}
           </div>
         </>

@@ -18,7 +18,7 @@ const { Header, Sider, Content } = Layout;
 
 export default function KualitasUdara({ endpoint = "partikulat-pm" }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  const [mobileCollapsed, setMobileCollapsed] = useState(false);
+  const [mobileCollapsed, setMobileCollapsed] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState(endpoint);
   const {
@@ -177,18 +177,17 @@ export default function KualitasUdara({ endpoint = "partikulat-pm" }) {
       <Layout className="max-w-[1280px] sm:px-6 bg-white">
         {isMobile ? (
           <>
-            <Button
+            <div
               onClick={handleToggleCollapsed}
-              className={`absolute z-10 px-1 m-0 border-none shadow-none bg-active top-4 ${
-                mobileCollapsed ? "left-[12px]" : "left-[25px]"
-              }`}
+              className={`absolute z-10 p-0 m-0 border-none shadow-none bg-active top-4 left-0`}
+              style={{ borderRadius: "0 0.375rem 0.375rem 0" }} // Mengatur radius di atas kiri dan bawah kiri
             >
               {mobileCollapsed ? (
-                <RiMenuFold4Fill className="text-2xl text-white" />
+                <RiMenuFold4Fill className="m-2 text-2xl text-white" />
               ) : (
-                <RiMenuUnfold4Fill className="text-2xl text-white" />
+                <RiMenuUnfold4Fill className="m-2 text-2xl text-white" />
               )}
-            </Button>
+            </div>
             <Sider
               className={mobileCollapsed ? "sider-collapsed" : "sider"}
               width="100%"
@@ -229,16 +228,18 @@ export default function KualitasUdara({ endpoint = "partikulat-pm" }) {
             }}
             className="relative"
           >
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
-              style={{
-                fontSize: "16px",
-                width: 64,
-                height: 64,
-              }}
-            />
+            {!isMobile ? (
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() => setCollapsed(!collapsed)}
+                style={{
+                  fontSize: "16px",
+                  width: 64,
+                  height: 64,
+                }}
+              />
+            ) : null}
             <Breadcrumb
               items={breadcrumbItems}
               className="absolute px-6 mb-4 font-semibold top-5 left-10 font-pt-sans"

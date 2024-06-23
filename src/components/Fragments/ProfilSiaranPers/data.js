@@ -1,9 +1,9 @@
-export const data = [
+export const dataSiaranPers = [
     {
         id: 's1',
         image:'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2024-06-20-at-09.53.57-250x150.jpeg',
         title: 'Hadapi Perubahan Iklim, Indonesia Dorong Pengamatan Sistematis',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s1', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s1', // Contoh link
         tgl: "20 Jun 2024",
         penulis: "Dwi Herlambang Ade Putra",
         paragraf: [
@@ -19,15 +19,13 @@ export const data = [
             '"Salah satu fokus pengamatan kami (Indonesia-red) terhadap dampak perubahan iklim adalah laut. Hal ini karena kunci dari perubahan iklim adalah laut, yang juga berinteraksi dengan atmosfer. Ini adalah upaya kami untuk memperkuat kapasitas prakiraan, prediksi ataupun proyeksi. Jadi ketika kita berbicara tentang dampak perubahan iklim, kita tidak bisa mengabaikan integrasi pengamatan laut dan atmosfer, mulai dari pemrosesan data, analisis, prediksi, dan proyeksinya, hingga penyebarluasan hasil analisis/ informasi utk berbagai kepentingan layanan, " paparnya.',
             'Dwikorita berharap The United Nations Framework Convention on Climate Change (UNFCC) menjadikan pengamatan sistematis untuk fenomena kebumian sebagai dasar negosiasi dan pengambilan kebijakan, guna mendukung negara-negara di dunia untuk mengambil tindakan sistematis untuk mengatasi perubahan iklim. Hal ini karena kebijakan yang dibuat tanpa mempertimbangkan pengamatan sistematis fenomena kebumian bisa menjadi sesuatu yang salah atau menyesatkan. (*)',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's2',
         image:'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2024-06-17-at-14.21.44-250x150.jpeg',
         title: 'Dukung Percepatan Pembangunan Infrastruktur IKN, BMKG Gelar OMC di Kaltim',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s2', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s2', // Contoh link
         tgl: "19 Jun 2024",
         penulis: "Dwi Herlambang Ade Putra",
         paragraf: [
@@ -41,15 +39,13 @@ export const data = [
             'Pemilihan wilayah penyemaian awan setiap harinya diprioritaskan pada daerah upwind (arah datangnya angin masa udara) dengan tujuan agar awan hujan tidak masuk ke daerah target, yaitu area dilaksanakannya kegiatan pembangunan. Daerah seeding yang telah dilakukan meliputi Selat Makasar, Kabupaten Kutai Kartanegara dan Kabupaten Paser.',
             'Pelaksanaan OMC didukung oleh armada pesawat Casa 212-400 dengan registrasi A-2114 milik Skadron 4 TNI AU. "Kami berharap OMC akan memberikan dampak dan manfaat bagi masyarakat luas serta memitigasi risiko bencana yang terjadi," pungkasnya.',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's3',
         image:'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2024-06-19-at-19.11.14-250x150.jpeg',
         title: 'Cegah Karhutla, BMKG Gelar Operasi Modifikasi Cuaca Serentak di 5 Provinsi',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s3', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s3', // Contoh link
         tgl: " 19 Jun 2024",
         penulis: "Dwi Herlambang Ade Putra",
         paragraf: [
@@ -64,15 +60,13 @@ export const data = [
             '"Saat ini sedang dilaksanakan OMC di Provinsi Riau sejak tanggal 14-18 Juni 2024 dan sudah menggunakan bahan semai NaCI powder sebanyak empat ton. Hingga hari ini, OMC di Riau telah dilaksanakan selama empat hari dengan rincian lima sorti penyemaian dengan total jam terbang 11 jam 35 menit," kata Seto.',
             'Kegiatan OMC di Provinsi Riau dimulai pada tanggal 14 Juni 2024 bekerjasama dengan TNI AU Lanud Sultan Syarif Kasim II dan pesawat Casa 212 registrasi A-2116 dari Skuadron Udara 4 Malang, Badan Penanggulangan Bencana Daerah (BPBD) Riau, dan PT. Riau Andalan Pulp and Paper (RAPP).',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's4',
         image:'https://cdn.bmkg.go.id/Web/H08_EH_Indonesia-14-250x150.png',
         title: 'BMKG: Waspada Potensi Cuaca Ekstrem meskipun Sebagian Besar Wilayah di Indonesia Telah Memasuki Musim Kemarau',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s4', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s4', // Contoh link
         tgl: " 03 Jun 2024",
         penulis: "Rama Aditya",
         paragraf: [
@@ -85,15 +79,13 @@ export const data = [
             'Andri menyampaikan juga agar masyarakat khususnya yang bertempat tinggal di daerah rawan bencana hidrometeorologi agar tetap waspada terhadap potensi cuaca ekstrem meskipun sebagain besar wilayah Indonesia saat ini sudah memasuki musim kemarau. "Dampak yang ditimbulkan dari cuaca ekstrem dapat meliputi banjir, banjir bandang, banjir lahar hujan, tanah longsor, jalan licin, pohon tumbang, dan berkurangnya jarak pandang," jelasnya.',
             'Terakhir, Andri meminta masyarakat untuk selalu memperbarui informasi melalui kanal resmi infoBMKG dan menghindari berita hoax yang tidak dapat dipertanggung jawabkan, guna memperoleh informasi cuaca yang lebih akurat dan informasi perubahan cuaca setiap saat dengan resolusi yang lebih tinggi di setiap kecamatan. (*)',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's5',
         image:'https://cdn.bmkg.go.id/Web/hilal10-1-250x150.jpg',
         title: 'Informasi Prakiraan Hilal saat Matahari Terbenam Tanggal 6 dan 7 Juni 2024 (Penentu Awal Bulan Zulhijah 1445 H)',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s5', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s5', // Contoh link
         tgl: "  01 Jun 2024",
         penulis: " Iswanudin",
         paragraf: [
@@ -103,15 +95,13 @@ export const data = [
             'Untuk penentuan awal bulan Zulhijah 1445 H, BMKG menyampaikan informasi data-data Hilal (hasil Hisab) saat Matahari terbenam, yang dapat digunakan juga dalam pelaksanaan Rukyat (Observasi) Hilal.',
             'Informasi yang disampaikan disini meliputi : Waktu Konjungsi (Ijtima) dan Waktu Terbenam Matahari, Peta Ketinggian Hilal, Peta Elongasi, Peta Umur Bulan,  Peta Lag, Peta Fraksi Illuminasi Bulan, Objek Astronomis Lainnya yang Berpotensi Mengacaukan Rukyat Hilal, dan Data Hilal saat Matahari Terbenam untuk Kota-kota di Indonesia',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's6',
         image:'https://cdn.bmkg.go.id/Web/pch_det.2024.06.das_.1_ver_2024.05.30-250x150.png',
         title: 'Antisipasi Kekeringan, BMKG Gandeng PUPR, BRIN, dan TNI Lakukan Operasi Modifikasi Cuaca Mengisi 35 Waduk di Pulau Jawa',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s6', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s6', // Contoh link
         tgl: "  30 Mei 2024",
         penulis: " Rama Aditya",
         paragraf: [
@@ -125,15 +115,13 @@ export const data = [
             'Pelaksanaan OMC ini sesuai dengan arahan dari Menteri PUPR yang akan menjadikannya sebagai Pilot Project untuk pelaksanaan operasi modifikasi cuaca lain di seluruh waduk-waduk yang ada Indonesia. Tujuan utama dilakukannya OMC di waduk-waduk ini selain untuk antisipasi kekeringan adalah untuk mendukung program ketahanan pangan dari pemerintah.',
             'Sementara itu, Plt. Deputi Modifiaksi Cuaca BMKG Dr. Tri Handoko Seto menjelaskan bahwa operasi modifikasi cuaca di pulau Jawa dilakukan secara serempak karena sempitnya window of opportunity (peluang) pertumbuhan awan yang masih memungkinkan untuk disemai agar menjadi hujan.',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's7',
         image:'https://cdn.bmkg.go.id/Web/Gambar-WhatsApp-2024-05-28-pukul-12.17.22_86693fe9-250x150.jpg',
         title: 'Waspada Kemarau! BMKG Sebut Indonesia Berpotensi Alami Kekeringan Meteorologis',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s7', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s7', // Contoh link
         tgl: " 28 Mei 2024",
         penulis: "Akhmad Fadilah",
         paragraf: [
@@ -152,15 +140,13 @@ export const data = [
             '"Terkait pertanian, maka pola dan waktu tanam untuk iklim kering pada wilayah terdampak dapat menyesuaikan. Karenanya, BMKG akan melakukan koordinasi lebih lanjut dengan Menteri Pertanian dan Gubernur Provinsi terdampak," imbuhnya.',
             'Dwikorita mengungkapkan bahwa BMKG berharap informasi peringatan dini kesiap-siagaan musim kemarau tersebut dapat dimanfaatkan secara efektif oleh pemerintah pusat dan daerah. (*)',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's8',
         image:'https://cdn.bmkg.go.id/Web/Screenshot_20240526_115253_Drive-250x150.jpg',
         title: 'Kepala BMKG: Atasi Krisis Air Butuh Komitmen Kuat Antar Negara',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s8', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s8', // Contoh link
         tgl: "26 Mei 2024",
         penulis: " Rama Aditya",
         paragraf: [
@@ -174,15 +160,13 @@ export const data = [
             'Dwikorita menegaskan, dalam menghadapi tsunami tentunya tidak boleh melupakan kearifan lokal di setiap daerah dan negara. Ia berharap, dengan pendekatan di dalam pemerintahan dapat menjadi pendorong yang lebih kuat untuk negara-negara anggota dalam menindaklanjuti segala kebijakan yang telah dibuat demi kepentingan bersama.',
             '"Sementara itu, bagaimana dengan di luar pemerintahan? Kami menyarankan agar penempatan pusat-pusat keunggulan di setiap wilayah benar-benar dapat dipertimbangkan lebih lanjut seperti apa yang telah dijelaskan oleh seruan kami dari Afrika. Jadi sebenarnya pendirian ini bukanlah pusat baru, ini berperan sebagai "aliansi" dari pusat-pusat yang sudah ada, sehingga hanya koordinasi di antara pusat-pusat yang sudah ada agar lebih sinergis dan efektif langkahnya," pungkasnya. (***)',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's9',
         image:'https://cdn.bmkg.go.id/Web/H08_EH_Indonesia-13-250x150.png',
         title: 'BMKG: Potensi Hujan dengan Intensitas Tinggi Masih Dapat Terjadi di Jabodetabek',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s9', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s9', // Contoh link
         tgl: "25 Mei 2024",
         penulis: " Rama Aditya",
         paragraf: [
@@ -201,15 +185,13 @@ export const data = [
             '"Dampak yang dapat ditimbulkan dari cuaca ekstrem seperti banjir, banjir bandang, banjir lahar hujan, tanah longsor, jalan licin, pohon tumbang, dan berkurangnya jarak pandang," jelasnya.',
             'Terakhir, Andri meminta masyarakat untuk mengakses aplikasi InfoBMKG untuk mendapatkan informasi cuaca yang lebih akurat dan informasi perubahan cuaca setiap saat dengan resolusi yang lebih tinggi di setiap kecamatan.',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
     {
         id: 's10',
         image:'https://cdn.bmkg.go.id/Web/WhatsApp-Image-2024-05-25-at-00.08.57-250x150.jpeg',
         title: 'Ancaman Krisis Air Kian Nyata, BMKG Dorong Keterlibatan Penuh Generasi Muda',
-        link: '/profil/publikasi-dan-informasi/siaran_pers/s10', // Contoh link
+        link: '/profil/publikasi-dan-informasi/siaran_pers/view/s10', // Contoh link
         tgl: " 24 Mei 2024",
         penulis: "  Dwi Herlambang Ade Putra",
         paragraf: [
@@ -228,8 +210,6 @@ export const data = [
             '"Solusi yang luar biasa harus dicari untuk mengatasi masalah ini. Saya percaya bahwa generasi muda, dengan berbagai ide inovatifnya, dapat memastikan kemakmuran generasi sekarang dan generasi yang akan datang, terutama dalam mengatasi kelangkaan air yang disebabkan oleh perubahan iklim," tegasnya.',
             '"Kami berharap generasi muda di seluruh dunia dapat berinovasi untuk menggunakan air secara efisien, mengurangi limbah, memastikan penggunaan air yang berkelanjutan, dan memitigasi bencana yang berkaitan dengan air seperti banjir dan kekeringan," pungkas Dwikorita mengakhiri. (*)',
         ],
-        dokumentasi: [
-           null
-        ]
+        dokumentasi: null
     },
 ];

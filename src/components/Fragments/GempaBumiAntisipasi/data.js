@@ -1,4 +1,4 @@
-export const data1=[
+export const data_1 = [
     {
         id: 1,
         image: 'https://bmkg.go.id/asset/img/gempabumi/antisipasi01.png',
@@ -52,7 +52,7 @@ export const data1=[
     },
 ];
 
-export const data2=[
+export const data_2=[
     {
         id: 1,
         image: 'https://bmkg.go.id/asset/img/gempabumi/antisipasi06.png',
@@ -101,7 +101,7 @@ export const data2=[
     },
 ]
 
-export const data3=[
+export const data_3=[
     {
         id: 1,
         image: 'https://bmkg.go.id/asset/img/gempabumi/antisipasi11.png',

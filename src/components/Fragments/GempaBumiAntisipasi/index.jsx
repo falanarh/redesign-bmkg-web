@@ -1,27 +1,42 @@
-import {data1,data2,data3} from "./data";
+import { data_1, data_2, data_3 } from "./data";
 import ContentSection from "../../Layouts/ContentSection";
-import AntsipasiGBCard from "../../Elements/AntisipasiGBCard";
+import AntisipasiGBCard from "../../Elements/AntisipasiGBCard";
 import { Divider } from "antd";
 
 const GBAntisipasi = () => {
-    return (
-        <ContentSection title="Antisipasi Gempa Bumi" description="Gempa bumi dapat terjadi kapan pun dan dimana pun tanpa mengenal tempat dan waktu. Sebagai salah satu negara yang rawan akan bencana ini, kita sebagai warga perlu memiliki pembekalan diri mengenai cara menyelamatkan diri. Hal-hal apa yang perlu dilakukan sebelum, sesudah, dan setelah gempa bumi?">
-           <p className="font-bold text-xl text-active mb-5">Sebelum Terjadi Gempa Bumi</p>
-           {data1.map((item, index) => (
-            <AntsipasiGBCard key={index} item={item} />
-           ))} 
-           <Divider className=" bg-graytext"/>
-            <p className="font-bold text-xl text-active mb-5">Saat Terjadi Gempa Bumi</p>
-           {data2.map((item, index) => (
-            <AntsipasiGBCard key={index} item={item} />
-           ))} 
-           <Divider className=" bg-graytext"/>
-           <p className="font-bold text-xl text-active mb-5">Setelah Terjadi Gempa Bumi</p>
-           {data3.map((item, index) => (
-            <AntsipasiGBCard key={index} item={item} />
-           ))} 
-        </ContentSection>
-    );
+  return (
+    <ContentSection
+      title="Antisipasi Gempa Bumi"
+      description="Gempa bumi dapat terjadi kapan pun dan dimana pun tanpa mengenal tempat dan waktu. Sebagai salah satu negara yang rawan akan bencana ini, kita sebagai warga perlu memiliki pembekalan diri mengenai cara menyelamatkan diri. Hal-hal apa yang perlu dilakukan sebelum, sesudah, dan setelah gempa bumi?"
+    >
+      <p className="mb-5 text-xl font-bold text-active">
+        Sebelum Terjadi Gempa Bumi
+      </p>
+      <div className="flex flex-col gap-5">
+        {data_1.map((item, index) => (
+          <AntisipasiGBCard key={index} item={item} />
+        ))}
+      </div>
+      <Divider className="bg-graytext" />
+      <p className="mb-5 text-xl font-bold text-active">
+        Saat Terjadi Gempa Bumi
+      </p>
+      <div className="flex flex-col gap-5">
+        {data_2.map((item, index) => (
+          <AntisipasiGBCard key={index} item={item} />
+        ))}
+      </div>
+      <Divider className="bg-graytext" />
+      <p className="mb-5 text-xl font-bold text-active">
+        Setelah Terjadi Gempa Bumi
+      </p>
+      <div className="flex flex-col gap-5">
+        {data_3.map((item, index) => (
+          <AntisipasiGBCard key={index} item={item} />
+        ))}
+      </div>
+    </ContentSection>
+  );
 };
 
 export default GBAntisipasi;

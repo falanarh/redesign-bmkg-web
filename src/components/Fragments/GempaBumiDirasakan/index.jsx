@@ -7,7 +7,7 @@ import ContentSection from "../../Layouts/ContentSection";
 import { gempaBumiDirasakan } from "./data";
 import { Link } from "react-router-dom";
 
-const GempaBumiDirasakan = () => {
+const GempaBumiDirasakan = ({isMobile}) => {
     const [filteredInfo, setFilteredInfo] = useState({});
     const [sortedInfo, setSortedInfo] = useState({});
     const [searchTerm, setSearchTerm] = useState("");
@@ -34,9 +34,14 @@ const GempaBumiDirasakan = () => {
 
     useEffect(() => {
         const filtered = gempaBumiDirasakan.filter((item) =>
-            Object.keys(item).some((key) =>
-                String(item[key]).toLowerCase().includes(searchTerm.toLowerCase())
-            )
+            Object.keys(item).some((key) => {
+                if (typeof item[key] === 'object' && item[key] !== null) {
+                    return Object.keys(item[key]).some((subKey) =>
+                        String(item[key][subKey]).toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+                }
+                return String(item[key]).toLowerCase().includes(searchTerm.toLowerCase());
+            })
         );
         setFilteredData(filtered);
     }, [searchTerm]);
@@ -49,7 +54,7 @@ const GempaBumiDirasakan = () => {
             sorter: (a, b) => a.key - b.key,
             sortOrder: sortedInfo.columnKey === "key" ? sortedInfo.order : null,
             ellipsis: false,
-            fixed: "left",
+            fixed: isMobile ? null : "left",
             width: 6,
         },
         {
@@ -63,7 +68,7 @@ const GempaBumiDirasakan = () => {
             sortOrder:
                 sortedInfo.columnKey === "tgl" ? sortedInfo.order : null,
             ellipsis: false,
-            fixed: "left",
+            fixed: isMobile ? null : "left",
             width: 10,
         },
         {
@@ -74,7 +79,7 @@ const GempaBumiDirasakan = () => {
             sortOrder:
                 sortedInfo.columnKey === "jam" ? sortedInfo.order : null,
             ellipsis: false,
-            fixed: "left",
+            fixed: isMobile ? null : "left",
             width: 12,
         },
         {
@@ -88,7 +93,7 @@ const GempaBumiDirasakan = () => {
                 return timeA - timeB;
             },
             sortOrder:
-                sortedInfo.columnKey === "waktuPrakiraan" ? sortedInfo.order : null,
+                sortedInfo.columnKey === "lintang" ? sortedInfo.order : null,
             ellipsis: false,
             width: 10,
         },
@@ -130,6 +135,9 @@ const GempaBumiDirasakan = () => {
             title: "Dirasakan (Skala MMI)",
             dataIndex: "dirasakan",
             key: "dirasakan",
+            filters: [...new Set(gempaBumiDirasakan.map(item => item.dirasakan.value))].map(value => ({ text: value, value: value })),
+            filteredValue: filteredInfo.dirasakan || null,
+            onFilter: (value, record) => record.dirasakan.value.includes(value),
             render: (object) => (
                 <>
                     <p
@@ -141,7 +149,6 @@ const GempaBumiDirasakan = () => {
                     ))}
                 </>
             ),
-
             ellipsis: false,
             width: 25,
         },
@@ -166,7 +173,8 @@ const GempaBumiDirasakan = () => {
                             ],
                             innerWrapper: "bg-transparent",
                             inputWrapper: [
-                                "w-[50%]",
+                                "w-full",
+                                "sm:w-[50%]",
                                 "shadow-sm",
                                 "bg-default-200/50",
                                 "dark:bg-default/60",
@@ -241,9 +249,9 @@ const GempaBumiDirasakan = () => {
                                     </ModalHeader>
                                     <ModalBody>
                                         {/* Render the selected data here */}
-                                        <div className="flex font-pt-sans justify-center">
+                                        <div className="flex justify-center font-pt-sans">
                                             <img className="h-[450px]" src={selectedData.link} alt="Gambar Peta" />
-                                            <div className="text-nonActive mt-24">
+                                            <div className="mt-24 text-nonActive">
                                                 <div className="flex flex-col mb-3">
                                                     <p className="font-bold">Parameter Gempa</p>
                                                     <p>{selectedData.tgl} - {selectedData.jam}</p>

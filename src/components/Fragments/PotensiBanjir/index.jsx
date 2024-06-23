@@ -33,7 +33,7 @@ const PotensiBanjir = () => {
 
     return (
         <ContentSection>
-            <div className="flex -mt-5">
+            <div className="flex flex-col gap-3 -mt-5 sm:flex-row sm:gap-0">
                 <Select
                     items={rentang}
                     label="Rentang"
@@ -41,7 +41,7 @@ const PotensiBanjir = () => {
                     showScrollIndicators={true}
                     selectedKeys={rentangValue}
                     onSelectionChange={setRentangValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(rentang) => (
                         <SelectItem key={rentang.key} value={rentang.key}>
@@ -56,7 +56,7 @@ const PotensiBanjir = () => {
                     showScrollIndicators={true}
                     selectedKeys={bulanValue}
                     onSelectionChange={setBulanValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(bulan) => (
                         <SelectItem key={bulan.key} value={bulan.key}>
@@ -71,7 +71,7 @@ const PotensiBanjir = () => {
                     showScrollIndicators={true}
                     selectedKeys={tahunValue}
                     onSelectionChange={setTahunValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(itemTahun) => (
                         <SelectItem key={itemTahun.key} value={itemTahun.key}>
@@ -90,7 +90,7 @@ const PotensiBanjir = () => {
 
                         <Divider className="mb-3" />
                         {selectedData.tgl && selectedData.penulis ? (
-                            <div className="my-3 flex gap-4">
+                            <div className="flex gap-4 my-3">
                                 <p className="flex items-center gap-2 text-[14px] text-graytext">
                                     <FaCalendarDays /> {selectedData.tgl}
                                 </p>
@@ -108,7 +108,7 @@ const PotensiBanjir = () => {
                                         src={content.link}
                                     />
                                     <iframe
-                                        className='mt-10 w-full'
+                                        className='w-full mt-10'
                                         src={content.linkPDF}
                                         height="500px"
                                         style={{ border: 'none' }}
@@ -121,12 +121,12 @@ const PotensiBanjir = () => {
 
                     </div>
                 ) : (
-                    <p className=" text-base font-pt-sans font-bold italic my-10">
+                    <p className="my-10 text-base italic font-bold font-pt-sans">
                         Data tidak ditemukan
                     </p>
                 )
             ) : (
-                <p className="text-base font-pt-sans font-bold italic my-10">
+                <p className="my-10 text-base italic font-bold font-pt-sans">
                     Gambar akan keluar setelah memilih rentang, bulan, dan tahun.
                 </p>
             )}

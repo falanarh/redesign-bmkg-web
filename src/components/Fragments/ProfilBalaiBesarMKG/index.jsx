@@ -2,20 +2,17 @@
 import ContentSection from "../../Layouts/ContentSection";
 import {
   Button,
-  Divider,
   Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  Select,
-  SelectItem,
   useDisclosure,
 } from "@nextui-org/react";
 import { FaChevronCircleRight, FaSearch } from "react-icons/fa";
 import { profilBalaiBesarMKGList } from "./Data/data";
-import React, { useState } from "react";
+import { useState } from "react";
 
 // function getLocationsWithKey(key) {
 //   return locations.filter((location) => key in location);
@@ -24,12 +21,10 @@ import React, { useState } from "react";
 const ProfilBalaiBesarMKGCard = ({
   width,
   height,
-  image,
   id,
   title,
   subtitle,
   description,
-  children,
 }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   // const [locationValue, setLocationValue] = React.useState(new Set());

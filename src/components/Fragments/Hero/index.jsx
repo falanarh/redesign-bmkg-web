@@ -27,7 +27,7 @@ const Hero = ({ scrollToBerandaAtas }) => {
   }
   
   return (
-    <Parallax className="w-full h-full" bgImage={WorldMap} strength={300}>
+    <Parallax className="w-full h-full" bgImage={WorldMap} strength={windowWidth <= 640 ? 400 : 300}>
       <div className="w-full min-h-screen flex flex-col sm:flex-row items-center justify-start overflow-hidden px-4 py-10 sm:py-16 lg:px-[10%] mt-16 relative sm:mt-0 xxl:px-[15vw] xxl:-mt-16">
         <motion.div
           className="z-10 mt-[5vh]"

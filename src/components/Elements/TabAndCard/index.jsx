@@ -16,6 +16,7 @@ import Panah from "../../../assets/icons/panah.png";
 import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
 import { informasi, berita, siaran_pers } from "./data";
+import { Link } from "react-router-dom";
 
 const TabContent = ({
   data,
@@ -30,7 +31,7 @@ const TabContent = ({
       // slidesPerView={4}
       navigation={true}
       autoplay={{ delay: 2500, disableOnInteraction: false }}
-      pagination={{ clickable: true }}
+      // pagination={{ clickable: true }}
       className="p-8"
       style={{
         "--swiper-navigation-color": "#1C2B78",
@@ -38,26 +39,25 @@ const TabContent = ({
         "--swiper-navigation-size": "35px",
       }}
       breakpoints={{
-          300: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-          // 768: {
-          //   slidesPerView: 4,
-          //   spaceBetween: 40,
-          // },
-          1024: {
-            slidesPerView: 4,
-            spaceBetween: 15,
-          },
-        }}
+        300: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        // 768: {
+        //   slidesPerView: 4,
+        //   spaceBetween: 40,
+        // },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 15,
+        },
+      }}
     >
       {data.map((item, index) => (
         <SwiperSlide key={index}>
-          <Card
+        <Card
             maxW="250px"
-            style={{ borderRadius: "18px" }}
-            className="transition-transform transform hover:scale-105 hover:shadow-lg h-full"
+            className="h-full transition-transform transform rounded-lg hover:scale-105 hover:shadow-lg"
             onMouseEnter={() => handleCardHover(index)}
             onMouseLeave={handleCardUnhover}
           >
@@ -65,51 +65,40 @@ const TabContent = ({
               <img
                 src={item.image}
                 alt=""
-                className="w-[284px] h-[140px] rounded-xl"
+                className="w-full h-[140px] rounded-xl object-cover"
               />
-              <Stack mt="6" spacing="3">
-                <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  <p style={{ fontSize: "14px" }} className="font-bold">
-                    {item.title}
-                  </p>
-                  <p style={{ fontSize: "12px" }} className="text-graytext">
-                    {item.date}
-                  </p>
+              <Stack mt="4" spacing="3">
+                <div className="flex justify-between">
+                  <p className="text-sm font-bold">{item.title}</p>
+                  <p className="text-xs text-gray-500">{item.date}</p>
                 </div>
-                <Text style={{ fontSize: "12px" }} className="text-tertiary">
-                  {item.content}
-                </Text>
+                <Text className="text-xs text-gray-600">{item.content}</Text>
               </Stack>
             </CardBody>
-            <CardFooter>
-              <div className="flex justify-between">
-                <div className="flex items-center mr-14">
-                  <p
-                    style={{ fontSize: "12px" }}
-                    className="mr-1 cursor-pointer text-xm text-fouthtiary"
-                  >
+            <CardFooter className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Link to={item.link}>
+                  <p className="mr-1 text-xs text-blue-500 cursor-pointer">
                     Selengkapnya
                   </p>
-                  <img className="w-[12px] h-[10px]" src={Panah} alt="" />
-                </div>
-                <div className="flex items-center">
-                  <img
-                    className={`w-[31px] h-[31px] mr-2 cursor-pointer ${
-                      hoveredIndex === index ? "" : "grayscale"
-                    }`}
-                    src={WhatsApp}
-                    alt=""
-                  />
-                  <img
-                    className={`w-[31px] h-[31px] cursor-pointer ${
-                      hoveredIndex === index ? "" : "grayscale"
-                    }`}
-                    src={Twitter}
-                    alt=""
-                  />
-                </div>
+                </Link>
+                <img className="w-3 h-3" src={Panah} alt="Panah" />
+              </div>
+              <div className="flex items-center space-x-2">
+                <img
+                  className={`w-8 h-8 cursor-pointer ${
+                    hoveredIndex === index ? "" : "grayscale"
+                  }`}
+                  src={WhatsApp}
+                  alt="WhatsApp"
+                />
+                <img
+                  className={`w-8 h-8 cursor-pointer ${
+                    hoveredIndex === index ? "" : "grayscale"
+                  }`}
+                  src={Twitter}
+                  alt="Twitter"
+                />
               </div>
             </CardFooter>
           </Card>
@@ -132,9 +121,24 @@ export default function TabAndCard() {
   };
 
   const tabs = [
-    { key: "informasi", title: "Informasi Terbaru", icon: InfoTerbaru, data: informasi },
-    { key: "berita", title: "Berita Terbaru", icon: BeritaTerbaru, data: berita },
-    { key: "siaran_pers", title: "Siaran Pers Terbaru", icon: PengumumanTerbaru, data: siaran_pers },
+    {
+      key: "informasi",
+      title: "Informasi Terbaru",
+      icon: InfoTerbaru,
+      data: informasi,
+    },
+    {
+      key: "berita",
+      title: "Berita Terbaru",
+      icon: BeritaTerbaru,
+      data: berita,
+    },
+    {
+      key: "siaran_pers",
+      title: "Siaran Pers Terbaru",
+      icon: PengumumanTerbaru,
+      data: siaran_pers,
+    },
   ];
 
   return (

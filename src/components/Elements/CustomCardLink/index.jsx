@@ -6,35 +6,33 @@ import { Link } from "react-router-dom";
 const CustomCardLink = ({ item, width }) => {
   return (
     <Card
-      style={{
-        width: `${width}px`,
-        border: "2px solid #f0f0f0",
-        borderRadius: "15px",
-      }}
+      className="border-2 border-gray-200 rounded-lg"
+      style={{ width: `${width}px` }}
     >
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         {item.image && (
-          <div style={{ flex: "0 0 30%" }}>
+          <div className="flex-none md:flex-0 md:w-1/3">
             <img
               src={item.image}
               alt={item.title}
-              style={{ width: "100%", borderRadius: "10px" }}
+              className="w-full h-full rounded-lg"
             />
           </div>
         )}
         <div
-          style={{ flex: item.image ? "0 0 60%" : "0 0 100%" }}
-          className="flex flex-col font-pt-sans p-4"
+          className={`flex flex-col py-4 ${
+            item.image ? "md:flex-0 md:w-2/3" : "w-full"
+          }`}
         >
-          <Link to={`artikel/${item.id}`} className="text-xl font-bold">
+          <Link to={item.link} className="text-xl font-bold">
             {item.title}
           </Link>
           <div className="mt-3">
-            <p className="flex items-center gap-2 text-[14px] text-graytext">
+            <p className="flex items-center gap-2 text-sm text-gray-400">
               <FaCalendarDays />
               {item.tgl}
             </p>
-            <p className="flex items-center gap-2 text-[14px] mt-1 text-graytext">
+            <p className="flex items-center gap-2 mt-1 text-sm text-gray-400">
               <FaPen /> {item.penulis}
             </p>
           </div>

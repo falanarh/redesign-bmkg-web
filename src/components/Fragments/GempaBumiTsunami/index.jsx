@@ -4,9 +4,9 @@ import { ConfigProvider, Table } from "antd";
 import "./index.css";
 import { FaSearch } from "react-icons/fa";
 import ContentSection from "../../Layouts/ContentSection";
-import { gempaBumiTsunami} from "./data";
+import { gempaBumiTsunami } from "./data";
 
-const GempaBumiTsunami = () => {
+const GempaBumiTsunami = ({ isMobile }) => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,21 +35,22 @@ const GempaBumiTsunami = () => {
       sorter: (a, b) => a.key - b.key,
       sortOrder: sortedInfo.columnKey === "key" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 6,
     },
     {
       title: "Tanggal",
       dataIndex: "tgl",
       key: "tgl",
-      filters: [...new Set(gempaBumiTsunami.map(item => item.tgl))].map(bandara => ({ text: bandara, value: bandara })),
+      filters: [...new Set(gempaBumiTsunami.map((item) => item.tgl))].map(
+        (bandara) => ({ text: bandara, value: bandara })
+      ),
       filteredValue: filteredInfo.tgl || null,
       onFilter: (value, record) => record.tgl.includes(value),
       sorter: (a, b) => a.tgl.length - b.tgl.length,
-      sortOrder:
-        sortedInfo.columnKey === "tgl" ? sortedInfo.order : null,
+      sortOrder: sortedInfo.columnKey === "tgl" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 10,
     },
     {
@@ -57,10 +58,9 @@ const GempaBumiTsunami = () => {
       dataIndex: "jam",
       key: "jam",
       sorter: (a, b) => a.jam.length - b.jam.length,
-      sortOrder:
-        sortedInfo.columnKey === "jam" ? sortedInfo.order : null,
+      sortOrder: sortedInfo.columnKey === "jam" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 10,
     },
     {
@@ -82,7 +82,9 @@ const GempaBumiTsunami = () => {
       title: "Bujur",
       dataIndex: "bujur",
       key: "bujur",
-      filters: [...new Set(gempaBumiTsunami.map(item => item.bujur))].map(arah => ({ text: arah, value: arah })),
+      filters: [...new Set(gempaBumiTsunami.map((item) => item.bujur))].map(
+        (arah) => ({ text: arah, value: arah })
+      ),
       filteredValue: filteredInfo.bujur || null,
       onFilter: (value, record) => record.bujur.includes(value),
       sorter: (a, b) => a.bujur.length - b.bujur.length,
@@ -95,10 +97,7 @@ const GempaBumiTsunami = () => {
       dataIndex: "magnitudo",
       key: "magnitudo",
       sorter: (a, b) => a.magnitudo - b.magnitudo,
-      sortOrder:
-        sortedInfo.columnKey === "magnitudo"
-          ? sortedInfo.order
-          : null,
+      sortOrder: sortedInfo.columnKey === "magnitudo" ? sortedInfo.order : null,
       ellipsis: false,
       width: 10,
     },
@@ -107,8 +106,7 @@ const GempaBumiTsunami = () => {
       dataIndex: "kedalaman",
       key: "kedalaman",
       sorter: (a, b) => a.kedalaman - b.kedalaman,
-      sortOrder:
-        sortedInfo.columnKey === "kedalaman" ? sortedInfo.order : null,
+      sortOrder: sortedInfo.columnKey === "kedalaman" ? sortedInfo.order : null,
       ellipsis: false,
       width: 13,
     },
@@ -120,16 +118,28 @@ const GempaBumiTsunami = () => {
       width: 25,
     },
     {
-        title: "Status",
-        dataIndex: "status",
-        key: "status",
-        ellipsis: false,
-        width: 10,
-      },
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      ellipsis: false,
+      width: 10,
+    },
   ];
 
   return (
-    <ContentSection title="Gempa Bumi Tsunami">
+    <ContentSection
+      title="Gempa Bumi Tsunami"
+      description={
+        <p>
+          Tabel Tsunami BMKG berisi data dan informasi mengenai kejadian tsunami
+          yang terjadi di Indonesia. Tabel ini mencakup detail seperti tanggal
+          dan waktu kejadian, lintang, bujur, besaran magnitudo, kedalaman,
+          serta lokasi yang terdampak. Data ini berguna untuk memahami pola
+          kejadian tsunami, meningkatkan kewaspadaan, dan membantu dalam upaya
+          mitigasi serta respons tanggap darurat terhadap bencana tsunami.
+        </p>
+      }
+    >
       <div className="flex flex-col">
         <div className="flex gap-3">
           <Input
@@ -144,7 +154,8 @@ const GempaBumiTsunami = () => {
               ],
               innerWrapper: "bg-transparent",
               inputWrapper: [
-                "w-[50%]",
+                "w-full",
+                "sm:w-[50%]",
                 "shadow-sm",
                 "bg-default-200/50",
                 "dark:bg-default/60",
@@ -198,7 +209,12 @@ const GempaBumiTsunami = () => {
               x: 1200,
               y: 500,
             }}
-            pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['10', '25', '50', '100'], position: ['bottomCenter'] }}
+            pagination={{
+              defaultPageSize: 10,
+              showSizeChanger: true,
+              pageSizeOptions: ["10", "25", "50", "100"],
+              position: ["bottomCenter"],
+            }}
             className="mt-8"
           />
         </ConfigProvider>

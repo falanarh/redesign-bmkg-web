@@ -35,7 +35,7 @@ const AnomaliSuhuUdaraTahunan = () => {
                     showScrollIndicators={true}
                     selectedKeys={tahunValue}
                     onSelectionChange={setTahunValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(itemTahun) => (
                         <SelectItem key={itemTahun.key} value={itemTahun.key}>
@@ -54,7 +54,7 @@ const AnomaliSuhuUdaraTahunan = () => {
 
                         <Divider className="mb-3" />
                         {selectedData.tgl && selectedData.penulis ? (
-                            <div className="my-3 flex gap-4">
+                            <div className="flex gap-4 my-3">
                                 <p className="flex items-center gap-2 text-[14px] text-graytext">
                                     <FaCalendarDays /> {selectedData.tgl}
                                 </p>
@@ -87,13 +87,13 @@ const AnomaliSuhuUdaraTahunan = () => {
 
                     </div>
                 ) : (
-                    <p className=" text-base font-pt-sans font-bold italic my-10">
+                    <p className="my-10 text-base italic font-bold  font-pt-sans">
                         Data tidak ditemukan
                     </p>
                 )
             ) : (
-                <p className="text-base font-pt-sans font-bold italic my-10">
-                    Gambar akan keluar setelah memilih bulan dan tahun.
+                <p className="my-10 text-base italic font-bold font-pt-sans">
+                    Gambar akan keluar setelah memilih tahun.
                 </p>
             )}
         </ContentSection>

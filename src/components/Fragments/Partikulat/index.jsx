@@ -37,15 +37,6 @@ const Partikulat = ({isMobile}) => {
     },
     chart: {
       type: "bar",
-      events: {
-      mounted: function(chartContext, config) {
-        // Tambahkan kelas CSS ke elemen judul setelah chart dimount
-        const titleElement = chartContext.el.querySelector('.apexcharts-title-text');
-        if (titleElement) {
-          titleElement.classList.add('chart-title');
-        }
-      }
-    }
     },
     plotOptions: {
       bar: {

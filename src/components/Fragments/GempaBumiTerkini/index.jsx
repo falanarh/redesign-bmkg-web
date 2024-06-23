@@ -7,7 +7,7 @@ import { position } from "@chakra-ui/react";
 import ContentSection from "../../Layouts/ContentSection";
 import { gempaBumiTerkini } from "./data";
 
-const GempaBumiTerkini = () => {
+const GempaBumiTerkini = ({isMobile}) => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,7 +38,7 @@ const GempaBumiTerkini = () => {
       sorter: (a, b) => a.key - b.key,
       sortOrder: sortedInfo.columnKey === "key" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 6,
     },
     {
@@ -52,7 +52,7 @@ const GempaBumiTerkini = () => {
       sortOrder:
         sortedInfo.columnKey === "tgl" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 10,
     },
     {
@@ -63,7 +63,7 @@ const GempaBumiTerkini = () => {
       sortOrder:
         sortedInfo.columnKey === "jam" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 12,
     },
     {
@@ -140,7 +140,8 @@ Gempa bumi terkini merupakan informasi gempabumi yang <span className="font-bold
               ],
               innerWrapper: "bg-transparent",
               inputWrapper: [
-                "w-[50%]",
+                "w-full",
+                "sm:w-[50%]",
                 "shadow-sm",
                 "bg-default-200/50",
                 "dark:bg-default/60",

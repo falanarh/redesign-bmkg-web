@@ -5,19 +5,63 @@ import { useState } from "react";
 
 const warningData = [
   {
-    date: "Selasa, 12 Mei 2024",
+    date: "Kamis, 27 Juni 2024",
     city: "Surabaya",
-    warning: "Potensi hujan dengan guntur dan angin kencang di beberapa wilayah. Waspadai banjir lokal.",
+    warning:
+      "Potensi hujan dengan guntur dan angin kencang di beberapa wilayah. Waspada terhadap banjir lokal.",
   },
   {
-    date: "Rabu, 13 Mei 2024",
+    date: "Kamis, 27 Juni 2024",
     city: "Jakarta",
-    warning: "Hujan lebat dengan angin kencang di beberapa wilayah. Hindari perjalanan tidak perlu.",
+    warning:
+      "Hujan lebat dengan angin kencang di beberapa wilayah. Hindari perjalanan yang tidak perlu.",
   },
   {
-    date: "Kamis, 14 Mei 2024",
+    date: "Kamis, 27 Juni 2024",
     city: "Bandung",
-    warning: "Hujan sedang hingga lebat. Waspadai kilat dan angin kencang.",
+    warning: "Hujan sedang hingga lebat. Waspada kilat dan angin kencang.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Medan",
+    warning:
+      "Hujan ringan dengan potensi guntur. Lebih baik berada di dalam ruangan jika memungkinkan.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Semarang",
+    warning:
+      "Hujan dengan intensitas yang tidak merata dan potensi banjir lokal. Gunakan kewaspadaan saat bepergian.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Makassar",
+    warning:
+      "Cuaca hujan dengan sesekali guntur. Siapkan diri untuk kondisi basah.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Yogyakarta",
+    warning:
+      "Hujan dengan angin kencang. Ambil tindakan pencegahan yang diperlukan di luar ruangan.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Palembang",
+    warning:
+      "Hujan dan guntur di beberapa wilayah. Tetap waspada terhadap perubahan kondisi cuaca.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Balikpapan",
+    warning:
+      "Perkiraan hujan dengan potensi guntur. Rencanakan aktivitas dengan baik.",
+  },
+  {
+    date: "Kamis, 27 Juni 2024",
+    city: "Padang",
+    warning:
+      "Hujan ringan dengan potensi guntur. Tetap update informasi cuaca.",
   },
 ];
 

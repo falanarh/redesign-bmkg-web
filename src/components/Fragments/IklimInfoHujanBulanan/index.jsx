@@ -33,7 +33,7 @@ const IklimInformasiHujanBulanan = () => {
 
     return (
         <ContentSection title="Informasi Hujan Bulanan">
-            <div className="flex">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-0">
                 <Select
                     items={analisis}
                     label="Jenis Analisis"
@@ -41,7 +41,7 @@ const IklimInformasiHujanBulanan = () => {
                     showScrollIndicators={true}
                     selectedKeys={analisisValue}
                     onSelectionChange={setAnalisisValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(analisis) => (
                         <SelectItem key={analisis.key} value={analisis.key}>
@@ -56,7 +56,7 @@ const IklimInformasiHujanBulanan = () => {
                     showScrollIndicators={true}
                     selectedKeys={bulanValue}
                     onSelectionChange={setBulanValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(bulan) => (
                         <SelectItem key={bulan.key} value={bulan.key}>
@@ -71,7 +71,7 @@ const IklimInformasiHujanBulanan = () => {
                     showScrollIndicators={true}
                     selectedKeys={tahunValue}
                     onSelectionChange={setTahunValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(itemTahun) => (
                         <SelectItem key={itemTahun.key} value={itemTahun.key}>
@@ -84,9 +84,9 @@ const IklimInformasiHujanBulanan = () => {
                 selectedData ? (
                     <div className="flex flex-col font-pt-sans">
                         <Divider className="mt-9 mb-6 bg-[#eaeaea]" />
-                        <h1 className="text-xl font-bold  font-pt-sans-caption text-active">{selectedData.title}</h1>
+                        <h1 className="text-xl font-bold font-pt-sans-caption text-active">{selectedData.title}</h1>
 
-                        <div className="my-3 flex gap-4">
+                        <div className="flex gap-4 my-3">
                             <p className="flex items-center gap-2 text-[14px] text-graytext">
                                 <FaCalendarDays />{selectedData.tgl}
                             </p>
@@ -100,12 +100,12 @@ const IklimInformasiHujanBulanan = () => {
                         />
                     </div>
                 ) : (
-                    <p className=" text-base font-pt-sans font-bold italic my-10">
+                    <p className="my-10 text-base italic font-bold font-pt-sans">
                         Data tidak ditemukan
                     </p>
                 )
             ) : (
-                <p className="text-base font-pt-sans font-bold italic my-10">
+                <p className="my-10 text-base italic font-bold font-pt-sans">
                     Gambar akan keluar setelah memilih jenis analisis, bulan, dan tahun.
                 </p>
             )}

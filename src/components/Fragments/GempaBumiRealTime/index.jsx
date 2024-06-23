@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import ContentSection from "../../Layouts/ContentSection";
 import { gempaBumiRealTime} from "./data";
 
-const GempaBumiRealTime = () => {
+const GempaBumiRealTime = ({isMobile}) => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +35,7 @@ const GempaBumiRealTime = () => {
       sorter: (a, b) => a.key - b.key,
       sortOrder: sortedInfo.columnKey === "key" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 6,
     },
     {
@@ -49,7 +49,7 @@ const GempaBumiRealTime = () => {
       sortOrder:
         sortedInfo.columnKey === "tgl" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 10,
     },
     {
@@ -60,7 +60,7 @@ const GempaBumiRealTime = () => {
       sortOrder:
         sortedInfo.columnKey === "jam" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 12,
     },
     {
@@ -140,7 +140,8 @@ Gempa bumi realtime merupakan informasi gempabumi yang <span className="font-bol
               ],
               innerWrapper: "bg-transparent",
               inputWrapper: [
-                "w-[50%]",
+                "w-full",
+                "sm:w-[50%]",
                 "shadow-sm",
                 "bg-default-200/50",
                 "dark:bg-default/60",

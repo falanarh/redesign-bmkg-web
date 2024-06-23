@@ -2,8 +2,12 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { FaEarthAmericas, FaRegBuilding } from "react-icons/fa6";
-import { Breadcrumb, Button, Layout, Menu, theme } from "antd";
+import {
+  FaBookOpenReader,
+  FaEarthAmericas,
+  FaRegBuilding,
+} from "react-icons/fa6";
+import { Breadcrumb, Layout, Menu, theme } from "antd";
 import "./index.css";
 import ProfilSejarah from "../components/Fragments/ProfilSejarah";
 import ProfilLogo from "../components/Fragments/ProfilLogo";
@@ -13,16 +17,19 @@ import ProfilStrukturOrganisasi from "../components/Fragments/ProfilStrukturOrga
 import ProfilTransparasiKinerja from "../components/Fragments/ProfilTransparasiKinerja";
 import ProfilDaftarInfoPublik from "../components/Fragments/ProfilDaftarInfoPublik";
 import ProfilInfoDikecualikan from "../components/Fragments/ProfilInfoDikecualikan";
-import ProfilKegiatanInternasional from "../components/Fragments/ProfilKegiatanIntenasional";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import Artikel from "../components/Fragments/Artikel";
 import ProfilStasiunMKG from "../components/Fragments/ProfilStasiunMKG";
+import ProfilBalaiBesarMKG from "../components/Fragments/ProfilBalaiBesarMKG";
+import ProfilSiaranPers from "../components/Fragments/ProfilSiaranPers";
 import { useMediaQuery } from "react-responsive";
 import {
   TbLayoutSidebarLeftCollapseFilled,
   TbLayoutSidebarRightCollapseFilled,
 } from "react-icons/tb";
 import { RiMenuFold4Fill, RiMenuUnfold4Fill } from "react-icons/ri";
+import ProfilBerita from "../components/Fragments/ProfilBerita";
+import { Button } from "@nextui-org/react";
 
 const { Header, Sider, Content } = Layout;
 
@@ -70,8 +77,12 @@ export default function Profil({ endpoint = "sejarah" }) {
           content: <ProfilStrukturOrganisasi />,
         },
         {
-          key: 'balai-besar-mkg',
-          label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
+          key: "balai-besar-mkg",
+          label: (
+            <Link to="/profil/profil-bmkg/balai-besar-mkg">
+              Balai Besar MKG
+            </Link>
+          ),
           content: <ProfilBalaiBesarMKG />,
         },
         {
@@ -82,18 +93,24 @@ export default function Profil({ endpoint = "sejarah" }) {
       ],
     },
     {
-      key: 'publikasi-dan-informasi',
-      icon: <FaBookOpenReader className='size-[22px]' />,
-      label: 'Publikasi dan Informasi',
+      key: "publikasi-dan-informasi",
+      icon: <FaBookOpenReader className="size-[22px]" />,
+      label: "Publikasi dan Informasi",
       children: [
         {
-          key: 'berita',
-          label: <Link to="/profil/publikasi-dan-informasi/berita">Berita</Link>,
+          key: "berita",
+          label: (
+            <Link to="/profil/publikasi-dan-informasi/berita">Berita</Link>
+          ),
           content: <ProfilBerita />,
         },
         {
-          key: 'siaran_pers',
-          label: <Link to="/profil/publikasi-dan-informasi/siaran_pers">Siaran Pers</Link>,
+          key: "siaran_pers",
+          label: (
+            <Link to="/profil/publikasi-dan-informasi/siaran_pers">
+              Siaran Pers
+            </Link>
+          ),
           content: <ProfilSiaranPers />,
         },
         {
@@ -127,22 +144,25 @@ export default function Profil({ endpoint = "sejarah" }) {
     },
   ];
   const [collapsed, setCollapsed] = useState(false);
-  const [mobileCollapsed, setMobileCollapsed] = useState(false);
+  const [mobileCollapsed, setMobileCollapsed] = useState(true);
   const [selectedMenu, setSelectedMenu] = useState(endpoint);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   const location = useLocation();
-  const isArticleRoute = location.pathname.includes("artikel");
+  const isBeritaRoute = location.pathname.includes("berita/view");
+  const isSiaranPersRoute = location.pathname.includes("siaran_pers/view");
 
   useEffect(() => {
-    if (isArticleRoute) {
-      setSelectedMenu("kegiatan-internasional");
+    if (isBeritaRoute) {
+      setSelectedMenu("berita");
+    } else if (isSiaranPersRoute) {
+      setSelectedMenu("siaran_pers");
     } else {
       setSelectedMenu(endpoint);
     }
-  }, [isArticleRoute, endpoint]);
+  }, [isBeritaRoute, isSiaranPersRoute, endpoint]);
 
   const handleMenuClick = ({ key }) => {
     setSelectedMenu(key);
@@ -201,13 +221,17 @@ export default function Profil({ endpoint = "sejarah" }) {
       <Layout className="max-w-[1280px] sm:px-6 bg-white">
         {isMobile ? (
           <>
-            <Button onClick={handleToggleCollapsed} className={`absolute z-10 px-1 m-0 border-none shadow-none bg-active top-4 ${mobileCollapsed ? 'left-[12px]' : 'left-[25px]'}`}>
+            <div
+              onClick={handleToggleCollapsed}
+              className={`absolute z-10 p-0 m-0 border-none shadow-none bg-active top-4 left-0`}
+              style={{ borderRadius: "0 0.375rem 0.375rem 0"}} // Mengatur radius di atas kiri dan bawah kiri
+            >
               {mobileCollapsed ? (
-                <RiMenuFold4Fill className="text-2xl text-white" />
+                <RiMenuFold4Fill className="m-2 text-2xl text-white" />
               ) : (
-                <RiMenuUnfold4Fill className="text-2xl text-white" />
+                <RiMenuUnfold4Fill className="m-2 text-2xl text-white" />
               )}
-            </Button>
+            </div>
             <Sider
               className={mobileCollapsed ? "sider-collapsed" : "sider"}
               width="100%"
@@ -276,7 +300,7 @@ export default function Profil({ endpoint = "sejarah" }) {
               borderRadius: borderRadiusLG,
             }}
           >
-            {isArticleRoute ? (
+            {isBeritaRoute || isSiaranPersRoute ? (
               <Artikel />
             ) : (
               selectedSidebarItem?.content || "Content"

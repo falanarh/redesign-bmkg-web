@@ -51,13 +51,16 @@ nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
 }
 
 .sider-collapsed {
-    /* height: 100vh !important; */
+    /* Atur nilai-nilai ukuran menjadi 0 */
     min-width: 0px !important;
     flex: 0 0 0px !important;
     max-width: 0px !important;
     width: 0px !important;
+    /* Tambahkan animasi dengan transition */
+    transition: all 1s ease; /* Atur durasi dan jenis animasi yang diinginkan */
     /* Contoh lain jika diperlukan */
   }
+  
 
   .sider {
     /* min-width: 100% !important;

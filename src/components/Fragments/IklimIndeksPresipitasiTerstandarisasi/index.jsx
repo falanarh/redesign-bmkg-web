@@ -35,7 +35,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
 
     return (
         <ContentSection title="Indeks Presipitasi Terstandarisasi">
-            <div className="flex">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-0">
                 <Select
                     items={rentang}
                     label="Rentang"
@@ -43,7 +43,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
                     showScrollIndicators={true}
                     selectedKeys={rentangValue}
                     onSelectionChange={setRentangValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(rentang) => (
                         <SelectItem key={rentang.key} value={rentang.key}>
@@ -58,7 +58,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
                     showScrollIndicators={true}
                     selectedKeys={bulanValue}
                     onSelectionChange={setBulanValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(bulan) => (
                         <SelectItem key={bulan.key} value={bulan.key}>
@@ -73,7 +73,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
                     showScrollIndicators={true}
                     selectedKeys={tahunValue}
                     onSelectionChange={setTahunValue}
-                    className="max-w-xs font-pt-sans mr-5"
+                    className="max-w-xs mr-5 font-pt-sans"
                 >
                     {(itemTahun) => (
                         <SelectItem key={itemTahun.key} value={itemTahun.key}>
@@ -86,9 +86,9 @@ const IndeksPresipitasiTerstandarisasi = () => {
                 selectedData ? (
                     <div className="flex flex-col font-pt-sans">
                         <Divider className="mt-9 mb-6 bg-[#eaeaea]" />
-                        <h1 className="text-xl font-bold  font-pt-sans-caption text-active">{selectedData.title}</h1>
+                        <h1 className="text-xl font-bold font-pt-sans-caption text-active">{selectedData.title}</h1>
 
-                        <div className="my-3 flex gap-4">
+                        <div className="flex gap-4 my-3">
                             <p className="flex items-center gap-2 text-[14px] text-graytext">
                                 <FaCalendarDays />{selectedData.tgl}
                             </p>
@@ -105,7 +105,7 @@ const IndeksPresipitasiTerstandarisasi = () => {
                         ))} */}
 
                         <iframe
-                            className='mt-4 w-full'
+                            className='w-full mt-4'
                             src={selectedData.pdfLink}
                             height="500px"
                             style={{ border: 'none' }}
@@ -114,12 +114,12 @@ const IndeksPresipitasiTerstandarisasi = () => {
                         />
                     </div>
                 ) : (
-                    <p className=" text-base font-pt-sans font-bold italic my-10">
+                    <p className="my-10 text-base italic font-bold font-pt-sans">
                         Data tidak ditemukan
                     </p>
                 )
             ) : (
-                <p className="text-base font-pt-sans font-bold italic my-10">
+                <p className="my-10 text-base italic font-bold font-pt-sans">
                     Gambar akan keluar setelah memilih rentang, bulan, dan tahun.
                 </p>
             )}

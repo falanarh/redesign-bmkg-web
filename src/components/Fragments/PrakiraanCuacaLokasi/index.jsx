@@ -1,91 +1,87 @@
-import { Tabs } from 'antd';
-import { useState, useEffect } from 'react';
-import MapSlider from '../../Elements/MapSlider';
-import ContentSection from '../../Layouts/ContentSection';
-import { Link } from '@nextui-org/react';
+import { Tabs } from "antd";
+import ContentSection from "../../Layouts/ContentSection";
+import WeatherDialy from "./components/WeatherDialy";
+import { day1, day2, day3 } from "./data";
 
-const customColumns = [
-    {
-      uid: "nomor",
-      name: "No",
-      sortable: true,
-      renderCell: (item) => (
-        <div className="flex flex-col">
-          <p className="text-bold text-sm">{item.nomor}</p>
-        </div>
-      ),
-    },
-    {
-      uid: "stasiun",
-      name: "Email Address",
-      sortable: false,
-      renderCell: (item) => item.email,
-    },
-    {
-      uid: "age",
-      name: "Age",
-      sortable: true,
-      renderCell: (item) => item.age,
-    },
-    {
-      uid: "country",
-      name: "Country",
-      sortable: true,
-      renderCell: (item) => item.country,
-    },
-  ];
-
-  const initialVisibleColumns = ["name", "age", "email", "status"];
-
-const getDayName = (date) => {
-  const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-  return days[date.getDay()];
-};
-
-const getMonthName = (monthIndex) => {
-  const months = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
-    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-  ];
-  return months[monthIndex];
-};
-
-const getFormattedDate = (date) => {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = getMonthName(date.getMonth());
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-};
-
-const generateTabs = () => {
-  const tabs = [];
-  for (let i = 0; i < 3; i++) {
-    const date = new Date();
-    date.setDate(date.getDate() + i);
-    tabs.push({
-      key: String(i + 1),
-      label: `${getDayName(date)}, ${getFormattedDate(date)}`,
-      children: 'Content of Tab Pane 1',
-    //   children: `Content of Tab Pane ${i + 1}`,
-    });
+const PrakiraanCuacaLokasi = ({ isMobile }) => {
+  function formatDate(date) {
+    const days = [
+      "Minggu",
+      "Senin",
+      "Selasa",
+      "Rabu",
+      "Kamis",
+      "Jumat",
+      "Sabtu",
+    ];
+    const months = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+    const dayName = days[date.getDay()];
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${dayName}, ${day} ${month} ${year}`;
   }
-  return tabs;
-};
 
-const PrakiraanCuacaLokasi = () => {
-  const [items, setItems] = useState([]);
+  // Get today's date
+  const today = new Date();
 
-  useEffect(() => {
-    setItems(generateTabs());
-  }, []);
+  // Get tomorrow's date
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  // Get the day after tomorrow's date
+  const dayAfterTomorrow = new Date(today);
+  dayAfterTomorrow.setDate(today.getDate() + 2);
+
+  // Create items with formatted labels
+  const items = [
+    {
+      key: "1",
+      label: formatDate(today),
+      children: <WeatherDialy isMobile={isMobile} weatherData={day1} />,
+    },
+    {
+      key: "2",
+      label: formatDate(tomorrow),
+      children: <WeatherDialy isMobile={isMobile} weatherData={day2} />,
+    },
+    {
+      key: "3",
+      label: formatDate(dayAfterTomorrow),
+      children: <WeatherDialy isMobile={isMobile} weatherData={day3} />,
+    },
+  ];
 
   const onChange = (key) => {
     console.log(key);
   };
 
   return (
-    <ContentSection title="Prakiraan Cuaca Lokasi" description={<p className='text-[14px] font-pt-sans'>Menampilkan prakiraan cuaca terkini berdasarkan lokasi yang dipilih.  Untuk informasi selengkapnya kunjungi <Link href="https://web-meteo.bmkg.go.id/id/?fromURL=www.bmkg.go.id" className='text-active font-semibold' target="_blank">website</Link> berikut.</p>}>
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange}  />
+    <ContentSection
+      title="Prakiraan Cuaca Berdasarkan Lokasi"
+      description={
+        <p>
+          Prakiraan cuaca berdasarkan lokasi memberikan informasi penting
+          tentang kondisi cuaca di suatu daerah pada waktu tertentu. Informasi
+          ini meliputi beberapa aspek utama seperti kondisi langit (misalnya
+          cerah, berawan, hujan), suhu udara, dan kelembapan relatif.
+        </p>
+      }
+    >
+      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
     </ContentSection>
   );
 };
