@@ -75,15 +75,15 @@ export default function Profil({ endpoint = "sejarah" }) {
           ),
           content: <ProfilStrukturOrganisasi />,
         },
-        {
-          key: "balai-besar-mkg",
-          label: (
-            <Link to="/profil/profil-bmkg/balai-besar-mkg">
-              Balai Besar MKG
-            </Link>
-          ),
-          content: <ProfilBalaiBesarMKG />,
-        },
+        // {
+        //   key: "balai-besar-mkg",
+        //   label: (
+        //     <Link to="/profil/profil-bmkg/balai-besar-mkg">
+        //       Balai Besar MKG
+        //     </Link>
+        //   ),
+        //   content: <ProfilBalaiBesarMKG />,
+        // },
         {
           key: "stasion-mkg",
           label: <Link to="/profil/profil-bmkg/stasion-mkg">Stasiun MKG</Link>,
