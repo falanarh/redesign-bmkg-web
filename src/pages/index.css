@@ -1,74 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 .ant-menu-item {
-    font-family: 'PT Sans', sans-serif !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 
 .ant-menu-item-selected {
-    background-color: rgba(189, 195, 199, 0.25) !important;
-    color: #1C2B78 !important;
-    font-weight: 600 !important;
-    font-family: 'PT Sans', sans-serif !important;
+  background-color: rgba(189, 195, 199, 0.25) !important;
+  color: #1c2b78 !important;
+  font-weight: 600 !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 
 .ant-menu-submenu-selected > div.ant-menu-submenu-title {
-    color: #1C2B78 !important;
-    font-weight: 600 !important;
-    font-family: 'PT Sans', sans-serif !important;
+  color: #1c2b78 !important;
+  font-weight: 600 !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 
 .ant-menu-submenu-selected .ant-menu-submenu-title .ant-menu-item-selected {
-    color: #1C2B78 !important;
-    font-weight: 600 !important;
-    font-family: 'PT Sans', sans-serif !important;
+  color: #1c2b78 !important;
+  font-weight: 600 !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 .ant-menu-submenu-selected .ant-menu-submenu-title .ant-menu-item-selected {
-    color: #1C2B78 !important;
-    font-weight: 600 !important;
-    font-family: 'PT Sans', sans-serif !important;
+  color: #1c2b78 !important;
+  font-weight: 600 !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 
 .ant-menu-sub .ant-menu-item-selected {
-    color: #1C2B78 !important;
-    font-weight: 600 !important;
-    font-family: 'PT Sans', sans-serif !important;
+  color: #1c2b78 !important;
+  font-weight: 600 !important;
+  font-family: "PT Sans", sans-serif !important;
 }
 
-nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link > a{
-    color: #1C2B78 !important;
+nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link > a {
+  color: #1c2b78 !important;
 }
 
 nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
-    color: #1C2B78 !important;
+  color: #1c2b78 !important;
 }
 
 .ant-breadcrumb a:hover {
-    color: #1C2B78 !important;
+  color: #1c2b78 !important;
 }
 
 :where(.css-dev-only-do-not-override-1h13xwb).ant-layout .ant-layout-sider {
-    background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
+}
+
+:where(.css-1h13xwb).ant-menu-light,
+:where(.css-1h13xwb).ant-menu-light > .ant-menu {
+  background-color: #ffffff !important;
 }
 
 .sider-collapsed {
-    /* Atur nilai-nilai ukuran menjadi 0 */
-    min-width: 0px !important;
-    flex: 0 0 0px !important;
-    max-width: 0px !important;
-    width: 0px !important;
-    /* Tambahkan animasi dengan transition */
-    transition: all 1s ease; /* Atur durasi dan jenis animasi yang diinginkan */
-    /* Contoh lain jika diperlukan */
-  }
-  
-
-  .sider {
-    /* min-width: 100% !important;
-    flex: 0 0 100px !important;
-    max-width: 100% !important;
-    width: 100% !important; */
-  }
-  
-  .ant-layout-sider-trigger {
-    width: 0px !important;
-  }
+  /* Atur nilai-nilai ukuran menjadi 0 */
+  min-width: 0px !important;
+  flex: 0 0 0px !important;
+  max-width: 0px !important;
+  width: 0px !important;
+  /* Tambahkan animasi dengan transition */
+  transition: all 1s ease; /* Atur durasi dan jenis animasi yang diinginkan */
+  /* Contoh lain jika diperlukan */
+}
+.ant-layout-sider-trigger {
+  width: 0px !important;
+}
