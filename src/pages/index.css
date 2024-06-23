@@ -55,6 +55,10 @@ nav.ant-breadcrumb > ol > li:last-child > span.ant-breadcrumb-link {
   background-color: #ffffff !important;
 }
 
+:where(.css-1h13xwb).ant-layout .ant-layout-sider {
+  background-color: #ffffff !important;
+}
+
 .sider-collapsed {
   /* Atur nilai-nilai ukuran menjadi 0 */
   min-width: 0px !important;
