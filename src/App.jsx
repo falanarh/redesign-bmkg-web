@@ -18,25 +18,11 @@ import Profil from "./pages/profil";
 import { NextUIProvider } from "@nextui-org/react";
 import KualitasUdara from "./pages/kualitasudara";
 import { FaArrowUp } from "react-icons/fa";
-import { HashLoader } from "react-spinners";
 
 export default function App() {
   const navigate = useNavigate();
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const timeoutId = setTimeout(() => {
-      setIsLoading(false);
-    }, 500); // adjust the timeout duration to your liking
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,9 +45,6 @@ export default function App() {
 
   return (
     <NextUIProvider navigate={navigate}>
-      {isLoading && 
-        <HashLoader color="#36d7b7" />} {/* Tampilkan loading jika isLoading true */}
-      {!isLoading && ( /* Render konten jika isLoading false */
         <div className="relative">
           <div
             className={`fixed top-0 left-0 right-0 z-50 ${
@@ -336,7 +319,6 @@ export default function App() {
             </motion.button>
           )}
         </div>
-      )}
     </NextUIProvider>
   );
 }
