@@ -70,13 +70,9 @@ export default function Profil({ endpoint = "sejarah" }) {
           content: <ProfilStrukturOrganisasi />,
         },
         {
-          key: "balai-besar-mkg",
-          label: (
-            <Link to="/profil/profil-bmkg/balai-besar-mkg">
-              Balai Besar MKG
-            </Link>
-          ),
-          // content: <PrakiraanBerbasisDampak />,
+          key: 'balai-besar-mkg',
+          label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
+          content: <ProfilBalaiBesarMKG />,
         },
         {
           key: "stasion-mkg",
@@ -86,18 +82,19 @@ export default function Profil({ endpoint = "sejarah" }) {
       ],
     },
     {
-      key: "publikasi-dan-informasi",
-      icon: <FaEarthAmericas className="size-[22px]" />,
-      label: "Publikasi dan Informasi",
+      key: 'publikasi-dan-informasi',
+      icon: <FaBookOpenReader className='size-[22px]' />,
+      label: 'Publikasi dan Informasi',
       children: [
         {
-          key: "kegiatan-internasional",
-          label: (
-            <Link to="/profil/publikasi-dan-informasi/kegiatan-internasional">
-              Kegiatan Internasional
-            </Link>
-          ),
-          content: <ProfilKegiatanInternasional />,
+          key: 'berita',
+          label: <Link to="/profil/publikasi-dan-informasi/berita">Berita</Link>,
+          content: <ProfilBerita />,
+        },
+        {
+          key: 'siaran_pers',
+          label: <Link to="/profil/publikasi-dan-informasi/siaran_pers">Siaran Pers</Link>,
+          content: <ProfilSiaranPers />,
         },
         {
           key: "transparansi-kinerja",

@@ -129,10 +129,7 @@ const GempaBumiTsunami = () => {
   ];
 
   return (
-    <ContentSection title="Gempa Bumi Tsunami" description={<p>
-Gempa bumi realtime merupakan informasi gempabumi yang <span className="font-bold">didiseminasikan secara otomatis dan realtime.</span> Terdapat pemutakhiran parameter gempa setelah dilakukan analisis oleh ahli geofisika hingga semua data waveform seismik yang terekam dari stasiun remote tiba di BMKG.
-    </p>}
-      >
+    <ContentSection title="Gempa Bumi Tsunami">
       <div className="flex flex-col">
         <div className="flex gap-3">
           <Input

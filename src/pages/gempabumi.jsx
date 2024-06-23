@@ -3,7 +3,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { FaEarthAmericas, FaRegBuilding } from 'react-icons/fa6';
+import { FaEarthAmericas, FaHouseCrack, FaHouseFloodWater, FaRegBuilding, FaWater } from 'react-icons/fa6';
 import { Breadcrumb, Button, Layout, Menu, theme } from 'antd';
 import "./index.css";
 import GBAntisipasi from '../components/Fragments/GempaBumiAntisipasi';
@@ -19,7 +19,7 @@ const { Header, Sider, Content } = Layout;
 const sidebarItems = [
   {
     key: '1',
-    icon: <FaRegBuilding className='size-[24px]' />,
+    icon: <FaHouseCrack className='size-[24px]' />,
     label: 'Gempa Bumi',
     children: [
       {
@@ -56,7 +56,7 @@ const sidebarItems = [
   },
   {
     key: '2',
-    icon: <FaEarthAmericas className='size-[22px]' />,
+    icon: <FaHouseFloodWater className='size-[22px]' />,
     label: 'Tsunami',
     content: <GempaBumiTsunami />
   },

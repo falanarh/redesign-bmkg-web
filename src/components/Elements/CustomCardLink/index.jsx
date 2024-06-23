@@ -13,21 +13,20 @@ const CustomCardLink = ({ item, width }) => {
       }}
     >
       <div className="flex">
-        <div style={{ flex: "0 0 30%" }}>
-          <img
-            src={item.image}
-            alt={item.title}
-            style={{ width: "100%", borderRadius: "10px" }}
-          />
-        </div>
+        {item.image && (
+          <div style={{ flex: "0 0 30%" }}>
+            <img
+              src={item.image}
+              alt={item.title}
+              style={{ width: "100%", borderRadius: "10px" }}
+            />
+          </div>
+        )}
         <div
-          style={{ flex: "0 0 60%" }}
+          style={{ flex: item.image ? "0 0 60%" : "0 0 100%" }}
           className="flex flex-col font-pt-sans p-4"
         >
-          <Link
-            to={`artikel/${item.id}`}
-            className="text-xl font-bold"
-          >
+          <Link to={`artikel/${item.id}`} className="text-xl font-bold">
             {item.title}
           </Link>
           <div className="mt-3">
