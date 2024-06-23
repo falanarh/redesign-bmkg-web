@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-irregular-whitespace */
 import { Tabs } from "antd";
 import KomponenIBF from "../KomponenIBF";
@@ -8,20 +9,21 @@ import { Link } from "@nextui-org/react";
 const onChange = (key) => {
   console.log(key);
 };
-const items = [
-  {
-    key: "1",
-    label: "Komponen Penting IBF",
-    children: <KomponenIBF />,
-  },
-  {
-    key: "2",
-    label: "Prakiraan Cuaca Berbasis Dampak di Daerah",
-    children: <PrakiraanDampakDaerah />,
-  },
-];
 
-const PrakiraanBerbasisDampak = () => {
+const PrakiraanBerbasisDampak = ({isMobile}) => {
+  const items = [
+    {
+      key: "1",
+      label: "Komponen Penting IBF",
+      children: <KomponenIBF isMobile={isMobile} />,
+    },
+    {
+      key: "2",
+      label: "Prakiraan Cuaca Berbasis Dampak di Daerah",
+      children: <PrakiraanDampakDaerah />,
+    },
+  ];
+  
   return (
     <ContentSection
       title="Prakiraan Berbasis Dampak"
@@ -32,7 +34,7 @@ const PrakiraanBerbasisDampak = () => {
           terjadi akibat dari cuaca. Dalam sistem IBF juga disajikan rekomendasi
           respon atau langkah yang harus dilakukan oleh stakeholder/user atau
           masyarakat terkait dampak dari dinamika cuaca tersebut. Untuk informasi
-          selengkapnya kunjungi <Link href="https://signature.bmkg.go.id" target="_blank" className="text-active font-semibold" >website</Link> berikut.
+          selengkapnya kunjungi <Link href="https://signature.bmkg.go.id" target="_blank" className="font-semibold text-active" >website</Link> berikut.
         </p>
       }
     >

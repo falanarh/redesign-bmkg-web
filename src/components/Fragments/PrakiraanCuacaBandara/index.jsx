@@ -1,12 +1,12 @@
+/* eslint-disable react/prop-types */
 import { Divider, Input, Select, SelectItem } from "@nextui-org/react";
 import { prakiraanCuaca, times } from "./data";
 import { useState, useEffect } from "react";
 import { ConfigProvider, Table } from "antd";
 import "./index.css";
 import { FaSearch } from "react-icons/fa";
-import { position } from "@chakra-ui/react";
 
-const PrakiraanCuacaBandara = () => {
+const PrakiraanCuacaBandara = ({isMobile}) => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -73,7 +73,7 @@ const PrakiraanCuacaBandara = () => {
       sortOrder: sortedInfo.columnKey === "key" ? sortedInfo.order : null,
       ellipsis: false,
       width: 55,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
     },
     {
       title: "Bandara/Stasiun",
@@ -86,7 +86,7 @@ const PrakiraanCuacaBandara = () => {
       sortOrder:
         sortedInfo.columnKey === "bandaraStasiun" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 350,
     },
     {
@@ -165,7 +165,7 @@ const PrakiraanCuacaBandara = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex gap-3">
+      <div className={`flex gap-3 ${isMobile ? "flex-col" : "flex-row"}`}>
         <Select
           items={times}
           label="Waktu prakiraan cuaca"

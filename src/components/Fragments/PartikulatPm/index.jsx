@@ -14,6 +14,47 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "./index.css";
 
+const airQualityData = [
+  { range: '0-15.5 µgr/m3', category: 'Baik', color: '#9BD84D' },
+  { range: '15.6-55.4 µgr/m3', category: 'Sedang', color: '#FBCF3A' },
+  { range: '55.5-150.4 µgr/m3', category: 'Tidak Sehat', color: '#FD8E49' },
+  { range: '150.5-250.4 µgr/m3', category: 'Sangat Tidak Sehat', color: '#F75E60' },
+  { range: '>250.4 µgr/m3', category: 'Berbahaya', color: '#7B0002' },
+];
+
+const AirQualityTable = () => {
+  return (
+    <div className="container mx-auto">
+      <table className="min-w-full">
+        <thead>
+          <tr className="w-full text-white bg-active">
+            <th className="px-4 py-2">Kisaran (µgr/m3)</th>
+            <th className="px-4 py-2">Kategori</th>
+            <th className="px-4 py-2">Indikator</th>
+          </tr>
+        </thead>
+        <tbody>
+          {airQualityData.map((item, index) => (
+            <tr
+              key={index}
+              className={`text-center ${index % 2 === 0 ? 'bg-white' : 'bg-gray-100'}`}
+            >
+              <td className="px-4 py-2">{item.range}</td>
+              <td className="px-4 py-2">{item.category}</td>
+              <td className="px-4 py-2">
+                <div
+                  className="inline-block w-6 h-6 rounded"
+                  style={{ backgroundColor: item.color }}
+                ></div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
 function getStatusColor(status) {
   switch (status) {
     case "Baik":
@@ -109,25 +150,28 @@ const MainContent = ({ data }) => {
         <h3 className="font-bold text-[#666666]">{formattedTanggal}</h3>
         <h3 className="ml-8 font-bold text-[#666666]">{nextHour} WIB</h3>
       </span>
-      <div className="flex w-[60%] h-[100px] my-5">
+      <div className="flex w-[90%] sm:w-[60%] h-[100px] my-5">
         {nextHourPm ? (
           <>
             <div
               className="w-[25%] h-full rounded-tl-[15px] rounded-bl-[15px] flex flex-col justify-center items-center"
               style={{ backgroundColor: statusColor }}
             >
-              <p className="text-3xl font-bold leading-8 text-white">
+              <p className="text-2xl font-bold leading-8 text-white sm:text-3xl">
                 {nextHourPm.nilai}
               </p>
-              <p className="font-bold text-white text-[18px]">
+              <p className="font-bold text-white sm:text-[18px] text-[16px]">
                 µ/m<sup>3</sup>
               </p>
             </div>
-            <div className="w-[75%] h-full bg-[#F5F5F5] flex flex-col justify-center p-8 rounded-tr-[15px] rounded-br-[15px]">
-              <p className="text-xl font-bold">
+            <div className="w-[75%] h-full bg-[#F5F5F5] flex flex-col justify-center sm:p-8 p-3 rounded-tr-[15px] rounded-br-[15px]">
+              <p className="font-bold sm:text-xl text-[18px]">
                 Indeks Partikulat Udara (PM2.5)
               </p>
-              <p className="text-xl font-bold" style={{ color: statusColor }}>
+              <p
+                className="font-bold sm:text-xl text-[18px]"
+                style={{ color: statusColor }}
+              >
                 {currentStatus}
               </p>
             </div>
@@ -138,13 +182,24 @@ const MainContent = ({ data }) => {
       </div>
       <div className="w-[90%] mb-8">
         <Swiper
+        breakpoints={{
+            300: {
+              slidesPerView: 1,
+              spaceBetween: 0,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 0,
+            },
+            1400: {
+              slidesPerView: 5,
+              spaceBetween: 0,
+            },
+          }}
           modules={[Navigation, Autoplay, Pagination, A11y]}
-          spaceBetween={0}
-          slidesPerView={5}
           navigation={true}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          className=""
+          className="px-16 sm:px-0"
           style={{
             "--swiper-navigation-color": "#1C2B78",
             "--swiper-pagination-color": "#1C2B78",
@@ -208,6 +263,8 @@ const PartikulatPm = () => {
       </Select>
       {/* Tampilkan konten jika selectedData sudah ada */}
       {selectedData && <MainContent data={selectedData} />}
+      <p className="my-3 font-bold">Keterangan</p>
+      <AirQualityTable />
     </ContentSection>
   );
 };

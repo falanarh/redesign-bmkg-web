@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { dataAktual } from "./data";
 import "./index.css";
@@ -5,7 +6,7 @@ import { ConfigProvider, Divider, Table } from "antd";
 import { FaSearch } from "react-icons/fa";
 import { Input } from "@nextui-org/react";
 
-const PrakiraanCuacaBandaraAktual = () => {
+const PrakiraanCuacaBandaraAktual = ({ isMobile }) => {
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,7 +36,7 @@ const PrakiraanCuacaBandaraAktual = () => {
       sortOrder: sortedInfo.columnno === "no" ? sortedInfo.order : null,
       ellipsis: false,
       width: 3,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
     },
     {
       title: "Bandara/Stasiun",
@@ -50,7 +51,7 @@ const PrakiraanCuacaBandaraAktual = () => {
       sortOrder:
         sortedInfo.columnKey === "bandaraStasiun" ? sortedInfo.order : null,
       ellipsis: false,
-      fixed: "left",
+      fixed: isMobile ? null : "left",
       width: 10,
     },
     {
@@ -174,7 +175,8 @@ const PrakiraanCuacaBandaraAktual = () => {
           ],
           innerWrapper: "bg-transparent",
           inputWrapper: [
-            "w-[50%]",
+            "w-full",
+            "sm:w-[50%]",
             "mb-4",
             "shadow-sm",
             "bg-default-200/50",

@@ -119,6 +119,7 @@ const CitraSatelitCard = ({
                         src={selectedData[id]}
                         alt={`${title}-${selectedData?.key}`}
                       />
+                      <p>{description}</p>
                     </>
                   ) : (
                     <p className="text-base italic font-bold font-pt-sans">
@@ -126,7 +127,7 @@ const CitraSatelitCard = ({
                     </p>
                   )
                 ) : (
-                  <p className="text-base font-pt-sans font-bold italic mx-auto mt-[20%]">
+                  <p className="text-base font-pt-sans font-bold italic mx-auto mt-[20vh]">
                     Gambar akan keluar setelah memilih wilayah citra satelit.
                   </p>
                 )}
@@ -152,50 +153,56 @@ const CitraSatelit = () => {
       title="Citra Satelit"
       description="Halaman ini menyajikan berbagai produk citra satelit yang memberikan informasi penting mengenai kondisi cuaca dan atmosfer. Produk-produk ini membantu dalam pengamatan dan analisis cuaca yang akurat dan real-time."
     >
-      <div className="flex flex-wrap gap-5">
-        <Input
-          label="Pencarian"
-          radius="lg"
-          classNames={{
-            label:
-              "text-black/50 dark:text-white/90 font-pt-sans-caption",
-            input: [
-              "bg-transparent",
-              "text-black/90 dark:text-white/90 font-pt-sans",
-              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
-            ],
-            innerWrapper: "bg-transparent",
-            inputWrapper: [
-              "w-[50%]",
-              "shadow-sm",
-              "bg-default-200/50",
-              "dark:bg-default/60",
-              "backdrop-blur-xl",
-              "backdrop-saturate-200",
-              "hover:bg-default-200/70",
-              "dark:hover:bg-default/70",
-              "group-data-[focus=true]:bg-default-200/50",
-              "dark:group-data-[focus=true]:bg-default/60",
-              "!cursor-text",
-            ],
-          }}
-          placeholder="Ketikkan nama satelit..."
-          startContent={<FaSearch className="text-base" />}
-          size="md"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        {filteredSatelitList.map((item) => (
-          <CitraSatelitCard
-            key={item.key}
-            id={item.key}
-            width={300}
-            height={620}
-            image={item.image}
-            title={item.title}
-            description={item.description}
-          ></CitraSatelitCard>
-        ))}
+      <Input
+        label="Pencarian"
+        radius="lg"
+        classNames={{
+          label: "text-black/50 dark:text-white/90 font-pt-sans-caption",
+          input: [
+            "bg-transparent",
+            "text-black/90 dark:text-white/90 font-pt-sans",
+            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+          ],
+          innerWrapper: "bg-transparent",
+          inputWrapper: [
+            "sm:w-[50%]",
+            "w-full",
+            "shadow-sm",
+            "bg-default-200/50",
+            "dark:bg-default/60",
+            "backdrop-blur-xl",
+            "backdrop-saturate-200",
+            "hover:bg-default-200/70",
+            "dark:hover:bg-default/70",
+            "group-data-[focus=true]:bg-default-200/50",
+            "dark:group-data-[focus=true]:bg-default/60",
+            "!cursor-text",
+          ],
+        }}
+        placeholder="Ketikkan nama satelit..."
+        startContent={<FaSearch className="text-base" />}
+        size="md"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <div className="flex flex-wrap justify-center gap-5 mt-6 sm:justify-start">
+        {filteredSatelitList.length > 0 ? (
+          filteredSatelitList.map((item) => (
+            <CitraSatelitCard
+              key={item.key}
+              id={item.key}
+              width={280}
+              height={620}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+            ></CitraSatelitCard>
+          ))
+        ) : (
+          <p className="text-base italic font-bold font-pt-sans">
+            Data tidak ditemukan.
+          </p>
+        )}
       </div>
     </ContentSection>
   );

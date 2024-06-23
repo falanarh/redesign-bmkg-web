@@ -3,14 +3,6 @@ import { CloseOutlined } from "@ant-design/icons";
 import AlertIcon from "../../../assets/icons/AlertIcon.png";
 import { useState } from "react";
 
-const contentStyle = {
-  height: "70px",
-  color: "#000000",
-  lineHeight: "25px",
-  textAlign: "center",
-  background: "#FEEBCB",
-};
-
 const warningData = [
   {
     date: "Selasa, 12 Mei 2024",
@@ -42,33 +34,31 @@ const EarlyWarning = ({ onClose }) => {
       {warningData.map((data, index) => (
         <div key={index}>
           <div
-            key={index}
-            style={contentStyle}
-            className="flex justify-center items-center relative"
+            style={{ background: "#FEEBCB" }}
+            className="relative flex items-center justify-center h-20 px-4 pt-2 pb-3 xxl:px-14"
           >
-            <Button
-              type="text"
-              shape="circle"
-              icon={<CloseOutlined />}
-              className="absolute top-1 right-0 m-4"
-              onClick={handleClose}
+            <img
+              src={AlertIcon}
+              alt="Warning Icon"
+              className="w-4 h-4 mr-3 sm:w-6 sm:h-6"
             />
-            <div className="flex flex-col justify-center items-start w-full max-w-[1280px] h-full pl-10 pr-6 pt-2 pb-2">
-              <img
-                src={AlertIcon}
-                alt="Warning Icon"
-                className="size-[20px] absolute top-6 left-[100px]"
-              />
-              <p className="text-sm/3 font-bold">
+            <div className="flex flex-col justify-center items-start w-full max-w-[1220px]">
+              <p className="text-xs font-bold sm:text-sm">
                 {data.date} | {data.city}
               </p>
-              <p className="text-sm text-left">
+              <p className="text-xs text-left sm:text-sm">
                 {data.warning}
-                <span className="font-bold underline text-active cursor-pointer ml-1">
+                <span className="ml-1 font-bold underline cursor-pointer text-active">
                   Selengkapnya
                 </span>
               </p>
             </div>
+            <Button
+              type="text"
+              shape="circle"
+              icon={<CloseOutlined />}
+              onClick={handleClose}
+            />
           </div>
         </div>
       ))}
