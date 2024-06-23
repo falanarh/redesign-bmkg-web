@@ -1,6 +1,7 @@
-import { data1, data2, data3 } from './data';
+import {data1,data2,data3} from "./data";
 import ContentSection from "../../Layouts/ContentSection";
 import AntsipasiGBCard from "../../Elements/AntisipasiGBCard";
+import { Divider } from "antd";
 
 const GBAntisipasi = () => {
     return (
@@ -9,10 +10,12 @@ const GBAntisipasi = () => {
            {data1.map((item, index) => (
             <AntsipasiGBCard key={index} item={item} />
            ))} 
+           <Divider className=" bg-graytext"/>
             <p className="font-bold text-xl text-active mb-5">Saat Terjadi Gempa Bumi</p>
            {data2.map((item, index) => (
             <AntsipasiGBCard key={index} item={item} />
            ))} 
+           <Divider className=" bg-graytext"/>
            <p className="font-bold text-xl text-active mb-5">Setelah Terjadi Gempa Bumi</p>
            {data3.map((item, index) => (
             <AntsipasiGBCard key={index} item={item} />
