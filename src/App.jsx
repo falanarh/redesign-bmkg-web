@@ -35,15 +35,16 @@ export default function App() {
             <Route path="/profil/profil-bmkg/struktur-organisasi" element={<Profil endpoint="struktur-organisasi"/>} />
             <Route path="/profil/profil-bmkg/balai-besar-mkg" element={<Profil endpoint="balai-besar-mkg"/>} />
             <Route path="/profil/profil-bmkg/stasion-mkg" element={<Profil endpoint="stasion-mkg"/>} />
-            <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional" element={<Profil endpoint="kegiatan-internasional"/>} />
+            <Route path="/profil/publikasi-dan-informasi/berita" element={<Profil endpoint="berita"/>} />
+            <Route path="/profil/publikasi-dan-informasi/siaran_pers" element={<Profil endpoint="siaran_pers"/>} />
             <Route path="/profil/publikasi-dan-informasi/transparansi-kinerja" element={<Profil endpoint="transparansi-kinerja"/>} />
             <Route path="/profil/publikasi-dan-informasi/daftar-informasi-publik" element={<Profil endpoint="daftar-informasi-publik"/>} />
             <Route path="/profil/publikasi-dan-informasi/informasi-dikecualikan" element={<Profil endpoint="informasi-dikecualikan"/>} />
             <Route path="/cuaca" element={<Cuaca />} />
             <Route path="/iklim" element={<Iklim />} />
             <Route path="/gempa-bumi-tsunami" element={<GempaBumi />} />
-            {/* <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional" element={<Artikel />} /> */}
-            <Route path="/profil/publikasi-dan-informasi/kegiatan-internasional/artikel/:id/*" element={<Profil />} />
+            {/* <Route path="/profil/publikasi-dan-informasi/artikel" element={<Artikel />} /> */}
+            {/* <Route path="/profil/publikasi-dan-informasi/artikel/artikel/:id/*" element={<Profil />} /> */}
             <Route path="/kualitas-udara" element={<Navigate to="/kualitas-udara/pemantauan-kualitas-udara/partikulat-pm" replace />} />
             <Route path="/kualitas-udara/pemantauan-kualitas-udara/partikulat-pm" element={<KualitasUdara endpoint="partikulat-pm" />} />
             <Route path="/kualitas-udara/pemantauan-kualitas-udara/gas-rumah-kaca" element={<KualitasUdara endpoint="gas-rumah-kaca" />} />

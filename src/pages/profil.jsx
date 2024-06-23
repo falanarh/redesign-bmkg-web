@@ -16,84 +16,15 @@ import ProfilStrukturOrganisasi from '../components/Fragments/ProfilStrukturOrga
 import ProfilTransparasiKinerja from '../components/Fragments/ProfilTransparasiKinerja';
 import ProfilDaftarInfoPublik from '../components/Fragments/ProfilDaftarInfoPublik';
 import ProfilInfoDikecualikan from '../components/Fragments/ProfilInfoDikecualikan';
-import ProfilKegiatanInternasional from '../components/Fragments/ProfilKegiatanIntenasional';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import Artikel from '../components/Fragments/Artikel';
 import ProfilStasiunMKG from '../components/Fragments/ProfilStasiunMKG';
+import ProfilBalaiBesarMKG from '../components/Fragments/ProfilBalaiBesarMKG';
+import ProfilBerita from '../components/Fragments/ProfilBerita';
+import ProfilArtikel from '../components/Fragments/ProfilArtikel';
+import ProfilSiaranPers from '../components/Fragments/ProfilSiaranPers';
 
 const { Header, Sider, Content } = Layout;
-
-const sidebarItems = [
-  {
-    key: 'profil-bmkg',
-    icon: <FaRegBuilding className='size-[24px]' />,
-    label: 'Profil BMKG',
-    children: [
-      {
-        key: 'sejarah',
-        label: <Link to="/profil/profil-bmkg/sejarah">Sejarah</Link>,
-        content: <ProfilSejarah />,
-      },
-      {
-        key: 'logo',
-        label: <Link to="/profil/profil-bmkg/logo">Logo</Link>,
-        content: <ProfilLogo />,
-      },
-      {
-        key: 'visi-dan-misi',
-        label: <Link to="/profil/profil-bmkg/visi-dan-misi">Visi dan Misi</Link>,
-        content: <ProfilVisiMisi />,
-      },
-      {
-        key: 'tugas-dan-fungsi',
-        label: <Link to="/profil/profil-bmkg/tugas-dan-fungsi">Tugas dan Fungsi</Link>,
-        content: <ProfilTugasFungsi />,
-      },
-      {
-        key: 'struktur-organisasi',
-        label: <Link to="/profil/profil-bmkg/struktur-organisasi">Struktur Organisasi</Link>,
-        content: <ProfilStrukturOrganisasi />,
-      },
-      {
-        key: 'balai-besar-mkg',
-        label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
-        // content: <PrakiraanBerbasisDampak />,
-      },
-      {
-        key: 'stasion-mkg',
-        label: <Link to="/profil/profil-bmkg/stasion-mkg">Stasiun MKG</Link>,
-        // content: <PrakiraanBerbasisDampak />,
-      },
-    ],
-  },
-  {
-    key: 'publikasi-dan-informasi',
-    icon: <FaEarthAmericas className='size-[22px]' />,
-    label: 'Publikasi dan Informasi',
-    children: [
-      {
-        key: 'kegiatan-internasional',
-        label: <Link to="/profil/publikasi-dan-informasi/kegiatan-internasional">Kegiatan Internasional</Link>,
-        content: <ProfilKegiatanInternasional />,
-      },
-      {
-        key: 'transparansi-kinerja',
-        label: <Link to="/profil/publikasi-dan-informasi/transparansi-kinerja">Transparasi Kinerja</Link>,
-        content: <ProfilTransparasiKinerja />,
-      },
-      {
-        key: 'daftar-informasi-publik',
-        label: <Link to="/profil/publikasi-dan-informasi/daftar-informasi-publik">Daftar Informasi Publik</Link>,
-        content: <ProfilDaftarInfoPublik />,
-      },
-      {
-        key: 'informasi-dikecualikan',
-        label: <Link to="/profil/publikasi-dan-informasi/informasi-dikecualikan">Informasi yang Dikecualikan</Link>,
-        content: <ProfilInfoDikecualikan />,
-      },
-    ],
-  },
-];
 
 export default function Profil({ endpoint = 'sejarah'}) {
   const sidebarItems = [
@@ -130,7 +61,7 @@ export default function Profil({ endpoint = 'sejarah'}) {
         {
           key: 'balai-besar-mkg',
           label: <Link to="/profil/profil-bmkg/balai-besar-mkg">Balai Besar MKG</Link>,
-          // content: <PrakiraanBerbasisDampak />,
+          content: <ProfilBalaiBesarMKG />,
         },
         {
           key: 'stasion-mkg',
@@ -145,9 +76,14 @@ export default function Profil({ endpoint = 'sejarah'}) {
       label: 'Publikasi dan Informasi',
       children: [
         {
-          key: 'kegiatan-internasional',
-          label: <Link to="/profil/publikasi-dan-informasi/kegiatan-internasional">Kegiatan Internasional</Link>,
-          content: <ProfilKegiatanInternasional />,
+          key: 'berita',
+          label: <Link to="/profil/publikasi-dan-informasi/berita">Berita</Link>,
+          content: <ProfilBerita />,
+        },
+        {
+          key: 'siaran_pers',
+          label: <Link to="/profil/publikasi-dan-informasi/siaran_pers">Siaran Pers</Link>,
+          content: <ProfilSiaranPers />,
         },
         {
           key: 'transparansi-kinerja',

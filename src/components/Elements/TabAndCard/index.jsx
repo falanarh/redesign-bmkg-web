@@ -10,12 +10,11 @@ import "swiper/css/scrollbar";
 import "./index.css";
 import InfoTerbaru from "../../../assets/icons/Sent.png";
 import BeritaTerbaru from "../../../assets/icons/News.png";
-import ArtikelTerbaru from "../../../assets/icons/Document.png";
 import PengumumanTerbaru from "../../../assets/icons/Microphone.png";
 import Panah from "../../../assets/icons/panah.png";
 import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
-import { informasi, berita, artikel, pengumuman } from "./data";
+import { informasi, berita, siaran_pers } from "./data";
 
 const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) => {
   return (
@@ -33,7 +32,7 @@ const TabContent = ({ data, hoveredIndex, handleCardHover, handleCardUnhover }) 
           <Card
             maxW="250px"
             style={{ borderRadius: "18px" }}
-            className="transition-transform transform hover:scale-105 hover:shadow-lg"
+            className="transition-transform transform hover:scale-105 hover:shadow-lg h-full"
             onMouseEnter={() => handleCardHover(index)}
             onMouseLeave={handleCardUnhover}
           >
@@ -100,8 +99,7 @@ export default function TabAndCard() {
   const tabs = [
     { key: "informasi", title: "Informasi Terbaru", icon: InfoTerbaru, data: informasi },
     { key: "berita", title: "Berita Terbaru", icon: BeritaTerbaru, data: berita },
-    { key: "artikel", title: "Artikel Terbaru", icon: ArtikelTerbaru, data: artikel },
-    { key: "pengumuman", title: "Pengumuman Terbaru", icon: PengumumanTerbaru, data: pengumuman },
+    { key: "siaran_pers", title: "Siaran Pers Terbaru", icon: PengumumanTerbaru, data: siaran_pers },
   ];
 
   return (

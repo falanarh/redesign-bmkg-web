@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { data } from "../ProfilKegiatanIntenasional/data.js"; // pastikan Anda menyesuaikan jalur impor sesuai dengan struktur proyek Anda
+import { data } from "../ProfilArtikel/data.js"; // pastikan Anda menyesuaikan jalur impor sesuai dengan struktur proyek Anda
 import { FaCalendarDays, FaPen } from "react-icons/fa6";
 
 const Artikel = () => {
