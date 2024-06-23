@@ -22,7 +22,7 @@ export default function Cuaca({ endpoint }) {
     {
       key: "prakiraan-cuaca",
       icon: <FaCloudSunRain className="size-[24px]" />,
-      label: <Link to="/cuaca/prakiraan-cuaca">Prakiraan Cuaca</Link>,
+      label: "Prakiraan Cuaca",
       children: [
         {
           key: "berdasarkan-lokasi",
@@ -80,7 +80,7 @@ export default function Cuaca({ endpoint }) {
     {
       key: "pengindaraan-jauh",
       icon: <FaEarthAmericas className="size-[22px]" />,
-      label: <Link to="/cuaca/pengindaraan-jauh">Pengindaraan Jauh</Link>,
+      label: 'Pengindaraan Jauh',
       children: [
         {
           key: "citra-satelit",

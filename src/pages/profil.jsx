@@ -7,7 +7,7 @@ import {
   FaEarthAmericas,
   FaRegBuilding,
 } from "react-icons/fa6";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Breadcrumb, Button, Layout, Menu, theme } from "antd";
 import "./index.css";
 import ProfilSejarah from "../components/Fragments/ProfilSejarah";
 import ProfilLogo from "../components/Fragments/ProfilLogo";
@@ -29,7 +29,6 @@ import {
 } from "react-icons/tb";
 import { RiMenuFold4Fill, RiMenuUnfold4Fill } from "react-icons/ri";
 import ProfilBerita from "../components/Fragments/ProfilBerita";
-import { Button } from "@nextui-org/react";
 
 const { Header, Sider, Content } = Layout;
 

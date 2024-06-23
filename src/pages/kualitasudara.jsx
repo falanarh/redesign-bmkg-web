@@ -208,7 +208,7 @@ export default function KualitasUdara({ endpoint = "partikulat-pm" }) {
             </Sider>
           </>
         ) : (
-          <Sider trigger={null} collapsible collapsed={collapsed} width={242}>
+          <Sider trigger={null} collapsible collapsed={collapsed} width={275}>
             <Menu
               theme="light"
               mode="inline"

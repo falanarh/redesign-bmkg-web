@@ -20,7 +20,7 @@ const CustomCardLink = ({ item, width }) => {
           </div>
         )}
         <div
-          className={`flex flex-col py-4 ${
+          className={`flex flex-col py-4 sm:px-4 ${
             item.image ? "md:flex-0 md:w-2/3" : "w-full"
           }`}
         >

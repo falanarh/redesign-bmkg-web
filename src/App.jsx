@@ -26,6 +26,19 @@ export default function App() {
   const navigate = useNavigate();
   const [isEarlyWarningVisible, setIsEarlyWarningVisible] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); // adjust the timeout duration to your liking
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
