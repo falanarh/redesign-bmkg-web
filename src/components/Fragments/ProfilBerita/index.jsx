@@ -10,7 +10,7 @@ const ProfilBerita = () => {
     // Simulate loading for 2 seconds
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
