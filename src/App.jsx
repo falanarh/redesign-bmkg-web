@@ -24,7 +24,7 @@ export default function App() {
     // Simulate a loading period
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 1000);
 
     const handleScroll = () => {
       if (window.scrollY > 300) {
