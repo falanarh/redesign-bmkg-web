@@ -12,11 +12,11 @@ import "./index.css";
 import InfoTerbaru from "../../../assets/icons/Sent.png";
 import BeritaTerbaru from "../../../assets/icons/News.png";
 import PengumumanTerbaru from "../../../assets/icons/Microphone.png";
-import Panah from "../../../assets/icons/panah.png";
 import Twitter from "../../../assets/icons/TwitterBiruMuda.png";
 import WhatsApp from "../../../assets/icons/WhatsAppHIjau.png";
 import { informasi, berita, siaran_pers } from "./data";
 import { Link } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
 
 const TabContent = ({
   data,
@@ -55,7 +55,7 @@ const TabContent = ({
     >
       {data.map((item, index) => (
         <SwiperSlide key={index}>
-        <Card
+          <Card
             maxW="250px"
             className="h-full transition-transform transform rounded-lg hover:scale-105 hover:shadow-lg"
             onMouseEnter={() => handleCardHover(index)}
@@ -69,20 +69,20 @@ const TabContent = ({
               />
               <Stack mt="4" spacing="3">
                 <div className="flex justify-between">
-                  <p className="text-sm font-bold">{item.title}</p>
-                  <p className="text-xs text-gray-500">{item.date}</p>
+                  <p className="text-[14px] font-bold">{item.title}</p>
+                  <p className="text-sm text-gray-500">{item.date}</p>
                 </div>
-                <Text className="text-xs text-gray-600">{item.content}</Text>
+                <Text className="text-[12px] text-gray-600">{item.content}</Text>
               </Stack>
             </CardBody>
             <CardFooter className="flex items-center justify-between">
               <div className="flex items-center">
                 <Link to={item.link}>
-                  <p className="mr-1 text-xs text-blue-500 cursor-pointer">
+                  <p className="flex items-center mr-1 text-gray-400 cursor-pointer text-[12px] hover:text-blue-500">
                     Selengkapnya
+                    <FaAngleRight className="mt-[2px] ml-[2px]"/>
                   </p>
                 </Link>
-                <img className="w-3 h-3" src={Panah} alt="Panah" />
               </div>
               <div className="flex items-center space-x-2">
                 <img

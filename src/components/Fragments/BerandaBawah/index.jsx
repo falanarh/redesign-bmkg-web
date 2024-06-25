@@ -6,7 +6,7 @@ export default function BerandaBawah() {
   return (
     <Section
       title="Seputar BMKG"
-      subtitle="Rangkuman Berita, Artikel, dan Siaran Pers Terbaru Terkait BMKG"
+      subtitle="Rangkuman Berita dan Siaran Pers Terbaru Terkait BMKG"
       titleAnimateOnView={true}
       subtitleAnimateOnView={true}
       childrenAnimateOnView={true}
