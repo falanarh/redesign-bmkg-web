@@ -19,7 +19,7 @@ const ContentSection = ({ title, description = "", children }) => {
   };
 
   return (
-    <div className="flex flex-col sm:min-h-screen font-pt-sans">
+    <div className="flex flex-col font-pt-sans">
       {renderTitle()}
       {renderDescription()}
       <div className="mt-5">{children}</div>
